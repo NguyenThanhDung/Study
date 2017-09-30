@@ -15,11 +15,8 @@ def main(argv):
     heroList = HeroList(heroesFileName)
     print(heroList.ToString())
     
-    equipmentList = EquipmentList(equipmentsFileName)
+    equipmentList = EquipmentList(equipmentsFileName, attributesFileName)
     print(equipmentList.ToString())
-    
-    attributesData = EquipmentAttribute(attributesFileName)
-    print(attributesData.GetAttribute(equipmentList.Pop()))
     
     hero = heroList.Pop()
     hero.Equip(equipmentList.Pop())

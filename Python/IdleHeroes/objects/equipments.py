@@ -111,8 +111,9 @@ class EquipmentAttribute:
 class EquipmentList:
     
     
-    def __init__(self, fileName):
-        self.equipments = self.ParseFromFile(fileName)
+    def __init__(self, equipmentsFileName, attributesFileName):
+        self.equipments = self.ParseFromFile(equipmentsFileName)
+        self.equipmentAttributes = EquipmentAttribute(attributesFileName)
     
     
     def ParseFromFile(self, fileName):
