@@ -1,0 +1,53 @@
+/*
+Color:
+1. Blue
+2. Chocolate
+3. Violet
+4. Green
+5. Red
+*/
+
+{
+  "equipments":[
+    {
+      "color":"red",
+      "star":1,
+      "left":1,
+      "top":1,
+      "bottom":0,
+      "right":0
+    },
+    {
+      "color":"green",
+      "star":4,
+      "left":1,
+      "top":1,
+      "bottom":1,
+      "right":1
+    },
+    {
+      "color":"green",
+      "star":3,
+      "left":2,
+      "top":3,
+      "bottom":0,
+      "right":2
+    },
+    {
+      "color":"green",
+      "star":2,
+      "left":4,
+      "top":3,
+      "bottom":6,
+      "right":4
+    },
+    {
+      "color":"green",
+      "star":1,
+      "left":1,
+      "top":0,
+      "bottom":1,
+      "right":0
+    }
+  ]
+}

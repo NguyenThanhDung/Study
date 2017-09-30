@@ -1,0 +1,17 @@
+{
+  "combination":[
+    {
+      "hero":"Field",
+      "left":
+      {
+        "color":"red",
+        "star":1
+      },
+      "top":
+      {
+        "color":"red",
+        "star":1        
+      }
+    }
+  ]
+}

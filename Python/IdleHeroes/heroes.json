@@ -1,0 +1,46 @@
+{
+  "heroes": [
+    {
+      "name": "Field",
+      "hp": 19582,
+      "attack": 2178,
+      "armor": 498,
+      "speed": 498
+    },
+    {
+      "name": "Thale",
+      "hp": 7192,
+      "attack": 2404,
+      "armor": 480,
+      "speed": 443
+    },
+    {
+      "name": "Wind Walker",
+      "hp": 8490,
+      "attack": 1534,
+      "armor": 498,
+      "speed": 489
+    },
+    {
+      "name": "Aleria",
+      "hp": 6037,
+      "attack": 1843,
+      "armor": 464,
+      "speed": 448
+    },
+    {
+      "name": "Fegan",
+      "hp": 8718,
+      "attack": 781,
+      "armor": 400,
+      "speed": 397
+    },
+    {
+      "name": "Darkness Fanella",
+      "hp": 6567,
+      "attack": 1015,
+      "armor": 386,
+      "speed": 371
+    }
+  ]
+}
