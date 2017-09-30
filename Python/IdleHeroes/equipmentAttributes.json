@@ -50,6 +50,11 @@
               "star": 3,
               "hp": 0,
               "attack": 267
+            },
+            {
+              "star": 4,
+              "hp": 0,
+              "attack": 317
             }
           ]
         },
@@ -130,6 +135,11 @@
               "star": 3,
               "hp": 1541,
               "attack": 0
+            },
+            {
+              "star": 4,
+              "hp": 1826,
+              "attack": 0
             }
           ]
         },
@@ -162,86 +172,6 @@
     },
     {
       "position": "bottom",
-      "colors": [
-        {
-          "color": "yellow",
-          "stars": [
-            {
-              "star": 1,
-              "hp": 94,
-              "attack": 0
-            },
-            {
-              "star": 2,
-              "hp": 113,
-              "attack": 0
-            }
-          ]
-        },
-        {
-          "color": "violet",
-          "stars": [
-            {
-              "star": 1,
-              "hp": 225,
-              "attack": 0
-            },
-            {
-              "star": 2,
-              "hp": 289,
-              "attack": 0
-            }
-          ]
-        },
-        {
-          "color": "green",
-          "stars": [
-            {
-              "star": 1,
-              "hp": 647,
-              "attack": 0
-            },
-            {
-              "star": 2,
-              "hp": 837,
-              "attack": 0
-            },
-            {
-              "star": 3,
-              "hp": 1027,
-              "attack": 0
-            }
-          ]
-        },
-        {
-          "color": "red",
-          "stars": [
-            {
-              "star": 1,
-              "hp": 1763,
-              "attack": 0
-            },
-            {
-              "star": 2,
-              "hp": 2138,
-              "attack": 0
-            },
-            {
-              "star": 3,
-              "hp": 2513,
-              "attack": 0
-            },
-            {
-              "star": 4,
-              "hp": 2889,
-              "attack": 0
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "position": "right",
       "colors": [
         {
           "color": "yellow",
@@ -290,6 +220,11 @@
               "star": 3,
               "hp": 0,
               "attack": 178
+            },
+            {
+              "star": 4,
+              "hp": 0,
+              "attack": 211
             }
           ]
         },
@@ -315,6 +250,91 @@
               "star": 4,
               "hp": 0,
               "attack": 178
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "position": "right",
+      "colors": [
+        {
+          "color": "yellow",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 94,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 113,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "violet",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 225,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 289,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "green",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 647,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 837,
+              "attack": 0
+            },
+            {
+              "star": 3,
+              "hp": 1027,
+              "attack": 0
+            },
+            {
+              "star": 4,
+              "hp": 1217,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 1763,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 2138,
+              "attack": 0
+            },
+            {
+              "star": 3,
+              "hp": 2513,
+              "attack": 0
+            },
+            {
+              "star": 4,
+              "hp": 2889,
+              "attack": 0
             }
           ]
         }

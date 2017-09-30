@@ -1,6 +1,6 @@
 import sys
 from objects.heroes import HeroList
-from objects.equipments import EquipmentList,EquipmentAttribute
+from objects.equipments import EquipmentList
 
 def main(argv):
     if len(argv) != 3:

@@ -77,6 +77,19 @@ class Equipment:
         self.color = color
         self.star = star
         self.position = position
+        self.hp = 0
+        self.attack = 0
+    
+    
+    def SetAttribute(self, attributes):
+        self.hp = attributes["hp"]
+        self.attack = attributes["attack"]
+    
+    def HP(self):
+        return self.hp
+    
+    def Attack(self):
+        return self.attack
     
     
     def ToString(self):
@@ -103,8 +116,7 @@ class EquipmentAttribute:
                     if color["color"] == Color.ColorToString(equipment.color):
                         for star in color["stars"]:
                             if star["star"] == equipment.star:
-                                attributeValue = {"hp": star["hp"], "attack": star["attack"]}
-                                return attributeValue
+                                return {"hp": star["hp"], "attack": star["attack"]}
 
 
 
@@ -112,8 +124,8 @@ class EquipmentList:
     
     
     def __init__(self, equipmentsFileName, attributesFileName):
-        self.equipments = self.ParseFromFile(equipmentsFileName)
         self.equipmentAttributes = EquipmentAttribute(attributesFileName)
+        self.equipments = self.ParseFromFile(equipmentsFileName)
     
     
     def ParseFromFile(self, fileName):
@@ -126,24 +138,28 @@ class EquipmentList:
             count = equipJson["left"]
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("left"))
+                equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
                 equipments.append(equipObj)
                 count -= 1
             
             count = equipJson["top"]
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("top"))
+                equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
                 equipments.append(equipObj)
                 count -= 1
             
             count = equipJson["bottom"]
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("bottom"))
+                equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
                 equipments.append(equipObj)
                 count -= 1
             
             count = equipJson["right"]
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("right"))
+                equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
                 equipments.append(equipObj)
                 count -= 1
         

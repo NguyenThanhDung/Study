@@ -35,7 +35,7 @@ class HeroList:
         heroes = [] 
         for hero in jsonData["heroes"]:
             heroObj = Hero(hero["name"], hero["hp"], hero["attack"], hero["armor"], hero["speed"])
-            heroes.append(heroObj)        
+            heroes.append(heroObj)
         return heroes
     
     def Pop(self):
