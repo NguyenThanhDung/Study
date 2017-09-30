@@ -16,6 +16,10 @@ def main(argv):
     
     equipmentList = EquipmentList(equipmentsFileName)
     print(equipmentList.ToString())
+    
+    hero = heroList.Pop()
+    hero.Equip(equipmentList.Pop())
+    print(hero.ToString())
 
 if __name__ == "__main__":
     main(sys.argv[1:])

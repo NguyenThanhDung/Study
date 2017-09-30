@@ -2,10 +2,13 @@ import json
 
 class Equipment:
     
-    def __init__(self, color, star, position):
+    def __init__(self, color="Unknown", star=0, position="Unknown"):
         self.color = color
         self.star = star
         self.position = position
+    
+    def ToString(self):
+        return self.color + str(self.star) + "-" + self.position
 
 
 class EquipmentList:
@@ -49,10 +52,14 @@ class EquipmentList:
         return equipments
     
     
+    def Pop(self):
+        return self.equipments.pop()
+    
+    
     def ToString(self):
         output = "Equipment List:\n"
         for equipment in self.equipments:
-            output += "* " + equipment.color + "-" + str(equipment.star) + " " + equipment.position + "\n"
+            output += "* " + equipment.ToString() + "\n"
         output += "Total: " + str(self.Count())
         return output
     
