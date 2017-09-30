@@ -11,6 +11,19 @@ class Color(Enum):
     RED = 4
     ORA = 5
 
+    @classmethod
+    def StringToColor(cls, colorString):
+        if colorString == "yellow":
+            return Color.YEL
+        if colorString == "violet":
+            return Color.VIO
+        if colorString == "green":
+            return Color.GRE
+        if colorString == "red":
+            return Color.RED
+        if colorString == "orange":
+            return Color.ORA
+
 
 
 class Position(Enum):
@@ -19,6 +32,17 @@ class Position(Enum):
     TOP = 2
     BOT = 3
     RGT = 4
+    
+    @classmethod
+    def StringToPosition(cls, positionString):
+        if positionString == "left":
+            return Position.LFT
+        if positionString == "top":
+            return Position.TOP
+        if positionString == "bottom":
+            return Position.BOT
+        if positionString == "right":
+            return Position.RGT
 
 
 
@@ -52,53 +76,29 @@ class EquipmentList:
             
             count = equipJson["left"]
             while count > 0:
-                equipObj = Equipment(self.StringToColor(equipJson["color"]), equipJson["star"], self.StringToPosition("left"))
+                equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("left"))
                 equipments.append(equipObj)
                 count -= 1
             
             count = equipJson["top"]
             while count > 0:
-                equipObj = Equipment(self.StringToColor(equipJson["color"]), equipJson["star"], self.StringToPosition("top"))
+                equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("top"))
                 equipments.append(equipObj)
                 count -= 1
             
             count = equipJson["bottom"]
             while count > 0:
-                equipObj = Equipment(self.StringToColor(equipJson["color"]), equipJson["star"], self.StringToPosition("bottom"))
+                equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("bottom"))
                 equipments.append(equipObj)
                 count -= 1
             
             count = equipJson["right"]
             while count > 0:
-                equipObj = Equipment(self.StringToColor(equipJson["color"]), equipJson["star"], self.StringToPosition("right"))
+                equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("right"))
                 equipments.append(equipObj)
                 count -= 1
         
         return equipments
-    
-    
-    def StringToColor(self, colorString):
-        if colorString == "yellow":
-            return Color.YEL
-        if colorString == "violet":
-            return Color.VIO
-        if colorString == "green":
-            return Color.GRE
-        if colorString == "red":
-            return Color.RED
-        if colorString == "orange":
-            return Color.ORA
-    
-    
-    def StringToPosition(self, positionString):
-        if positionString == "left":
-            return Position.LFT
-        if positionString == "top":
-            return Position.TOP
-        if positionString == "bottom":
-            return Position.BOT
-        if positionString == "right":
-            return Position.RGT
     
     
     def Pop(self):
