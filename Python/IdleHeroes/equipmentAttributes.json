@@ -1,0 +1,324 @@
+{
+  "attributes": [
+    {
+      "position": "left",
+      "colors": [
+        {
+          "color": "yellow",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 32
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 38
+            }
+          ]
+        },
+        {
+          "color": "violet",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 66
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 85
+            }
+          ]
+        },
+        {
+          "color": "green",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 168
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 218
+            },
+            {
+              "star": 3,
+              "hp": 0,
+              "attack": 267
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 414
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 502
+            },
+            {
+              "star": 3,
+              "hp": 0,
+              "attack": 590
+            },
+            {
+              "star": 4,
+              "hp": 0,
+              "attack": 678
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "position": "top",
+      "colors": [
+        {
+          "color": "yellow",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 141,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 169,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "violet",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 337,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 434,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "green",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 970,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 1255,
+              "attack": 0
+            },
+            {
+              "star": 3,
+              "hp": 1541,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 2645,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 3207,
+              "attack": 0
+            },
+            {
+              "star": 3,
+              "hp": 3770,
+              "attack": 0
+            },
+            {
+              "star": 4,
+              "hp": 4333,
+              "attack": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "position": "bottom",
+      "colors": [
+        {
+          "color": "yellow",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 94,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 113,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "violet",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 225,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 289,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "green",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 647,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 837,
+              "attack": 0
+            },
+            {
+              "star": 3,
+              "hp": 1027,
+              "attack": 0
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 1763,
+              "attack": 0
+            },
+            {
+              "star": 2,
+              "hp": 2138,
+              "attack": 0
+            },
+            {
+              "star": 3,
+              "hp": 2513,
+              "attack": 0
+            },
+            {
+              "star": 4,
+              "hp": 2889,
+              "attack": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "position": "right",
+      "colors": [
+        {
+          "color": "yellow",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 21
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 25
+            }
+          ]
+        },
+        {
+          "color": "violet",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 44
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 57
+            }
+          ]
+        },
+        {
+          "color": "green",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 112
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 145
+            },
+            {
+              "star": 3,
+              "hp": 0,
+              "attack": 178
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "stars": [
+            {
+              "star": 1,
+              "hp": 0,
+              "attack": 276
+            },
+            {
+              "star": 2,
+              "hp": 0,
+              "attack": 335
+            },
+            {
+              "star": 3,
+              "hp": 0,
+              "attack": 393
+            },
+            {
+              "star": 4,
+              "hp": 0,
+              "attack": 178
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
