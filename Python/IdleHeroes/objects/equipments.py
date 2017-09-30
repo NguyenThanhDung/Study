@@ -23,6 +23,19 @@ class Color(Enum):
             return Color.RED
         if colorString == "orange":
             return Color.ORA
+    
+    @classmethod
+    def ColorToString(cls, color):
+        if color == Color.YEL:
+            return "yellow"
+        if color == Color.VIO:
+            return "violet"
+        if color == Color.GRE:
+            return "green"
+        if color == Color.RED:
+            return "red"
+        if color == Color.ORA:
+            return "orange"
 
 
 
@@ -43,6 +56,17 @@ class Position(Enum):
             return Position.BOT
         if positionString == "right":
             return Position.RGT
+    
+    @classmethod
+    def PositionToString(cls, position):
+        if position == Position.LFT:
+            return "left"
+        if position == Position.TOP:
+            return "top"
+        if position == Position.BOT:
+            return "bottom"
+        if position == Position.RGT:
+            return "right"
 
 
 
@@ -57,6 +81,30 @@ class Equipment:
     
     def ToString(self):
         return self.color.name + "-" + str(self.star) + "-" + self.position.name
+
+
+
+class EquipmentAttribute:
+    
+    
+    def __init__(self, fileName):
+        self.attributes = self.ParseFromFile(fileName)
+    
+    
+    def ParseFromFile(self, fileName):
+        with open(fileName) as fileData:
+            jsonData = json.load(fileData)
+        return jsonData["attributes"]
+    
+    def GetAttribute(self, equipment):
+        for attribute in self.attributes:
+            if attribute["position"] == Position.PositionToString(equipment.position):
+                for color in attribute["colors"]:
+                    if color["color"] == Color.ColorToString(equipment.color):
+                        for star in color["stars"]:
+                            if star["star"] == equipment.star:
+                                attributeValue = {"hp": star["hp"], "attack": star["attack"]}
+                                return attributeValue
 
 
 
