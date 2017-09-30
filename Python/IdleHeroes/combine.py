@@ -11,17 +11,29 @@ class Hero:
 
 class HeroList:
     
-    def __init__(selft, fileName):
-        self.heroes = ParseFromFile(filename)    
+    def __init__(self, fileName):
+        self.heroes = self.ParseFromFile(fileName)    
     
-    def ParseFromFile(fileName):
-        with open(heroesFileName) as filedata:
-            heroesData = json.load(filedata)            
+    def ParseFromFile(self, fileName):
+        with open(fileName) as fileData:
+            jsonData = json.load(fileData)
         heroes = [] 
-        for hero in heroesData["heroes"]:
+        for hero in jsonData["heroes"]:
             heroObj = Hero(hero["name"], hero["hp"], hero["attack"], hero["armor"])
             heroes.append(heroObj)        
-        print(len(heroes))
+        return heroes
+    
+    def ToString(self):
+        output = "Hero List:\n"
+        i = 1
+        for hero in self.heroes:
+            output += str(i) + ". " + hero.name + "\n"
+            i += 1
+        output += "Total: " + str(self.Count())
+        return output
+    
+    def Count(self):
+        return len(self.heroes)
 
 
 def main(argv):
@@ -32,7 +44,7 @@ def main(argv):
     heroesFileName = argv[0]
     print("Input files: " + heroesFileName)
     heroList = HeroList(heroesFileName)
-    
+    print(heroList.ToString())
 
 if __name__ == "__main__":
     main(sys.argv[1:])
