@@ -19,8 +19,9 @@ def main(argv):
     print(equipmentList.ToString())
     
     hero = heroList.Pop()
+    print("Before: " + hero.ToString())
     hero.Equip(equipmentList.Pop())
-    print(hero.ToString())
+    print("After : " + hero.ToString())
 
 if __name__ == "__main__":
     main(sys.argv[1:])

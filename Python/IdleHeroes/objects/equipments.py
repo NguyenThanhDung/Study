@@ -85,12 +85,6 @@ class Equipment:
         self.hp = attributes["hp"]
         self.attack = attributes["attack"]
     
-    def HP(self):
-        return self.hp
-    
-    def Attack(self):
-        return self.attack
-    
     
     def ToString(self):
         return self.color.name + "-" + str(self.star) + "-" + self.position.name
