@@ -8,10 +8,10 @@ class Hero:
         self.attack = attack
         self.armor = armor
         self.speed = speed
-        self.equipments = {Position.LEFT: Equipment(), Position.TOP: Equipment(), Position.BOTTOM: Equipment(), Position.RIGHT: Equipment()}
+        self.equipments = {Position.LFT: Equipment(), Position.TOP: Equipment(), Position.BOT: Equipment(), Position.RGT: Equipment()}
     
     def Equip(self, equipment):
-        if self.equipments[equipment.position].color == Color.UNKNOWN:
+        if self.equipments[equipment.position].color == Color.UNK:
             self.equipments[equipment.position].color = equipment.color
             self.equipments[equipment.position].star = equipment.star
             self.equipments[equipment.position].position = equipment.position
@@ -19,8 +19,8 @@ class Hero:
     def ToString(self):
         output = self.name + ":\n"
         output += str(self.hp) + " " + str(self.attack) + " " + str(self.armor) + " " + str(self.speed) + "\n"
-        output += self.equipments[Position.LEFT].ToString() + " " + self.equipments[Position.TOP].ToString() + " "
-        output += self.equipments[Position.BOTTOM].ToString() + " " + self.equipments[Position.RIGHT].ToString() + "\n"
+        output += self.equipments[Position.LFT].ToString() + " " + self.equipments[Position.TOP].ToString() + " "
+        output += self.equipments[Position.BOT].ToString() + " " + self.equipments[Position.RGT].ToString() + "\n"
         return output
 
 

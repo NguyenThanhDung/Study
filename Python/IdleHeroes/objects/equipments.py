@@ -4,28 +4,28 @@ from enum import Enum
 
 
 class Color(Enum):
-    UNKNOWN = 0
-    YELLOW = 1
-    VIOLET = 2
-    GREEN = 3
+    UNK = 0
+    YEL = 1
+    VIO = 2
+    GRE = 3
     RED = 4
-    ORANGE = 5
+    ORA = 5
 
 
 
 class Position(Enum):
-    UNKNOWN = 0
-    LEFT = 1
+    UNK = 0
+    LFT = 1
     TOP = 2
-    BOTTOM = 3
-    RIGHT = 4
+    BOT = 3
+    RGT = 4
 
 
 
 class Equipment:
     
     
-    def __init__(self, color=Color.UNKNOWN, star=0, position=Position.UNKNOWN):
+    def __init__(self, color=Color.UNK, star=0, position=Position.UNK):
         self.color = color
         self.star = star
         self.position = position
@@ -79,26 +79,26 @@ class EquipmentList:
     
     def StringToColor(self, colorString):
         if colorString == "yellow":
-            return Color.YELLOW
+            return Color.YEL
         if colorString == "violet":
-            return Color.VIOLET
+            return Color.VIO
         if colorString == "green":
-            return Color.GREEN
+            return Color.GRE
         if colorString == "red":
             return Color.RED
         if colorString == "orange":
-            return Color.ORANGE
+            return Color.ORA
     
     
     def StringToPosition(self, positionString):
         if positionString == "left":
-            return Position.LEFT
+            return Position.LFT
         if positionString == "top":
             return Position.TOP
         if positionString == "bottom":
-            return Position.BOTTOM
+            return Position.BOT
         if positionString == "right":
-            return Position.RIGHT
+            return Position.RGT
     
     
     def Pop(self):
