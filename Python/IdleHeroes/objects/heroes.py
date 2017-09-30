@@ -1,5 +1,5 @@
 import json
-from equipments import Equipment
+from equipments import Color, Position, Equipment
 
 class Hero:
     def __init__(self, name, hp, attack, armor, speed):
@@ -8,10 +8,10 @@ class Hero:
         self.attack = attack
         self.armor = armor
         self.speed = speed
-        self.equipments = {"left": Equipment(), "top": Equipment(), "bottom": Equipment(), "right": Equipment()}
+        self.equipments = {Position.LEFT: Equipment(), Position.TOP: Equipment(), Position.BOTTOM: Equipment(), Position.RIGHT: Equipment()}
     
     def Equip(self, equipment):
-        if self.equipments[equipment.position].color == "Unknown":
+        if self.equipments[equipment.position].color == Color.UNKNOWN:
             self.equipments[equipment.position].color = equipment.color
             self.equipments[equipment.position].star = equipment.star
             self.equipments[equipment.position].position = equipment.position
@@ -19,8 +19,8 @@ class Hero:
     def ToString(self):
         output = self.name + ":\n"
         output += str(self.hp) + " " + str(self.attack) + " " + str(self.armor) + " " + str(self.speed) + "\n"
-        output += self.equipments["left"].ToString() + " " + self.equipments["top"].ToString() + " "
-        output += self.equipments["bottom"].ToString() + " " + self.equipments["right"].ToString() + "\n"
+        output += self.equipments[Position.LEFT].ToString() + " " + self.equipments[Position.TOP].ToString() + " "
+        output += self.equipments[Position.BOTTOM].ToString() + " " + self.equipments[Position.RIGHT].ToString() + "\n"
         return output
 
 
