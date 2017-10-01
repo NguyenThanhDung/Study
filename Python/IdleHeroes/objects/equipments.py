@@ -79,11 +79,16 @@ class Equipment:
         self.position = position
         self.hp = 0
         self.attack = 0
+        self.setBonus = None
     
     
     def SetAttribute(self, attributes):
         self.hp = attributes["hp"]
         self.attack = attributes["attack"]
+    
+    
+    def SetSetBonus(self, setBonus):
+        self.setBonus = setBonus
     
     
     def ToString(self):
@@ -113,6 +118,11 @@ class EquipmentAttribute:
                         for star in color["stars"]:
                             if star["star"] == equipment.star:
                                 return {"hp": star["hp"], "attack": star["attack"]}
+    
+    def GetSetBonus(self, equipment):
+        for s in self.setBonus:
+            if s["color"] == Color.ColorToString(equipment.color) and s["star"] == equipment.star:
+                return s["set"]
 
 
 
@@ -135,6 +145,7 @@ class EquipmentList:
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("left"))
                 equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
+                equipObj.SetSetBonus(self.equipmentAttributes.GetSetBonus(equipObj))
                 equipments.append(equipObj)
                 count -= 1
             
@@ -142,6 +153,7 @@ class EquipmentList:
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("top"))
                 equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
+                equipObj.SetSetBonus(self.equipmentAttributes.GetSetBonus(equipObj))
                 equipments.append(equipObj)
                 count -= 1
             
@@ -149,6 +161,7 @@ class EquipmentList:
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("bottom"))
                 equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
+                equipObj.SetSetBonus(self.equipmentAttributes.GetSetBonus(equipObj))
                 equipments.append(equipObj)
                 count -= 1
             
@@ -156,6 +169,7 @@ class EquipmentList:
             while count > 0:
                 equipObj = Equipment(Color.StringToColor(equipJson["color"]), equipJson["star"], Position.StringToPosition("right"))
                 equipObj.SetAttribute(self.equipmentAttributes.GetAttribute(equipObj))
+                equipObj.SetSetBonus(self.equipmentAttributes.GetSetBonus(equipObj))
                 equipments.append(equipObj)
                 count -= 1
         
