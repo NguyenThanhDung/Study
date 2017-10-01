@@ -95,13 +95,15 @@ class EquipmentAttribute:
     
     
     def __init__(self, fileName):
-        self.attributes = self.ParseFromFile(fileName)
+        jsonData = self.ParseFromFile(fileName)
+        self.attributes = jsonData[0]["attributes"]
+        self.setBonus = jsonData[1]["setBonus"]
     
     
     def ParseFromFile(self, fileName):
         with open(fileName) as fileData:
             jsonData = json.load(fileData)
-        return jsonData["attributes"]
+        return jsonData["equipmentAttributes"]
     
     def GetAttribute(self, equipment):
         for attribute in self.attributes:
