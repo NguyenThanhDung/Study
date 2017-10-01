@@ -31,6 +31,9 @@ class Hero:
             self.equipments[equipment.position].position = equipment.position
             self.equipments[equipment.position].hp = equipment.hp
             self.equipments[equipment.position].attack = equipment.attack
+            return True
+        else:
+            return False
     
     def HP(self):
         hp = self.hp
@@ -74,11 +77,18 @@ class HeroList:
         return self.heroes.pop()
     
     def Equip(self, equipmentList):
-        for i in range(len(self.heroes)):
-            if self.heroes[i].required == Required.HP:
-                self.heroes[i].Equip(equipmentList.PopHighestHP())
-            if self.heroes[i].required == Required.ATTACK:
-                self.heroes[i].Equip(equipmentList.PopHighestAttack())
+        usedEquipments = []
+        for i in range(equipmentList.Count()):
+            equipment = equipmentList.Get(i)
+            for j in range(self.Count()):
+                if self.heroes[j].Equip(equipment):
+                    usedEquipments.append(equipment)
+                    break
+                else:
+                    continue
+        for usedEquipment in usedEquipments:
+            equipmentList.Remove(usedEquipment)
+        
     
     def ToString(self):
         output = "Hero List:\n\n"

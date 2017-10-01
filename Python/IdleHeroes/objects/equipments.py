@@ -160,8 +160,11 @@ class EquipmentList:
         return equipments
     
     
-    def Pop(self):
-        return self.equipments.pop()
+    def Get(self, index):
+        return self.equipments[index]
+    
+    def Remove(self, equipment):
+        return self.equipments.remove(equipment)
     
     
     def PopHighestHP(self):
