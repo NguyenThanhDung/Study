@@ -73,12 +73,17 @@ class HeroList:
     def Pop(self):
         return self.heroes.pop()
     
+    def Equip(self, equipmentList):
+        for i in range(len(self.heroes)):
+            if self.heroes[i].required == Required.HP:
+                self.heroes[i].Equip(equipmentList.PopHighestHP())
+            if self.heroes[i].required == Required.ATTACK:
+                self.heroes[i].Equip(equipmentList.PopHighestAttack())
+    
     def ToString(self):
-        output = "Hero List:\n"
-        i = 1
-        for hero in self.heroes:
-            output += str(i) + ". " + hero.name + "\n"
-            i += 1
+        output = "Hero List:\n\n"
+        for i in range(self.Count()):
+            output += str(i) + ". " + self.heroes[i].ToString() + "\n"
         output += "Total: " + str(self.Count()) + "\n"
         return output
     

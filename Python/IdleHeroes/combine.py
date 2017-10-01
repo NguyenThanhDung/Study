@@ -12,16 +12,18 @@ def main(argv):
     attributesFileName = argv[2]
     print("Input files: " + heroesFileName + ", " + equipmentsFileName + ", " + attributesFileName)
     
-    heroList = HeroList(heroesFileName)
-    print(heroList.ToString())
-    
+    heroList = HeroList(heroesFileName)    
     equipmentList = EquipmentList(equipmentsFileName, attributesFileName)
+    
+    print("BEFORE:\n")
+    print(heroList.ToString())
     print(equipmentList.ToString())
     
-    hero = heroList.Pop()
-    print("Before:\n" + hero.ToString())
-    hero.Equip(equipmentList.Pop())
-    print("After :\n" + hero.ToString())
+    heroList.Equip(equipmentList)
+    
+    print("AFTER:\n")
+    print(heroList.ToString())
+    print(equipmentList.ToString())    
 
 if __name__ == "__main__":
     params = ["heroes.json", "equipments.json", "equipmentAttributes.json"]

@@ -164,6 +164,32 @@ class EquipmentList:
         return self.equipments.pop()
     
     
+    def PopHighestHP(self):
+        if self.Count() <= 0:
+            return None
+        
+        maxIndex = 0
+        maxHP = 0
+        for i in range(len(self.equipments)):
+            if self.equipments[i].hp > maxHP:
+                maxIndex = i
+                maxHP = self.equipments[i].hp
+        return self.equipments.pop(maxIndex)
+    
+    
+    def PopHighestAttack(self):
+        if self.Count() <= 0:
+            return None
+            
+        maxIndex = 0
+        maxAttack = 0
+        for i in range(len(self.equipments)):
+            if self.equipments[i].attack > maxAttack:
+                maxIndex = i
+                maxAttack = self.equipments[i].attack
+        return self.equipments.pop(maxIndex)
+    
+    
     def ToString(self):
         output = "Equipment List:\n"
         for equipment in self.equipments:
