@@ -168,7 +168,7 @@ class EquipmentList:
         output = "Equipment List:\n"
         for equipment in self.equipments:
             output += "* " + equipment.ToString() + "\n"
-        output += "Total: " + str(self.Count())
+        output += "Total: " + str(self.Count()) + "\n"
         return output
     
     

@@ -65,7 +65,7 @@ class HeroList:
         for hero in self.heroes:
             output += str(i) + ". " + hero.name + "\n"
             i += 1
-        output += "Total: " + str(self.Count())
+        output += "Total: " + str(self.Count()) + "\n"
         return output
     
     def Count(self):
