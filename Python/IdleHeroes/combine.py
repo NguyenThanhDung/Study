@@ -19,9 +19,10 @@ def main(argv):
     print(equipmentList.ToString())
     
     hero = heroList.Pop()
-    print("Before: " + hero.ToString())
+    print("Before:\n" + hero.ToString())
     hero.Equip(equipmentList.Pop())
-    print("After : " + hero.ToString())
+    print("After :\n" + hero.ToString())
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    params = ["heroes.json", "equipments.json", "equipmentAttributes.json"]
+    main(params)
