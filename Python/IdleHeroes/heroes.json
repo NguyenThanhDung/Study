@@ -5,42 +5,48 @@
       "hp": 19582,
       "attack": 2178,
       "armor": 498,
-      "speed": 498
+      "speed": 498,
+      "required":"hp"
     },
     {
       "name": "Thale",
       "hp": 7192,
       "attack": 2404,
       "armor": 480,
-      "speed": 443
+      "speed": 443,
+      "required":"attack"
     },
     {
       "name": "Wind Walker",
       "hp": 8490,
       "attack": 1534,
       "armor": 498,
-      "speed": 489
+      "speed": 489,
+      "required":"attack"
     },
     {
       "name": "Aleria",
       "hp": 6037,
       "attack": 1843,
       "armor": 464,
-      "speed": 448
+      "speed": 448,
+      "required":"attack"
     },
     {
       "name": "Fegan",
       "hp": 8718,
       "attack": 781,
       "armor": 400,
-      "speed": 397
+      "speed": 397,
+      "required":"hp"
     },
     {
       "name": "Darkness Fanella",
       "hp": 6567,
       "attack": 1015,
       "armor": 386,
-      "speed": 371
+      "speed": 371,
+      "required":"hp"
     }
   ]
 }

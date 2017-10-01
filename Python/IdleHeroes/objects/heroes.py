@@ -1,13 +1,27 @@
 import json
+from enum import Enum
 from equipments import Color, Position, Equipment
 
+class Required(Enum):
+    HP = 0
+    ATTACK = 1
+    
+    @classmethod
+    def StringToEnum(cls, stringValue):
+        if stringValue == "hp":
+            return Required.HP
+        if stringValue == "attack":
+            return Required.ATTACK
+
+
 class Hero:
-    def __init__(self, name, hp, attack, armor, speed):
+    def __init__(self, name, hp, attack, armor, speed, required):
         self.name = name
         self.hp = hp
         self.attack = attack
         self.armor = armor
         self.speed = speed
+        self.required = Required.StringToEnum(required)
         self.equipments = {Position.LFT: Equipment(), Position.TOP: Equipment(), Position.BOT: Equipment(), Position.RGT: Equipment()}
     
     def Equip(self, equipment):
@@ -35,7 +49,7 @@ class Hero:
         return attack
     
     def ToString(self):
-        output = self.name + ":\n"
+        output = self.name + " (Required: " + self.required.name + "):\n"
         output += str(self.HP()) + " " + str(self.Attack()) + " " + str(self.armor) + " " + str(self.speed) + "\n"
         output += self.equipments[Position.LFT].ToString() + " " + self.equipments[Position.TOP].ToString() + " "
         output += self.equipments[Position.BOT].ToString() + " " + self.equipments[Position.RGT].ToString() + "\n"
@@ -52,7 +66,7 @@ class HeroList:
             jsonData = json.load(fileData)
         heroes = [] 
         for hero in jsonData["heroes"]:
-            heroObj = Hero(hero["name"], hero["hp"], hero["attack"], hero["armor"], hero["speed"])
+            heroObj = Hero(hero["name"], hero["hp"], hero["attack"], hero["armor"], hero["speed"], hero["required"])
             heroes.append(heroObj)
         return heroes
     
