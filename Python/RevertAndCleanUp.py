@@ -58,20 +58,10 @@ def DeleteItem(path) :
 
 
 def main(argv):
-    path = ""
-
-    try:
-        opts, args = getopt.getopt(argv, "hp:", ["help", "path="])
-    except getopt.GetoptError:
-        print("RevertAndCleanUp.py -p <path>")
-        sys.exit(2)
-
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            print("RevertAndCleanUp.py -p <path>")
-            sys.exit(2)
-        elif opt in ("-p", "--path"):
-            path = arg
+    path = "../"
+    
+    if len(argv) > 0:
+        path = argv[0]
 
     print("Input path: " + path)
     fullPath = os.path.abspath(path)
@@ -84,11 +74,11 @@ def main(argv):
     for link in externalsList :
         Revert(link)
     Revert(fullPath)
-
+    
     unversionedItems = GetUnversionedItems(path)
     for item in unversionedItems :
         DeleteItem(item)
-
+    
     ignoredItems = GetIgnoredItems(path)
     for item in ignoredItems :
         DeleteItem(item)
