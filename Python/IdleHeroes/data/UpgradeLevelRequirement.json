@@ -406,6 +406,51 @@
             }
         },
         {
+            "level":75,
+            "nextLevel":76,
+            "required":
+            {
+                "green":38880,
+                "gold":58061
+            }
+        },
+        {
+            "level":76,
+            "nextLevel":77,
+            "required":
+            {
+                "green":40320,
+                "gold":60211
+            }
+        },
+        {
+            "level":77,
+            "nextLevel":78,
+            "required":
+            {
+                "green":41760,
+                "gold":62362
+            }
+        },
+        {
+            "level":78,
+            "nextLevel":79,
+            "required":
+            {
+                "green":46080,
+                "gold":64512
+            }
+        },
+        {
+            "level":79,
+            "nextLevel":80,
+            "required":
+            {
+                "green":47616,
+                "gold":66662
+            }
+        },
+        {
             "level":,
             "nextLevel":,
             "required":
