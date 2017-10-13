@@ -451,6 +451,24 @@
             }
         },
         {
+            "level":98,
+            "nextLevel":99,
+            "required":
+            {
+                "green":131000,
+                "gold":181000
+            }
+        },
+        {
+            "level":99,
+            "nextLevel":100,
+            "required":
+            {
+                "green":134000,
+                "gold":186000
+            }
+        },
+        {
             "level":,
             "nextLevel":,
             "required":
