@@ -9,7 +9,12 @@ public class Inspector4 : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
+        EditorGUILayout.IntSlider(serializedObject.FindProperty("speed"), 1, 20, "Speed");
         serializedObject.ApplyModifiedProperties();
+
+        if (GUILayout.Button("Save"))
+        {
+            AssetDatabase.SaveAssets();
+        }
     }
 }
