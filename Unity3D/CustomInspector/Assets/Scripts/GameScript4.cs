@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class GameScript4 : ScriptableObject
 {
-    public int speed;
+    [System.Serializable]
+    public class Wave
+    {
+        public int speed;
+    }
+
+    public List<Wave> waves = new List<Wave>(0);
 }
