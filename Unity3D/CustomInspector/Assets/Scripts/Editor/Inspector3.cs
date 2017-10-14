@@ -12,11 +12,13 @@ public class Inspector3 : Editor
 
         for(int i=0;i<gameScript.waves.Count;i++)
         {
+            EditorGUILayout.BeginHorizontal();
             gameScript.waves[i].speed = EditorGUILayout.IntSlider("Speed", gameScript.waves[i].speed, 1, 20);
             if(GUILayout.Button("-"))
             {
                 gameScript.waves.RemoveAt(i);
             }
+            EditorGUILayout.EndHorizontal();
         }
 
         if (GUILayout.Button("Add"))
