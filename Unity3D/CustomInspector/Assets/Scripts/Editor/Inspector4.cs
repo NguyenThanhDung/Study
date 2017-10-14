@@ -8,13 +8,8 @@ public class Inspector4 : Editor
 {
     public override void OnInspectorGUI()
     {
-        GameScript4 gameScript = (GameScript4)target;
-        gameScript.speed = EditorGUILayout.IntSlider("Speed", gameScript.speed, 1, 10);
-
-        if(GUILayout.Button("Save"))
-        {
-            EditorUtility.SetDirty(gameScript);
-            AssetDatabase.SaveAssets();
-        }
+        serializedObject.Update();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
+        serializedObject.ApplyModifiedProperties();
     }
 }
