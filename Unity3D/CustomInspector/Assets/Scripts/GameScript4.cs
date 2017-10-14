@@ -4,10 +4,5 @@ using UnityEngine;
 
 public class GameScript4 : ScriptableObject
 {
-    public class Wave
-    {
-        public int speed;
-    }
-
-    public List<Wave> waves = new List<Wave>(0);
+    public int speed;
 }
