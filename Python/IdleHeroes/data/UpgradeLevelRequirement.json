@@ -1,894 +1,795 @@
 {
-    "UpgradeLevelRequirement":[
+    "UpgradeLevelRequirement": [
         {
-            "level":1,
-            "nextLevel":2,
-            "required":
-            {
-                "green":20,
-                "gold":80
+            "level": 1,
+            "nextLevel": 2,
+            "required": {
+                "green": 20,
+                "gold": 80
             }
         },
         {
-            "level":2,
-            "nextLevel":3,
-            "required":
-            {
-                "green":25,
-                "gold":100
+            "level": 2,
+            "nextLevel": 3,
+            "required": {
+                "green": 25,
+                "gold": 100
             }
         },
         {
-            "level":3,
-            "nextLevel":4,
-            "required":
-            {
-                "green":30,
-                "gold":120
+            "level": 3,
+            "nextLevel": 4,
+            "required": {
+                "green": 30,
+                "gold": 120
             }
         },
         {
-            "level":4,
-            "nextLevel":5,
-            "required":
-            {
-                "green":35,
-                "gold":140
+            "level": 4,
+            "nextLevel": 5,
+            "required": {
+                "green": 35,
+                "gold": 140
             }
         },
         {
-            "level":5,
-            "nextLevel":6,
-            "required":
-            {
-                "green":40,
-                "gold":160
+            "level": 5,
+            "nextLevel": 6,
+            "required": {
+                "green": 40,
+                "gold": 160
             }
         },
         {
-            "level":6,
-            "nextLevel":7,
-            "required":
-            {
-                "green":45,
-                "gold":180
+            "level": 6,
+            "nextLevel": 7,
+            "required": {
+                "green": 45,
+                "gold": 180
             }
         },
         {
-            "level":7,
-            "nextLevel":8,
-            "required":
-            {
-                "green":50,
-                "gold":200
+            "level": 7,
+            "nextLevel": 8,
+            "required": {
+                "green": 50,
+                "gold": 200
             }
         },
         {
-            "level":8,
-            "nextLevel":9,
-            "required":
-            {
-                "green":55,
-                "gold":220
+            "level": 8,
+            "nextLevel": 9,
+            "required": {
+                "green": 55,
+                "gold": 220
             }
         },
         {
-            "level":9,
-            "nextLevel":10,
-            "required":
-            {
-                "green":60,
-                "gold":240
+            "level": 9,
+            "nextLevel": 10,
+            "required": {
+                "green": 60,
+                "gold": 240
             }
         },
         {
-            "level":10,
-            "nextLevel":11,
-            "required":
-            {
-                "green":72,
-                "gold":576
+            "level": 10,
+            "nextLevel": 11,
+            "required": {
+                "green": 72,
+                "gold": 576
             }
         },
         {
-            "level":11,
-            "nextLevel":12,
-            "required":
-            {
-                "green":122,
-                "gold":685
+            "level": 11,
+            "nextLevel": 12,
+            "required": {
+                "green": 122,
+                "gold": 685
             }
         },
         {
-            "level":12,
-            "nextLevel":13,
-            "required":
-            {
-                "green":137,
-                "gold":766
+            "level": 12,
+            "nextLevel": 13,
+            "required": {
+                "green": 137,
+                "gold": 766
             }
         },
         {
-            "level":13,
-            "nextLevel":14,
-            "required":
-            {
-                "green":151,
-                "gold":847
+            "level": 13,
+            "nextLevel": 14,
+            "required": {
+                "green": 151,
+                "gold": 847
             }
         },
         {
-            "level":14,
-            "nextLevel":15,
-            "required":
-            {
-                "green":166,
-                "gold":927
+            "level": 14,
+            "nextLevel": 15,
+            "required": {
+                "green": 166,
+                "gold": 927
             }
         },
         {
-            "level":15,
-            "nextLevel":16,
-            "required":
-            {
-                "green":180,
-                "gold":1008
+            "level": 15,
+            "nextLevel": 16,
+            "required": {
+                "green": 180,
+                "gold": 1008
             }
         },
         {
-            "level":16,
-            "nextLevel":17,
-            "required":
-            {
-                "green":259,
-                "gold":1089
+            "level": 16,
+            "nextLevel": 17,
+            "required": {
+                "green": 259,
+                "gold": 1089
             }
         },
         {
-            "level":17,
-            "nextLevel":18,
-            "required":
-            {
-                "green":278,
-                "gold":1169
+            "level": 17,
+            "nextLevel": 18,
+            "required": {
+                "green": 278,
+                "gold": 1169
             }
         },
         {
-            "level":18,
-            "nextLevel":19,
-            "required":
-            {
-                "green":298,
-                "gold":1250
+            "level": 18,
+            "nextLevel": 19,
+            "required": {
+                "green": 298,
+                "gold": 1250
             }
         },
         {
-            "level":19,
-            "nextLevel":20,
-            "required":
-            {
-                "green":317,
-                "gold":1331
+            "level": 19,
+            "nextLevel": 20,
+            "required": {
+                "green": 317,
+                "gold": 1331
             }
         },
         {
-            "level":20,
-            "nextLevel":21,
-            "required":
-            {
-                "green":336,
-                "gold":1411
+            "level": 20,
+            "nextLevel": 21,
+            "required": {
+                "green": 336,
+                "gold": 1411
             }
         },
         {
-            "level":21,
-            "nextLevel":22,
-            "required":
-            {
-                "green":576,
-                "gold":1690
+            "level": 21,
+            "nextLevel": 22,
+            "required": {
+                "green": 576,
+                "gold": 1690
             }
         },
         {
-            "level":22,
-            "nextLevel":23,
-            "required":
-            {
-                "green":648,
-                "gold":1901
+            "level": 22,
+            "nextLevel": 23,
+            "required": {
+                "green": 648,
+                "gold": 1901
             }
         },
         {
-            "level":23,
-            "nextLevel":24,
-            "required":
-            {
-                "green":720,
-                "gold":2112
+            "level": 23,
+            "nextLevel": 24,
+            "required": {
+                "green": 720,
+                "gold": 2112
             }
         },
         {
-            "level":24,
-            "nextLevel":25,
-            "required":
-            {
-                "green":792,
-                "gold":2323
+            "level": 24,
+            "nextLevel": 25,
+            "required": {
+                "green": 792,
+                "gold": 2323
             }
         },
         {
-            "level":25,
-            "nextLevel":26,
-            "required":
-            {
-                "green":864,
-                "gold":2534
+            "level": 25,
+            "nextLevel": 26,
+            "required": {
+                "green": 864,
+                "gold": 2534
             }
         },
         {
-            "level":26,
-            "nextLevel":27,
-            "required":
-            {
-                "green":1248,
-                "gold":2746
+            "level": 26,
+            "nextLevel": 27,
+            "required": {
+                "green": 1248,
+                "gold": 2746
             }
         },
         {
-            "level":27,
-            "nextLevel":28,
-            "required":
-            {
-                "green":1344,
-                "gold":2957
+            "level": 27,
+            "nextLevel": 28,
+            "required": {
+                "green": 1344,
+                "gold": 2957
             }
         },
         {
-            "level":28,
-            "nextLevel":29,
-            "required":
-            {
-                "green":1440,
-                "gold":3168
+            "level": 28,
+            "nextLevel": 29,
+            "required": {
+                "green": 1440,
+                "gold": 3168
             }
         },
         {
-            "level":29,
-            "nextLevel":30,
-            "required":
-            {
-                "green":1536,
-                "gold":3379
+            "level": 29,
+            "nextLevel": 30,
+            "required": {
+                "green": 1536,
+                "gold": 3379
             }
         },
         {
-            "level":30,
-            "nextLevel":31,
-            "required":
-            {
-                "green":1632,
-                "gold":4308
+            "level": 30,
+            "nextLevel": 31,
+            "required": {
+                "green": 1632,
+                "gold": 4308
             }
         },
         {
-            "level":31,
-            "nextLevel":32,
-            "required":
-            {
-                "green":2160,
-                "gold":4769
+            "level": 31,
+            "nextLevel": 32,
+            "required": {
+                "green": 2160,
+                "gold": 4769
             }
         },
         {
-            "level":32,
-            "nextLevel":33,
-            "required":
-            {
-                "green":2280,
-                "gold":5034
+            "level": 32,
+            "nextLevel": 33,
+            "required": {
+                "green": 2280,
+                "gold": 5034
             }
         },
         {
-            "level":33,
-            "nextLevel":34,
-            "required":
-            {
-                "green":2400,
-                "gold":5299
+            "level": 33,
+            "nextLevel": 34,
+            "required": {
+                "green": 2400,
+                "gold": 5299
             }
         },
         {
-            "level":34,
-            "nextLevel":35,
-            "required":
-            {
-                "green":2520,
-                "gold":5564
+            "level": 34,
+            "nextLevel": 35,
+            "required": {
+                "green": 2520,
+                "gold": 5564
             }
         },
         {
-            "level":35,
-            "nextLevel":36,
-            "required":
-            {
-                "green":2640,
-                "gold":5829
+            "level": 35,
+            "nextLevel": 36,
+            "required": {
+                "green": 2640,
+                "gold": 5829
             }
         },
         {
-            "level":36,
-            "nextLevel":37,
-            "required":
-            {
-                "green":3312,
-                "gold":6094
+            "level": 36,
+            "nextLevel": 37,
+            "required": {
+                "green": 3312,
+                "gold": 6094
             }
         },
         {
-            "level":37,
-            "nextLevel":38,
-            "required":
-            {
-                "green":3456,
-                "gold":6359
+            "level": 37,
+            "nextLevel": 38,
+            "required": {
+                "green": 3456,
+                "gold": 6359
             }
         },
         {
-            "level":38,
-            "nextLevel":39,
-            "required":
-            {
-                "green":3600,
-                "gold":6624
+            "level": 38,
+            "nextLevel": 39,
+            "required": {
+                "green": 3600,
+                "gold": 6624
             }
         },
         {
-            "level":39,
-            "nextLevel":40,
-            "required":
-            {
-                "green":3744,
-                "gold":6889
+            "level": 39,
+            "nextLevel": 40,
+            "required": {
+                "green": 3744,
+                "gold": 6889
             }
         },
         {
-            "level":40,
-            "nextLevel":41,
-            "required":
-            {
-                "green":3888,
-                "gold":8346
+            "level": 40,
+            "nextLevel": 41,
+            "required": {
+                "green": 3888,
+                "gold": 8346
             }
         },
         {
-            "level":41,
-            "nextLevel":42,
-            "required":
-            {
-                "green":4704,
-                "gold":9032
+            "level": 41,
+            "nextLevel": 42,
+            "required": {
+                "green": 4704,
+                "gold": 9032
             }
         },
         {
-            "level":42,
-            "nextLevel":43,
-            "required":
-            {
-                "green":4872,
-                "gold":9354
+            "level": 42,
+            "nextLevel": 43,
+            "required": {
+                "green": 4872,
+                "gold": 9354
             }
         },
         {
-            "level":43,
-            "nextLevel":44,
-            "required":
-            {
-                "green":5040,
-                "gold":9677
+            "level": 43,
+            "nextLevel": 44,
+            "required": {
+                "green": 5040,
+                "gold": 9677
             }
         },
         {
-            "level":44,
-            "nextLevel":45,
-            "required":
-            {
-                "green":5208,
-                "gold":9999
+            "level": 44,
+            "nextLevel": 45,
+            "required": {
+                "green": 5208,
+                "gold": 9999
             }
         },
         {
-            "level":45,
-            "nextLevel":46,
-            "required":
-            {
-                "green":5376,
-                "gold":10322,
+            "level": 45,
+            "nextLevel": 46,
+            "required": {
+                "green": 5376,
+                "gold": 10322
             }
         },
         {
-            "level":46,
-            "nextLevel":47,
-            "required":
-            {
-                "green":6336,
-                "gold":10644
+            "level": 46,
+            "nextLevel": 47,
+            "required": {
+                "green": 6336,
+                "gold": 10644
             }
         },
         {
-            "level":47,
-            "nextLevel":48,
-            "required":
-            {
-                "green":6528,
-                "gold":10967
+            "level": 47,
+            "nextLevel": 48,
+            "required": {
+                "green": 6528,
+                "gold": 10967
             }
         },
         {
-            "level":48,
-            "nextLevel":49,
-            "required":
-            {
-                "green":6720,
-                "gold":11290
+            "level": 48,
+            "nextLevel": 49,
+            "required": {
+                "green": 6720,
+                "gold": 11290
             }
         },
         {
-            "level":49,
-            "nextLevel":50,
-            "required":
-            {
-                "green":6912,
-                "gold":11612
+            "level": 49,
+            "nextLevel": 50,
+            "required": {
+                "green": 6912,
+                "gold": 11612
             }
         },
         {
-            "level":50,
-            "nextLevel":51,
-            "required":
-            {
-                "green":7296,
-                "gold":14008
+            "level": 50,
+            "nextLevel": 51,
+            "required": {
+                "green": 7296,
+                "gold": 14008
             }
         },
         {
-            "level":51,
-            "nextLevel":52,
-            "required":
-            {
-                "green":8640,
-                "gold":15360
+            "level": 51,
+            "nextLevel": 52,
+            "required": {
+                "green": 8640,
+                "gold": 15360
             }
         },
         {
-            "level":52,
-            "nextLevel":53,
-            "required":
-            {
-                "green":9072,
-                "gold":16128
+            "level": 52,
+            "nextLevel": 53,
+            "required": {
+                "green": 9072,
+                "gold": 16128
             }
         },
         {
-            "level":53,
-            "nextLevel":54,
-            "required":
-            {
-                "green":10560,
-                "gold":16896
+            "level": 53,
+            "nextLevel": 54,
+            "required": {
+                "green": 10560,
+                "gold": 16896
             }
         },
         {
-            "level":54,
-            "nextLevel":55,
-            "required":
-            {
-                "green":11040,
-                "gold":17664
+            "level": 54,
+            "nextLevel": 55,
+            "required": {
+                "green": 11040,
+                "gold": 17664
             }
         },
         {
-            "level":55,
-            "nextLevel":56,
-            "required":
-            {
-                "green":11520,
-                "gold":18432
+            "level": 55,
+            "nextLevel": 56,
+            "required": {
+                "green": 11520,
+                "gold": 18432
             }
         },
         {
-            "level":56,
-            "nextLevel":57,
-            "required":
-            {
-                "green":12000,
-                "gold":19200
+            "level": 56,
+            "nextLevel": 57,
+            "required": {
+                "green": 12000,
+                "gold": 19200
             }
         },
         {
-            "level":57,
-            "nextLevel":58,
-            "required":
-            {
-                "green":12480,
-                "gold":19968
+            "level": 57,
+            "nextLevel": 58,
+            "required": {
+                "green": 12480,
+                "gold": 19968
             }
         },
         {
-            "level":58,
-            "nextLevel":59,
-            "required":
-            {
-                "green":14256,
-                "gold":21565
+            "level": 58,
+            "nextLevel": 59,
+            "required": {
+                "green": 14256,
+                "gold": 21565
             }
         },
         {
-            "level":59,
-            "nextLevel":60,
-            "required":
-            {
-                "green":14784,
-                "gold":22364
+            "level": 59,
+            "nextLevel": 60,
+            "required": {
+                "green": 14784,
+                "gold": 22364
             }
         },
         {
-            "level":60,
-            "nextLevel":61,
-            "required":
-            {
-                "green":15312,
-                "gold":26058
+            "level": 60,
+            "nextLevel": 61,
+            "required": {
+                "green": 15312,
+                "gold": 26058
             }
         },
         {
-            "level":61,
-            "nextLevel":62,
-            "required":
-            {
-                "green":16104,
-                "gold":27406
+            "level": 61,
+            "nextLevel": 62,
+            "required": {
+                "green": 16104,
+                "gold": 27406
             }
         },
         {
-            "level":62,
-            "nextLevel":63,
-            "required":
-            {
-                "green":16896,
-                "gold":28754
+            "level": 62,
+            "nextLevel": 63,
+            "required": {
+                "green": 16896,
+                "gold": 28754
             }
         },
         {
-            "level":63,
-            "nextLevel":64,
-            "required":
-            {
-                "green":19296,
-                "gold":30102
+            "level": 63,
+            "nextLevel": 64,
+            "required": {
+                "green": 19296,
+                "gold": 30102
             }
         },
         {
-            "level":64,
-            "nextLevel":65,
-            "required":
-            {
-                "green":20160,
-                "gold":31450
+            "level": 64,
+            "nextLevel": 65,
+            "required": {
+                "green": 20160,
+                "gold": 31450
             }
         },
         {
-            "level":65,
-            "nextLevel":66,
-            "required":
-            {
-                "green":21024,
-                "gold":32797
+            "level": 65,
+            "nextLevel": 66,
+            "required": {
+                "green": 21024,
+                "gold": 32797
             }
         },
         {
-            "level":66,
-            "nextLevel":67,
-            "required":
-            {
-                "green":23712,
-                "gold":35459
+            "level": 66,
+            "nextLevel": 67,
+            "required": {
+                "green": 23712,
+                "gold": 35459
             }
         },
         {
-            "level":67,
-            "nextLevel":68,
-            "required":
-            {
-                "green":24648,
-                "gold":36858
+            "level": 67,
+            "nextLevel": 68,
+            "required": {
+                "green": 24648,
+                "gold": 36858
             }
         },
         {
-            "level":68,
-            "nextLevel":69,
-            "required":
-            {
-                "green":27552,
-                "gold":38258
+            "level": 68,
+            "nextLevel": 69,
+            "required": {
+                "green": 27552,
+                "gold": 38258
             }
         },
         {
-            "level":69,
-            "nextLevel":70,
-            "required":
-            {
-                "green":28560,
-                "gold":39658
+            "level": 69,
+            "nextLevel": 70,
+            "required": {
+                "green": 28560,
+                "gold": 39658
             }
         },
         {
-            "level":70,
-            "nextLevel":71,
-            "required":
-            {
-                "green":29568,
-                "gold":45619
+            "level": 70,
+            "nextLevel": 71,
+            "required": {
+                "green": 29568,
+                "gold": 45619
             }
         },
         {
-            "level":71,
-            "nextLevel":72,
-            "required":
-            {
-                "green":30912,
-                "gold":47693
+            "level": 71,
+            "nextLevel": 72,
+            "required": {
+                "green": 30912,
+                "gold": 47693
             }
         },
         {
-            "level":72,
-            "nextLevel":73,
-            "required":
-            {
-                "green":32256,
-                "gold":49766
+            "level": 72,
+            "nextLevel": 73,
+            "required": {
+                "green": 32256,
+                "gold": 49766
             }
         },
         {
-            "level":73,
-            "nextLevel":74,
-            "required":
-            {
-                "green":36000,
-                "gold":53760
+            "level": 73,
+            "nextLevel": 74,
+            "required": {
+                "green": 36000,
+                "gold": 53760
             }
         },
         {
-            "level":74,
-            "nextLevel":75,
-            "required":
-            {
-                "green":37440,
-                "gold":55910
+            "level": 74,
+            "nextLevel": 75,
+            "required": {
+                "green": 37440,
+                "gold": 55910
             }
         },
         {
-            "level":75,
-            "nextLevel":76,
-            "required":
-            {
-                "green":38880,
-                "gold":58061
+            "level": 75,
+            "nextLevel": 76,
+            "required": {
+                "green": 38880,
+                "gold": 58061
             }
         },
         {
-            "level":76,
-            "nextLevel":77,
-            "required":
-            {
-                "green":40320,
-                "gold":60211
+            "level": 76,
+            "nextLevel": 77,
+            "required": {
+                "green": 40320,
+                "gold": 60211
             }
         },
         {
-            "level":77,
-            "nextLevel":78,
-            "required":
-            {
-                "green":41760,
-                "gold":62362
+            "level": 77,
+            "nextLevel": 78,
+            "required": {
+                "green": 41760,
+                "gold": 62362
             }
         },
         {
-            "level":78,
-            "nextLevel":79,
-            "required":
-            {
-                "green":46080,
-                "gold":64512
+            "level": 78,
+            "nextLevel": 79,
+            "required": {
+                "green": 46080,
+                "gold": 64512
             }
         },
         {
-            "level":79,
-            "nextLevel":80,
-            "required":
-            {
-                "green":47616,
-                "gold":66662
+            "level": 79,
+            "nextLevel": 80,
+            "required": {
+                "green": 47616,
+                "gold": 66662
             }
         },
         {
-            "level":80,
-            "nextLevel":81,
-            "required":
-            {
-                "green":49152,
-                "gold":79135
+            "level": 80,
+            "nextLevel": 81,
+            "required": {
+                "green": 49152,
+                "gold": 79135
             }
         },
         {
-            "level":81,
-            "nextLevel":82,
-            "required":
-            {
-                "green":54264,
-                "gold":85163
+            "level": 81,
+            "nextLevel": 82,
+            "required": {
+                "green": 54264,
+                "gold": 85163
             }
         },
         {
-            "level":82,
-            "nextLevel":83,
-            "required":
-            {
-                "green":56304,
-                "gold":88364
+            "level": 82,
+            "nextLevel": 83,
+            "required": {
+                "green": 56304,
+                "gold": 88364
             }
         },
         {
-            "level":83,
-            "nextLevel":84,
-            "required":
-            {
-                "green":61776,
-                "gold":91566
+            "level": 83,
+            "nextLevel": 84,
+            "required": {
+                "green": 61776,
+                "gold": 91566
             }
         },
         {
-            "level":84,
-            "nextLevel":85,
-            "required":
-            {
-                "green":63936,
-                "gold":94767
+            "level": 84,
+            "nextLevel": 85,
+            "required": {
+                "green": 63936,
+                "gold": 94767
             }
         },
         {
-            "level":85,
-            "nextLevel":86,
-            "required":
-            {
-                "green":66096,
-                "gold":97969
+            "level": 85,
+            "nextLevel": 86,
+            "required": {
+                "green": 66096,
+                "gold": 97969
             }
         },
         {
-            "level":86,
-            "nextLevel":87,
-            "required":
-            {
-                "green":72048,
-                "gold":105000
+            "level": 86,
+            "nextLevel": 87,
+            "required": {
+                "green": 72048,
+                "gold": 105000
             }
         },
         {
-            "level":87,
-            "nextLevel":88,
-            "required":
-            {
-                "green":74328,
-                "gold":108000
+            "level": 87,
+            "nextLevel": 88,
+            "required": {
+                "green": 74328,
+                "gold": 108000
             }
         },
         {
-            "level":88,
-            "nextLevel":89,
-            "required":
-            {
-                "green":80640,
-                "gold":112000
+            "level": 88,
+            "nextLevel": 89,
+            "required": {
+                "green": 80640,
+                "gold": 112000
             }
         },
         {
-            "level":89,
-            "nextLevel":90,
-            "required":
-            {
-                "green":83040,
-                "gold":115000
+            "level": 89,
+            "nextLevel": 90,
+            "required": {
+                "green": 83040,
+                "gold": 115000
             }
         },
         {
-            "level":90,
-            "nextLevel":91,
-            "required":
-            {
-                "green":85440,
-                "gold":134000
+            "level": 90,
+            "nextLevel": 91,
+            "required": {
+                "green": 85440,
+                "gold": 134000
             }
         },
         {
-            "level":91,
-            "nextLevel":92,
-            "required":
-            {
-                "green":92736,
-                "gold":143000
+            "level": 91,
+            "nextLevel": 92,
+            "required": {
+                "green": 92736,
+                "gold": 143000
             }
         },
         {
-            "level":92,
-            "nextLevel":93,
-            "required":
-            {
-                "green":95760,
-                "gold":148000
+            "level": 92,
+            "nextLevel": 93,
+            "required": {
+                "green": 95760,
+                "gold": 148000
             }
         },
         {
-            "level":93,
-            "nextLevel":94,
-            "required":
-            {
-                "green":104000,
-                "gold":152000
+            "level": 93,
+            "nextLevel": 94,
+            "required": {
+                "green": 104000,
+                "gold": 152000
             }
         },
         {
-            "level":94,
-            "nextLevel":95,
-            "required":
-            {
-                "green":107000,
-                "gold":157000
+            "level": 94,
+            "nextLevel": 95,
+            "required": {
+                "green": 107000,
+                "gold": 157000
             }
         },
         {
-            "level":95,
-            "nextLevel":96,
-            "required":
-            {
-                "green":110000,
-                "gold":161000
+            "level": 95,
+            "nextLevel": 96,
+            "required": {
+                "green": 110000,
+                "gold": 161000
             }
         },
         {
-            "level":96,
-            "nextLevel":97,
-            "required":
-            {
-                "green":119000,
-                "gold":171000
+            "level": 96,
+            "nextLevel": 97,
+            "required": {
+                "green": 119000,
+                "gold": 171000
             }
         },
         {
-            "level":97,
-            "nextLevel":98,
-            "required":
-            {
-                "green":122000,
-                "gold":176000
+            "level": 97,
+            "nextLevel": 98,
+            "required": {
+                "green": 122000,
+                "gold": 176000
             }
         },
         {
-            "level":98,
-            "nextLevel":99,
-            "required":
-            {
-                "green":131000,
-                "gold":181000
+            "level": 98,
+            "nextLevel": 99,
+            "required": {
+                "green": 131000,
+                "gold": 181000
             }
         },
         {
-            "level":99,
-            "nextLevel":100,
-            "required":
-            {
-                "green":134000,
-                "gold":186000
+            "level": 99,
+            "nextLevel": 100,
+            "required": {
+                "green": 134000,
+                "gold": 186000
             }
         }
     ]
