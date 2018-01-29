@@ -1,0 +1,5 @@
+/Debug/
+/FilesAndStreams/Debug/
+*.opensdf
+*.sdf
+*.suo
