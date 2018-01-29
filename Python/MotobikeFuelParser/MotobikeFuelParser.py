@@ -4,10 +4,12 @@ if __name__=="__main__":
 
     parsedData = ""
     for line in rawData:
-        parts = line.split(" - ")
-        amount = parts[1][0:len(parts[1])-1]
-        distance = parts[2][0:len(parts[2])-3]
-        parsedData += amount + "\t" + distance + "\n"
+        parts = line.split("\t")
+        parsedData += parts[0]
+        amountAndDistance = parts[3].split(" - ")
+        amount = amountAndDistance[1][0:len(amountAndDistance[1])-1]
+        distance = amountAndDistance[2][0:len(amountAndDistance[2])-3]
+        parsedData += "\t\t\t" + amount + "\t" + distance + "\n"
     print(parsedData)
 
     outfile = open("output.txt", "w")
