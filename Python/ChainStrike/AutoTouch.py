@@ -41,7 +41,7 @@ def main(argv):
     currentTime = 0
     while (currentTime < maxTime) and (TouchPoint(deviceID, replayButton) == True):
         remainingTime = maxTime - currentTime
-        print(str(remainingTime // 60) + ":" + str(remainingTime % 60) + " Replay")
+        print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2) + " Replay")
         time.sleep(interval)
         currentTime += interval
 
