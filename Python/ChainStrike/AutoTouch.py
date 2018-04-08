@@ -29,10 +29,13 @@ def main(argv):
     # Check device available first
 
     replayButton = [370, 1500]
+    maxTime = 10 * 60
 
-    while TouchPoint(replayButton) == True:
-        print("Replay")
+    currentTime = 0
+    while (currentTime < maxTime) and (TouchPoint(replayButton) == True):
+        print(str(currentTime) + " Replay")
         time.sleep(5)
+        currentTime += 5
 
 
 if __name__ == "__main__" :
