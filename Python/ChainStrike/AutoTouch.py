@@ -27,9 +27,9 @@ def TouchPoint(point):
 def main(argv):
     # Check device available first
 
-    restartButton = [370, 1500]
+    replayButton = [370, 1500]
 
-    if TouchPoint(restartButton) == True:
+    if TouchPoint(replayButton) == True:
         print("Done")
     else:
         print("Error")
