@@ -11,16 +11,25 @@ def ExecuteCommand(params):
     return True
 
 
-def Touch(x, y):
+def TouchXY(x, y):
     params = ["adb", "shell", "input", "tap"]
     params.append(str(x))
     params.append(str(y))
     return ExecuteCommand(params)
 
 
+def TouchPoint(point):
+    if len(point) < 2:
+        return False
+    return TouchXY(point[0], point[1])
+
+
 def main(argv):
     # Check device available first
-    if Touch(370, 1500) == True:
+
+    restartButton = [370, 1500]
+
+    if TouchPoint(restartButton) == True:
         print("Done")
     else:
         print("Error")
