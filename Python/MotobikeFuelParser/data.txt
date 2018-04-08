@@ -1,0 +1,10 @@
+01/01/2018	Đổ xăng	40.000	Petrolimex Trảng Bom - 2,07l - 36692km
+04/01/2018	Đổ xăng	50.000	Dương Đông Petro - 2,49l - 36820km
+07/01/2018	Đổ xăng	50.000	Petrolimex quốc lộ 51 - 2,49l - 36955km
+08/01/2018	Đổ xăng	50.000	Dương Đông Petro - 2,49l - 37117km
+13/01/2018	Đổ xăng	50.000	Comeco CMT8 - 2,49l - 37226km
+16/01/2018	Đổ xăng	50.000	Dương Đông Petro - 2,49l - 37342km
+20/01/2018	Đổ xăng	40.000	Comeco Điện Biên Phủ - 1,96l - 37422km
+21/01/2018	Đổ xăng	50.000	Petrolimex Trảng Bom - 2,49l - 37526km
+26/01/2018	Đổ xăng	50.000	Saigon Petro - 2,45l - 37727km
+28/01/2018	Đổ xăng	50.000	Comeco Bà Hom - 2,45l - 37840km
