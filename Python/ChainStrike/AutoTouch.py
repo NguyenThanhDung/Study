@@ -35,12 +35,12 @@ def TouchPoint(deviceID, point):
 def main(argv):
     deviceID = "emulator-5554"
     replayButton = [370, 1500]
-    maxTime = 10 * 60
+    maxTime = 15 * 60
     interval = 5
 
     currentTime = 0
     while (currentTime < maxTime) and (TouchPoint(deviceID, replayButton) == True):
-        print(str(currentTime) + " Replay")
+        print(str(maxTime - currentTime) + " Replay")
         time.sleep(interval)
         currentTime += interval
 
