@@ -12,27 +12,33 @@ def ExecuteCommand(params):
     return True
 
 
-def TouchXY(x, y):
-    params = ["adb", "shell", "input", "tap"]
+def TouchXY(deviceID, x, y):
+    if deviceID == None or not deviceID:
+        print("Error: Device ID is empty!")
+        return False
+    params = ["adb", "-s", deviceID, "shell", "input", "tap"]
     params.append(str(x))
     params.append(str(y))
     return ExecuteCommand(params)
 
 
-def TouchPoint(point):
-    if len(point) < 2:
+def TouchPoint(deviceID, point):
+    if deviceID == None or not deviceID:
+        print("Error: Device ID is empty!")
         return False
-    return TouchXY(point[0], point[1])
+    if len(point) < 2:
+        print("Error: The touch point is invalid!")
+        return False
+    return TouchXY(deviceID, point[0], point[1])
 
 
 def main(argv):
-    # Check device available first
-
+    deviceID = "emulator-5554"
     replayButton = [370, 1500]
     maxTime = 10 * 60
 
     currentTime = 0
-    while (currentTime < maxTime) and (TouchPoint(replayButton) == True):
+    while (currentTime < maxTime) and (TouchPoint(deviceID, replayButton) == True):
         print(str(currentTime) + " Replay")
         time.sleep(5)
         currentTime += 5
