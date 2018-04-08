@@ -1,4 +1,5 @@
 import sys
+import time
 from subprocess import Popen, PIPE
 
 
@@ -29,10 +30,9 @@ def main(argv):
 
     replayButton = [370, 1500]
 
-    if TouchPoint(replayButton) == True:
-        print("Done")
-    else:
-        print("Error")
+    while TouchPoint(replayButton) == True:
+        print("Replay")
+        time.sleep(5)
 
 
 if __name__ == "__main__" :
