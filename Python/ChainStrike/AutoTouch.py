@@ -2,8 +2,9 @@ import sys
 import time
 from subprocess import Popen, PIPE
 
-DEVICE_COMPANY_NOX = 0
-DEVICE_E300S_GL02221_SE = 1
+DEVICE_HOME_BLUESTACKS = 0
+DEVICE_COMPANY_NOX = 1
+DEVICE_E300S_GL02221_SE = 2
 
 SCREEN_800x600 = 0
 SCREEN_960x540 = 1
@@ -40,6 +41,8 @@ def TouchPoint(deviceID, point):
 
 
 def GetDeviceID(device):
+    if device == DEVICE_HOME_BLUESTACKS:
+        return "emulator-5554"
     if device == DEVICE_COMPANY_NOX:
         return "127.0.0.1:62001"
     elif device == DEVICE_E300S_GL02221_SE:
