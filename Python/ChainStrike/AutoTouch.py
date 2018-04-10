@@ -1,18 +1,20 @@
+import json
+import os
+import subprocess
 import sys
 import time
-from subprocess import Popen, PIPE
 
-DEVICE_HOME_BLUESTACKS = 0
-DEVICE_COMPANY_NOX = 1
-DEVICE_E300S_GL02221_SE = 2
 
-SCREEN_800x600 = 0
-SCREEN_960x540 = 1
-SCREEN_1920x1080 = 2
+class Config:
+
+    def __init__(self, deviceID, screenWidth, screenHeight):
+        self.deviceID = deviceID
+        self.screenWidth = screenWidth
+        self.screenHeight = screenHeight
 
 
 def ExecuteCommand(params):
-    process = Popen(params, stdout=PIPE, stderr=PIPE)
+    process = subprocess.Popen(params, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
     if len(stderr) > 0 :
         print("Error: " + stderr)
@@ -55,18 +57,38 @@ def GetReplayButtonPosition(screen):
         return [445, 1800]
 
 
-def main(argv):
-    deviceID = GetDeviceID(DEVICE_HOME_BLUESTACKS)
-    replayButton = GetReplayButtonPosition(SCREEN_960x540)
-    maxTime = 60 * 60
-    interval = 5
+def LoadConfig(fileName):
+    filePath = os.path.abspath(fileName)
+    try:
+        file = open(filePath, "r")
+        jsonData = json.load(file)
+        print("Devide ID: " + jsonData["deviceID"])
+        print("Screen Width: " + str(jsonData["screen_width"]))
+        print("Screen Height: " + str(jsonData["screen_height"]))
+        return Config(jsonData["deviceID"], jsonData["screen_width"], jsonData["screen_height"])
+    except IOError:
+        file = open(filePath, "w")
+        file.write("{\n");
+        file.write("  \"deviceID\": \"\",\n");
+        file.write("  \"screen_width\": 0,\n");
+        file.write("  \"screen_height\": 0\n");
+        file.write("}");
+        print("Config file doesn't exist. Created default file.")
 
-    currentTime = 0
-    while (currentTime < maxTime) and (TouchPoint(deviceID, replayButton) == True):
-        remainingTime = maxTime - currentTime
-        print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2) + " Replay")
-        time.sleep(interval)
-        currentTime += interval
+
+def main(argv):
+    config = LoadConfig("config.json")
+    # deviceID = GetDeviceID(DEVICE_HOME_BLUESTACKS)
+    # replayButton = GetReplayButtonPosition(SCREEN_960x540)
+    # maxTime = 60 * 60
+    # interval = 5
+    #
+    # currentTime = 0
+    # while (currentTime < maxTime) and (TouchPoint(deviceID, replayButton) == True):
+    #     remainingTime = maxTime - currentTime
+    #     print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2) + " Replay")
+    #     time.sleep(interval)
+    #     currentTime += interval
 
 
 if __name__ == "__main__" :
