@@ -48,13 +48,15 @@ def GetDeviceID(device):
         return "4300650c63ca30e5"
 
 
-def GetReplayButtonPosition(screen):
-    if screen == SCREEN_800x600:
+def GetReplayButtonPosition(width, height):
+    if width == 800 and height == 600:
         return [343, 750]
-    elif screen == SCREEN_960x540:
+    elif width == 960 and height == 540:
         return [220, 900]
-    elif screen == SCREEN_1920x1080:
+    elif width == 1920 and height == 1080:
         return [445, 1800]
+    else:
+        return [-1, -1]
 
 
 def LoadConfig(fileName):
@@ -78,17 +80,19 @@ def LoadConfig(fileName):
 
 def main(argv):
     config = LoadConfig("config.json")
-    # deviceID = GetDeviceID(DEVICE_HOME_BLUESTACKS)
-    # replayButton = GetReplayButtonPosition(SCREEN_960x540)
-    # maxTime = 60 * 60
-    # interval = 5
-    #
-    # currentTime = 0
-    # while (currentTime < maxTime) and (TouchPoint(deviceID, replayButton) == True):
-    #     remainingTime = maxTime - currentTime
-    #     print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2) + " Replay")
-    #     time.sleep(interval)
-    #     currentTime += interval
+    replayButton = GetReplayButtonPosition(config.screenWidth, config.screenHeight)
+    if replayButton[0] < 0 or replayButton[1] < 0:
+        print("This screen size isn't support yet!")
+        return
+    maxTime = 60 * 60
+    interval = 5
+
+    currentTime = 0
+    while (currentTime < maxTime) and (TouchPoint(config.deviceID, replayButton) == True):
+        remainingTime = maxTime - currentTime
+        print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2) + " Replay")
+        time.sleep(interval)
+        currentTime += interval
 
 
 if __name__ == "__main__" :
