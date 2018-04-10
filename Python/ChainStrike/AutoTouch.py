@@ -84,7 +84,9 @@ def main(argv):
     if replayButton[0] < 0 or replayButton[1] < 0:
         print("This screen size isn't support yet!")
         return
-    maxTime = 60 * 60
+    maxTime = 10 * 60
+    if len(argv) > 0:
+        maxTime = int(argv[0]) * 60
     interval = 5
 
     currentTime = 0
