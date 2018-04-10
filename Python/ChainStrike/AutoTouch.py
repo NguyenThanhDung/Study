@@ -2,6 +2,8 @@ import sys
 import time
 from subprocess import Popen, PIPE
 
+SCREEN_960x540 = 0
+
 
 def ExecuteCommand(params):
     process = Popen(params, stdout=PIPE, stderr=PIPE)
@@ -32,9 +34,14 @@ def TouchPoint(deviceID, point):
     return TouchXY(deviceID, point[0], point[1])
 
 
+def GetReplayButtonPosition(screen):
+    if screen == SCREEN_960x540:
+        return [220, 900]
+
+
 def main(argv):
     deviceID = "emulator-5554"
-    replayButton = [370, 1500]
+    replayButton = GetReplayButtonPosition(SCREEN_960x540)
     maxTime = 15 * 60
     interval = 5
 
