@@ -22,18 +22,15 @@ def ExecuteCommand(params):
 
 def TouchXY(deviceID, x, y):
     if deviceID == None or not deviceID:
-        print("Error: Device ID is empty!")
-        return False
-    params = ["adb", "-s", deviceID, "shell", "input", "tap"]
+        params = ["adb", "shell", "input", "tap"]
+    else:
+        params = ["adb", "-s", deviceID, "shell", "input", "tap"]
     params.append(str(x))
     params.append(str(y))
     return ExecuteCommand(params)
 
 
 def TouchPoint(deviceID, point):
-    if deviceID == None or not deviceID:
-        print("Error: Device ID is empty!")
-        return False
     if len(point) < 2:
         print("Error: The touch point is invalid!")
         return False
@@ -59,8 +56,8 @@ def GetReplayButtonPosition(screen):
 
 
 def main(argv):
-    deviceID = GetDeviceID(DEVICE_COMPANY_NOX)
-    replayButton = GetReplayButtonPosition(SCREEN_800x600)
+    deviceID = GetDeviceID(DEVICE_HOME_BLUESTACKS)
+    replayButton = GetReplayButtonPosition(SCREEN_960x540)
     maxTime = 60 * 60
     interval = 5
 
