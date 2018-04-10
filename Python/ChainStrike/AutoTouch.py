@@ -50,7 +50,7 @@ def GetReplayButtonPosition(screen):
     if screen == SCREEN_800x600:
         return [343, 750]
     elif screen == SCREEN_960x540:
-        return [445, 1800]
+        return [220, 900]
     elif screen == SCREEN_1920x1080:
         return [445, 1800]
 
