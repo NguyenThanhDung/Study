@@ -56,6 +56,7 @@ def GetReplayButtonPosition(width, height):
     elif width == 1920 and height == 1080:
         return [445, 1800]
     else:
+        print("This screen size isn't support yet!")
         return [-1, -1]
 
 
@@ -76,14 +77,18 @@ def LoadConfig(fileName):
         file.write("  \"screen_height\": 0\n");
         file.write("}");
         print("Config file doesn't exist. Created default file.")
+        return None
 
 
 def main(argv):
     config = LoadConfig("config.json")
+    if config == None:
+        return
+        
     replayButton = GetReplayButtonPosition(config.screenWidth, config.screenHeight)
     if replayButton[0] < 0 or replayButton[1] < 0:
-        print("This screen size isn't support yet!")
         return
+        
     maxTime = 10 * 60
     if len(argv) > 0:
         maxTime = int(argv[0]) * 60
