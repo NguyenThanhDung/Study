@@ -32,15 +32,6 @@ def TouchPoint(deviceID, point):
     return TouchXY(deviceID, point[0], point[1])
 
 
-def GetDeviceID(device):
-    if device == DEVICE_HOME_BLUESTACKS:
-        return "emulator-5554"
-    if device == DEVICE_COMPANY_NOX:
-        return "127.0.0.1:62001"
-    elif device == DEVICE_E300S_GL02221_SE:
-        return "4300650c63ca30e5"
-
-
 def GetReplayButtonPosition(width, height):
     if width == 800 and height == 600:
         return [343, 750]
