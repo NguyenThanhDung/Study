@@ -3,14 +3,7 @@ import os
 import subprocess
 import sys
 import time
-
-
-class Config:
-
-    def __init__(self, deviceID, screenWidth, screenHeight):
-        self.deviceID = deviceID
-        self.screenWidth = screenWidth
-        self.screenHeight = screenHeight
+import Config
 
 
 def ParamToString(params):
@@ -52,28 +45,10 @@ def CaptureScreen(deviceID, fileName):
     ExecuteCommand(params)
 
 
-
-def LoadConfig(fileName):
-    filePath = os.path.abspath(fileName)
-    try:
-        file = open(filePath, "r")
-        jsonData = json.load(file)
-        print("Devide ID: " + jsonData["deviceID"])
-        print("Screen Width: " + str(jsonData["screen_width"]))
-        print("Screen Height: " + str(jsonData["screen_height"]))
-        return Config(jsonData["deviceID"], jsonData["screen_width"], jsonData["screen_height"])
-    except IOError:
-        file = open(filePath, "w")
-        file.write("{\n");
-        file.write("  \"deviceID\": \"\",\n");
-        file.write("  \"screen_width\": 0,\n");
-        file.write("  \"screen_height\": 0\n");
-        file.write("}");
-        print("Config file doesn't exist. Created default file.")
-
-
 def main(argv):
-    config = LoadConfig("config.json")
+    config = Config.Config("config.json")
+    if not config.IsValid():
+        return
     fileName = "Screenshot.png"
     CaptureScreen(config.deviceID, fileName)
     Pull(config.deviceID, fileName)
