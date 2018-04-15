@@ -62,7 +62,7 @@ def GetReplayButtonPosition(width, height):
 
 def GetSummonButtonPosition(width, height):
     if width == 960 and height == 540:
-        return [440, 890]
+        return [470, 920]
     else:
         print("This screen size isn't support yet!")
         return [-1, -1]
@@ -100,7 +100,10 @@ def main(argv):
     maxTime = 10 * 60
     if len(argv) > 0:
         maxTime = int(argv[0]) * 60
+
     interval = 5
+    if len(argv) > 1:
+        interval = int(argv[1])
 
     currentTime = 0
     while (currentTime < maxTime) and (TouchPoint(config.deviceID, touchPoint) == True):
