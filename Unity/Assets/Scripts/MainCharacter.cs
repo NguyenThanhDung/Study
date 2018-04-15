@@ -32,19 +32,8 @@ public class MainCharacter : MonoBehaviour
 
     void Update()
     {
-        switch(m_stage)
-        {
-            case State.IDLE:
-                Stand();
-                break;
-            case State.PLAYING:
-                Move();
-                break;
-            case State.STOP:
-                break;
-            default:
-                break;
-        }
+        UpdateSpeed();
+        Render();
     }
 
     // PUBLIC METHODS
@@ -69,17 +58,35 @@ public class MainCharacter : MonoBehaviour
     }
 
     // PRIVATE METHODS
-    private void Stand()
+    private void UpdateSpeed()
     {
-        transform.Rotate(Camera.main.transform.up, 1.0f);
+        switch (m_stage)
+        {
+            case State.IDLE:
+                m_selfRotateSpeed = 1.0f;
+                m_moveSpeed = 0.0f;
+                break;
+            case State.PLAYING:
+                m_selfRotateSpeed = 1.0f;
+                m_moveSpeed = 0.02f;
+                break;
+            case State.STOP:
+                m_selfRotateSpeed = 0.0f;
+                m_moveSpeed = 0.0f;
+                break;
+            default:
+                break;
+        }
     }
 
-    private void Move()
+    private void Render()
     {
         transform.position += m_moveDirection * m_moveSpeed;
-        if (transform.position.x > 1.0f)
+        if (transform.position.x > 1.5f)
             m_moveDirection = Vector3.left;
-        if (transform.position.x < -1.0f)
+        if (transform.position.x < -1.5f)
             m_moveDirection = Vector3.right;
+
+        transform.Rotate(Camera.main.transform.up, m_selfRotateSpeed);
     }
 }
