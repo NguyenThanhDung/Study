@@ -60,6 +60,14 @@ def GetReplayButtonPosition(width, height):
         return [-1, -1]
 
 
+def GetSummonButtonPosition(width, height):
+    if width == 960 and height == 540:
+        return [440, 890]
+    else:
+        print("This screen size isn't support yet!")
+        return [-1, -1]
+
+
 def LoadConfig(fileName):
     filePath = os.path.abspath(fileName)
     try:
@@ -84,20 +92,20 @@ def main(argv):
     config = LoadConfig("config.json")
     if config == None:
         return
-        
-    replayButton = GetReplayButtonPosition(config.screenWidth, config.screenHeight)
-    if replayButton[0] < 0 or replayButton[1] < 0:
+
+    touchPoint = GetSummonButtonPosition(config.screenWidth, config.screenHeight)
+    if touchPoint[0] < 0 or touchPoint[1] < 0:
         return
-        
+
     maxTime = 10 * 60
     if len(argv) > 0:
         maxTime = int(argv[0]) * 60
     interval = 5
 
     currentTime = 0
-    while (currentTime < maxTime) and (TouchPoint(config.deviceID, replayButton) == True):
+    while (currentTime < maxTime) and (TouchPoint(config.deviceID, touchPoint) == True):
         remainingTime = maxTime - currentTime
-        print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2) + " Replay")
+        print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2))
         time.sleep(interval)
         currentTime += interval
 
