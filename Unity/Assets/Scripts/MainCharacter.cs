@@ -24,10 +24,7 @@ public class MainCharacter : MonoBehaviour
     // UNITY METHODS
     void Start()
     {
-        m_stage = State.IDLE;
-        m_selfRotateSpeed = 1.0f;
-        m_moveDirection = Vector3.right;
-        m_moveSpeed = 0.02f;
+        Reset();
     }
 
     void Update()
@@ -54,10 +51,19 @@ public class MainCharacter : MonoBehaviour
 
     public void OnStopGame()
     {
-        m_stage = State.IDLE;
+        Reset();
     }
 
     // PRIVATE METHODS
+    private void Reset()
+    {
+        m_stage = State.IDLE;
+        transform.position = Vector3.zero;
+        m_selfRotateSpeed = 1.0f;
+        m_moveDirection = Vector3.right;
+        m_moveSpeed = 0.0f;
+    }
+
     private void UpdateSpeed()
     {
         switch (m_stage)
