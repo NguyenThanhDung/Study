@@ -37,6 +37,8 @@ def GetReplayButtonPosition(width, height):
         return [343, 750]
     elif width == 960 and height == 540:
         return [220, 900]
+    elif width == 1280 and height == 720:
+        return [295, 1200]
     elif width == 1920 and height == 1080:
         return [445, 1800]
     else:
