@@ -41,6 +41,8 @@ def GetReplayButtonPosition(width, height):
         return [295, 1200]
     elif width == 1920 and height == 1080:
         return [445, 1800]
+    elif width == 2560 and height == 1440:
+        return [595, 2400]
     else:
         print("This screen size isn't support yet!")
         return [-1, -1]
