@@ -15,6 +15,12 @@ def ExecuteCommand(params):
     return True
 
 
+def ConnectDevice(deviceID):
+    if not deviceID == None:
+        params = ["adb", "connect", deviceID]
+        return ExecuteCommand(params)
+
+
 def TouchXY(deviceID, x, y):
     if deviceID == None or not deviceID:
         params = ["adb", "shell", "input", "tap"]
@@ -60,6 +66,8 @@ def main(argv):
     config = Config.Config("config.json")
     if not config.IsValid():
         return
+    
+    ConnectDevice(config.deviceID)
 
     touchPoint = GetReplayButtonPosition(config.screenWidth, config.screenHeight)
     if touchPoint[0] < 0 or touchPoint[1] < 0:
