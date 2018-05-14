@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager1 : MonoBehaviour
+public class Game1_GameManager : MonoBehaviour
 {
     [SerializeField]
     int score;
@@ -31,7 +31,7 @@ public class GameManager1 : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void IncreaseScore()
