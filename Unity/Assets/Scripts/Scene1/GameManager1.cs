@@ -31,9 +31,11 @@ public class GameManager1 : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Score++;
-        }
+        
+    }
+
+    public void IncreaseScore()
+    {
+        Score++;
     }
 }
