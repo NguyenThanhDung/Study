@@ -62,7 +62,14 @@ public class UnitedGameManager : MonoBehaviour
             {
                 sceneManager = obj;
                 sceneManager.GetComponent<Game1_GameManager>().Score = this.score;
+                sceneManager.GetComponent<Game1_GameManager>().scoreUpdateHandler += OnSceneUpdateScore;
             }
         }
+    }
+
+    private void OnSceneUpdateScore(string scene, int score)
+    {
+        Debug.Log("OnSceneUpdateScore() scene:" + scene + " score:" + score);
+        this.score = score;
     }
 }
