@@ -12,6 +12,7 @@ public class Game1_GameManager : MonoBehaviour
     Text scoreText;
 
     public Action<string, int> scoreUpdateHandler;
+    public Action<string> endGameHander;
 
     public int Score
     {
@@ -47,5 +48,11 @@ public class Game1_GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         Score++;
+    }
+
+    public void OnEndGame()
+    {
+        if (endGameHander != null)
+            endGameHander.Invoke("Game1");
     }
 }

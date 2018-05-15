@@ -63,6 +63,7 @@ public class UnitedGameManager : MonoBehaviour
                 sceneManager = obj;
                 sceneManager.GetComponent<Game1_GameManager>().Score = this.score;
                 sceneManager.GetComponent<Game1_GameManager>().scoreUpdateHandler += OnSceneUpdateScore;
+                sceneManager.GetComponent<Game1_GameManager>().endGameHander += OnGameEnd;
             }
         }
     }
@@ -71,5 +72,10 @@ public class UnitedGameManager : MonoBehaviour
     {
         Debug.Log("OnSceneUpdateScore() scene:" + scene + " score:" + score);
         this.score = score;
+    }
+
+    private void OnGameEnd(string scene)
+    {
+        Debug.Log("OnGameEnd() scene:" + scene);
     }
 }
