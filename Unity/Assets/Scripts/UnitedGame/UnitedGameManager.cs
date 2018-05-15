@@ -61,10 +61,7 @@ public class UnitedGameManager : MonoBehaviour
             if (obj.name.Equals("GameManager"))
             {
                 sceneManager = obj;
-
-                UnitedEvent unitedEvent = new UnitedEvent();
-                unitedEvent.Score = this.score;
-                sceneManager.GetComponent<Game1_GameManager>().unitedEvents = unitedEvent;
+                sceneManager.GetComponent<Game1_GameManager>().Score = this.score;
             }
         }
     }

@@ -10,7 +10,7 @@ public class Game1_GameManager : MonoBehaviour
     [SerializeField]
     Text scoreText;
 
-    public UnitedEvent unitedEvents;
+    public UnitedEvent scoreUpdateHandler;
 
     public int Score
     {
@@ -23,6 +23,8 @@ public class Game1_GameManager : MonoBehaviour
             score = value;
             if (scoreText != null)
                 scoreText.text = score.ToString();
+            if (scoreUpdateHandler != null)
+                scoreUpdateHandler.Invoke();
         }
     }
 
@@ -33,12 +35,7 @@ public class Game1_GameManager : MonoBehaviour
 
     void Update()
     {
-        if (unitedEvents != null)
-        {
-            Debug.Log("Game1 Score: " + unitedEvents.Score);
-            Score = unitedEvents.Score;
-            unitedEvents = null;
-        }
+        
     }
 
     public void IncreaseScore()
