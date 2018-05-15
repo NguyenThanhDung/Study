@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Game1_GameManager : MonoBehaviour
@@ -26,7 +27,10 @@ public class Game1_GameManager : MonoBehaviour
             if (scoreText != null)
                 scoreText.text = score.ToString();
             if (scoreUpdateHandler != null)
-                scoreUpdateHandler.Invoke("Game1", score);
+            {
+                Scene scene = SceneManager.GetActiveScene();
+                scoreUpdateHandler.Invoke(scene.name, score);
+            }
         }
     }
 
@@ -53,6 +57,9 @@ public class Game1_GameManager : MonoBehaviour
     public void OnEndGame()
     {
         if (endGameHander != null)
-            endGameHander.Invoke("Game1");
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            endGameHander.Invoke(scene.name);
+        }
     }
 }

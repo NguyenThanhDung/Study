@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Game2_GameManager : MonoBehaviour
@@ -9,6 +11,9 @@ public class Game2_GameManager : MonoBehaviour
     int score;
     [SerializeField]
     Text scoreText;
+
+    public Action<string, int> scoreUpdateHandler;
+    public Action<string> endGameHander;
 
     public int Score
     {
@@ -21,6 +26,11 @@ public class Game2_GameManager : MonoBehaviour
             score = value;
             if (scoreText != null)
                 scoreText.text = score.ToString();
+            if (scoreUpdateHandler != null)
+            {
+                Scene scene = SceneManager.GetActiveScene();
+                scoreUpdateHandler.Invoke(scene.name, score);
+            }
         }
     }
 
@@ -31,11 +41,25 @@ public class Game2_GameManager : MonoBehaviour
 
     void Update()
     {
+        
+    }
 
+    void OnDisable()
+    {
+        scoreUpdateHandler = null;
     }
 
     public void DecreaseScore()
     {
         Score--;
+    }
+
+    public void OnEndGame()
+    {
+        if (endGameHander != null)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            endGameHander.Invoke(scene.name);
+        }
     }
 }

@@ -61,9 +61,19 @@ public class UnitedGameManager : MonoBehaviour
             if (obj.name.Equals("GameManager"))
             {
                 sceneManager = obj;
-                sceneManager.GetComponent<Game1_GameManager>().Score = this.score;
-                sceneManager.GetComponent<Game1_GameManager>().scoreUpdateHandler += OnSceneUpdateScore;
-                sceneManager.GetComponent<Game1_GameManager>().endGameHander += OnGameEnd;
+
+                if (scene.name.Equals(GAME1_SCENE))
+                {
+                    sceneManager.GetComponent<Game1_GameManager>().Score = this.score;
+                    sceneManager.GetComponent<Game1_GameManager>().scoreUpdateHandler += OnSceneUpdateScore;
+                    sceneManager.GetComponent<Game1_GameManager>().endGameHander += OnGameEnd;
+                }
+                else
+                {
+                    sceneManager.GetComponent<Game2_GameManager>().Score = this.score;
+                    sceneManager.GetComponent<Game2_GameManager>().scoreUpdateHandler += OnSceneUpdateScore;
+                    sceneManager.GetComponent<Game2_GameManager>().endGameHander += OnGameEnd;
+                }
             }
         }
     }
@@ -77,5 +87,9 @@ public class UnitedGameManager : MonoBehaviour
     private void OnGameEnd(string scene)
     {
         Debug.Log("OnGameEnd() scene:" + scene);
+        if(scene.Equals(GAME1_SCENE))
+        {
+            SceneManager.LoadScene(GAME2_SCENE);
+        }
     }
 }
