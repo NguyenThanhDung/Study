@@ -10,6 +10,8 @@ public class Game1_GameManager : MonoBehaviour
     [SerializeField]
     Text scoreText;
 
+    public UnitedEvent unitedEvents;
+
     public int Score
     {
         get
@@ -31,7 +33,12 @@ public class Game1_GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if (unitedEvents != null)
+        {
+            Debug.Log("Game1 Score: " + unitedEvents.Score);
+            Score = unitedEvents.Score;
+            unitedEvents = null;
+        }
     }
 
     public void IncreaseScore()

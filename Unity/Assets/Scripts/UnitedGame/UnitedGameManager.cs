@@ -13,6 +13,9 @@ public class UnitedGameManager : MonoBehaviour
     private int scene1Index;
     private int scene2Index;
 
+    private GameObject sceneManager;
+    private int score;
+
     void Awake()
     {
         Debug.Log("Awake");
@@ -20,6 +23,8 @@ public class UnitedGameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(Instance);
+
+            score = 5;
         }
     }
 
@@ -49,5 +54,18 @@ public class UnitedGameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded() scene.name:" + scene.name + " mode:" + mode.ToString());
+        GameObject[] objects = scene.GetRootGameObjects();
+        foreach(GameObject obj in objects)
+        {
+            Debug.Log("obj.name: " + obj.name);
+            if (obj.name.Equals("GameManager"))
+            {
+                sceneManager = obj;
+
+                UnitedEvent unitedEvent = new UnitedEvent();
+                unitedEvent.Score = this.score;
+                sceneManager.GetComponent<Game1_GameManager>().unitedEvents = unitedEvent;
+            }
+        }
     }
 }
