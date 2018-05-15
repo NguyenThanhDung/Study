@@ -15,6 +15,7 @@ public class UnitedGameManager : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("Awake");
         if (Instance == null)
         {
             Instance = this;
@@ -22,13 +23,31 @@ public class UnitedGameManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        Debug.Log("OnEnable");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     void Start()
     {
+        Debug.Log("Start");
         SceneManager.LoadScene(GAME1_SCENE);
     }
 
     void Update()
     {
 
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("OnDisable");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded() scene.name:" + scene.name + " mode:" + mode.ToString());
     }
 }
