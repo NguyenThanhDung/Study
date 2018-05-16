@@ -82,11 +82,23 @@ def main(argv):
         interval = int(argv[1])
 
     currentTime = 0
-    while (currentTime < maxTime) and (TouchPoint(config.deviceID, touchPoint) == True):
+    while (currentTime < maxTime):
+        tick = time.time()
+        if (TouchPoint(config.deviceID, touchPoint) == False):
+            break
+        newTick = time.time()
+        adbTime = newTick - tick
+        sleepTime = interval - adbTime
+        
+        if sleepTime < 0:
+            currentTime += adbTime
+            sleepTime = 0
+        else:
+            currentTime += interval
+        
         remainingTime = maxTime - currentTime
         print(str(remainingTime // 60).zfill(2) + ":" + str(remainingTime % 60).zfill(2))
-        time.sleep(interval)
-        currentTime += interval
+        time.sleep(sleepTime)
 
 
 if __name__ == "__main__" :
