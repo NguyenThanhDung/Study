@@ -1,9 +1,8 @@
-import json
-
 class Equipment:
 
-    def __init__(self, id, atkPercent, atkPlus, defPercent, defPlus, pincerAtkPercent, pincerAtkPlus, hpPercent, hpPlus, crtRate, crtDmg, accuracy, resistance, set, starCount, level):
+    def __init__(self, id, type, atkPercent, atkPlus, defPercent, defPlus, pincerAtkPercent, pincerAtkPlus, hpPercent, hpPlus, crtRate, crtDmg, accuracy, resistance, set, starCount, level):
         self.id = id
+        self.type = type
         self.atkPercent = atkPercent
         self.atkPlus = atkPlus
         self.defPercent = defPercent
@@ -21,6 +20,7 @@ class Equipment:
 
     def ToString():
         thisString = "Equipment #" + self.id + "\n"
+        thisString += "  Type:" + self.type + "\n"
         thisString += "  ATK:" + "\n"
         thisString += "    %:" + self.atkPercent + "\n"
         thisString += "    +:" + self.atkPlus + "\n"
