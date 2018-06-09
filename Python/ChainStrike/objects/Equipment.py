@@ -14,30 +14,31 @@ class Equipment:
         self.crtRate = crtRate
         self.crtDmg = crtDmg
         self.accuracy = accuracy
+        self.resistance = resistance
         self.set = set
         self.starCount = starCount
         self.level = level
 
-    def ToString():
-        thisString = "Equipment #" + self.id + "\n"
-        thisString += "  Type:" + self.type + "\n"
-        thisString += "  ATK:" + "\n"
-        thisString += "    %:" + self.atkPercent + "\n"
-        thisString += "    +:" + self.atkPlus + "\n"
-        thisString += "  DEF:" + "\n"
-        thisString += "    %:" + self.defPercent + "\n"
-        thisString += "    +:" + self.defPlus + "\n"
+    def ToString(self):
+        thisString = "Equipment #" + str(self.id) + "\n"
+        thisString += "  Type: " + self.type + "\n"
+        thisString += "  ATK: " + "\n"
+        thisString += "    %: " + str(self.atkPercent) + "\n"
+        thisString += "    +: " + str(self.atkPlus) + "\n"
+        thisString += "  DEF: " + "\n"
+        thisString += "    %: " + str(self.defPercent) + "\n"
+        thisString += "    +: " + str(self.defPlus) + "\n"
         thisString += "  Pincer ATK:" + "\n"
-        thisString += "    %:" + self.pincerAtkPercent + "\n"
-        thisString += "    +:" + self.pincerAtkPercent + "\n"
+        thisString += "    %: " + str(self.pincerAtkPercent) + "\n"
+        thisString += "    +: " + str(self.pincerAtkPercent) + "\n"
         thisString += "  HP:" + "\n"
-        thisString += "    %:" + self.hpPercent + "\n"
-        thisString += "    +:" + self.hpPlus + "\n"
-        thisString += "  CRT Rate:" + self.crtRate + "\n"
-        thisString += "  CRT Dmg:" + self.crtDmg + "\n"
-        thisString += "  Accuracy:" + self.accuracy + "\n"
-        thisString += "  Resistance:" + self.resistance + "\n"
-        thisString += "  Set:" + self.set + "\n"
-        thisString += "  Star Count:" + self.starCount + "\n"
-        thisString += "  Level:" + self.level + "\n"
+        thisString += "    %: " + str(self.hpPercent) + "\n"
+        thisString += "    +: " + str(self.hpPlus) + "\n"
+        thisString += "  CRT Rate: " + str(self.crtRate) + "\n"
+        thisString += "  CRT Dmg: " + str(self.crtDmg) + "\n"
+        thisString += "  Accuracy: " + str(self.accuracy) + "\n"
+        thisString += "  Resistance: " + str(self.resistance) + "\n"
+        thisString += "  Set: " + self.set + "\n"
+        thisString += "  Star Count: " + str(self.starCount) + "\n"
+        thisString += "  Level: " + str(self.level) + "\n"
         return thisString
