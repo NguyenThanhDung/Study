@@ -25,6 +25,7 @@ class Guardian:
         self.collectionEffectCrtDmg = collectionEffectCrtDmg or 0
         self.collectionEffectAcc = collectionEffectAcc or 0
         self.collectionEffectRes = collectionEffectRes or 0
+        self.equipmentSets = {}
     
     def Equip(self, equipment):
         if equipment.type == "Weapon":
@@ -39,6 +40,13 @@ class Guardian:
             self.necklace = equipment
         if equipment.type == "Ring":
             self.ring = equipment
+        self.AddEquipmentSet(equipment.set)
+
+    def AddEquipmentSet(self, equipmentSet):
+        if self.equipmentSets.has_key(equipmentSet):
+            self.equipmentSets[equipmentSet] += 1
+        else:
+            self.equipmentSets[equipmentSet] = 1
 
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
@@ -134,4 +142,9 @@ class Guardian:
             thisString += "     CRT Dmg       : " + str(self.ring.crtDmg) + "\n"
             thisString += "     ACC           : " + str(self.ring.accuracy) + "\n"
             thisString += "     RES           : " + str(self.ring.resistance) + "\n"
+        thisString += "  Equipment Set    : "
+        for key in self.equipmentSets.keys():
+            if self.equipmentSets[key] >= 2:
+                thisString += key + " "
+        thisString += "\n"
         return thisString
