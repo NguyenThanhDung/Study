@@ -1,14 +1,14 @@
 class Guardian:
 
-    def __init__(self, id, name, weaponId, armorId, shieldId, glovesId, necklaceId, ringId, atk, defend, pincerAtk, hp, crtRate, crtDmg, acc, res, collectionEffectAtk, collectionEffectDef, collectionEffectPincerAtk, collectionEffectHp, collectionEffectCrtRate, collectionEffectCrtDmg, collectionEffectAcc, collectionEffectRes):
+    def __init__(self, id, name, atk, defend, pincerAtk, hp, crtRate, crtDmg, acc, res, collectionEffectAtk, collectionEffectDef, collectionEffectPincerAtk, collectionEffectHp, collectionEffectCrtRate, collectionEffectCrtDmg, collectionEffectAcc, collectionEffectRes):
         self.id = id
         self.name = name
-        self.weaponId = weaponId
-        self.armorId = armorId
-        self.shieldId = shieldId
-        self.glovesId = glovesId
-        self.necklaceId = necklaceId
-        self.ringId = ringId
+        self.weaponId = 0
+        self.armorId = 0
+        self.shieldId = 0
+        self.glovesId = 0
+        self.necklaceId = 0
+        self.ringId = 0
         self.atk = atk
         self.defend = defend
         self.pincerAtk = pincerAtk

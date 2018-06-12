@@ -14,8 +14,7 @@ class GuardianList:
 
         id = 0
         for guarSon in jsonData["GuardianList"]:
-            guardian = Guardian(id, guarSon["Guardian"], guarSon["Weapon"], guarSon["Armor"], guarSon["Shield"],
-            guarSon["Gloves"], guarSon["Necklace"], guarSon["Ring"], guarSon["Base ATK"], guarSon["Base DEF"], 
+            guardian = Guardian(id, guarSon["Guardian"], guarSon["Base ATK"], guarSon["Base DEF"], 
             guarSon["Base Pincer"], guarSon["Base HP"], guarSon["Base CRT Rate"], guarSon["Base CRT DMG"], 
             guarSon["Base ACC"], guarSon["Base RES"], guarSon["Collection Effect ATK"], guarSon["Collection Effect DEF"],
             guarSon["Collection Effect Pincer ATK"], guarSon["Collection Effect HP"], guarSon["Collection Effect CRT Rate"],
