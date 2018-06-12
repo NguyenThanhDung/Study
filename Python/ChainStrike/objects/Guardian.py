@@ -3,12 +3,12 @@ class Guardian:
     def __init__(self, id, name, atk, defend, pincerAtk, hp, crtRate, crtDmg, acc, res, collectionEffectAtk, collectionEffectDef, collectionEffectPincerAtk, collectionEffectHp, collectionEffectCrtRate, collectionEffectCrtDmg, collectionEffectAcc, collectionEffectRes):
         self.id = id
         self.name = name
-        self.weaponId = 0
-        self.armorId = 0
-        self.shieldId = 0
-        self.glovesId = 0
-        self.necklaceId = 0
-        self.ringId = 0
+        self.weapon = None
+        self.armor = None
+        self.shield = None
+        self.gloves = None
+        self.necklace = None
+        self.ring = None
         self.atk = atk
         self.defend = defend
         self.pincerAtk = pincerAtk
@@ -29,12 +29,18 @@ class Guardian:
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
         thisString += "  Name             : " + str(self.name) + "\n"
-        thisString += "  Weapon ID        : " + str(self.weaponId) + "\n"
-        thisString += "  Armor ID         : " + str(self.armorId) + "\n"
-        thisString += "  Shield ID        : " + str(self.shieldId) + "\n"
-        thisString += "  Gloves ID        : " + str(self.glovesId) + "\n"
-        thisString += "  Necklace ID      : " + str(self.necklaceId) + "\n"
-        thisString += "  Ring ID          : " + str(self.ringId) + "\n"
+        if self.weapon is not None:
+            thisString += "  Weapon ID        : " + str(self.weapon.id) + "\n"
+        if self.armor is not None:
+            thisString += "  Armor ID         : " + str(self.armor.id) + "\n"
+        if self.shield is not None:
+            thisString += "  Shield ID        : " + str(self.shield.id) + "\n"
+        if self.gloves is not None:
+            thisString += "  Gloves ID        : " + str(self.gloves.id) + "\n"
+        if self.necklace is not None:
+            thisString += "  Necklace ID      : " + str(self.necklace.id) + "\n"
+        if self.ring is not None:
+            thisString += "  Ring ID          : " + str(self.ring.id) + "\n"
         thisString += "  Base\n"
         thisString += "     ATK           : " + str(self.atk) + "\n"
         thisString += "     DEF           : " + str(self.defend) + "\n"
