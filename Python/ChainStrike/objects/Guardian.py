@@ -50,98 +50,102 @@ class Guardian:
 
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
-        thisString += "  Name          : " + str(self.name) + "\n"
-        thisString += "  Equipments\n"
+        thisString += "  Name             : " + str(self.name) + "\n"
+
+        thisString += "  Equipment IDs    : "
         if self.weapon is not None:
-            thisString += "     Weapon ID     : " + str(self.weapon.id) + "\n"
+            thisString += str(self.weapon.id) + " "
         if self.armor is not None:
-            thisString += "     Armor ID      : " + str(self.armor.id) + "\n"
+            thisString += str(self.armor.id) + " "
         if self.shield is not None:
-            thisString += "     Shield ID     : " + str(self.shield.id) + "\n"
+            thisString += str(self.shield.id) + " "
         if self.gloves is not None:
-            thisString += "     Gloves ID     : " + str(self.gloves.id) + "\n"
+            thisString += str(self.gloves.id) + " "
         if self.necklace is not None:
-            thisString += "     Necklace ID   : " + str(self.necklace.id) + "\n"
+            thisString += str(self.necklace.id) + " "
         if self.ring is not None:
-            thisString += "     Ring ID       : " + str(self.ring.id) + "\n"
-        thisString += "  Base Statistic\n"
-        thisString += "     ATK           : " + str(self.atk) + "\n"
-        thisString += "     DEF           : " + str(self.defend) + "\n"
-        thisString += "     Pincer ATK    : " + str(self.pincerAtk) + "\n"
-        thisString += "     HP            : " + str(self.hp) + "\n"
-        thisString += "     CRT Rate      : " + str(self.crtRate) + "\n"
-        thisString += "     CRT Dmg       : " + str(self.crtDmg) + "\n"
-        thisString += "     ACC           : " + str(self.acc) + "\n"
-        thisString += "     RES           : " + str(self.res) + "\n"
-        thisString += "  Collection Effect\n"
-        thisString += "     ATK           : " + str(self.collectionEffectAtk) + "\n"
-        thisString += "     DEF           : " + str(self.collectionEffectDef) + "\n"
-        thisString += "     Pincer ATK    : " + str(self.collectionEffectPincerAtk) + "\n"
-        thisString += "     HP            : " + str(self.collectionEffectHp) + "\n"
-        thisString += "     CRT Rate      : " + str(self.collectionEffectCrtRate) + "\n"
-        thisString += "     CRT Dmg       : " + str(self.collectionEffectCrtDmg) + "\n"
-        thisString += "     ACC           : " + str(self.collectionEffectAcc) + "\n"
-        thisString += "     RES           : " + str(self.collectionEffectRes) + "\n"
+            thisString += str(self.ring.id) + "\n"
+        
+        thisString += "                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
+
+        thisString += "  Base Statistic   :" 
+        thisString += str(self.atk).rjust(10)
+        thisString += str(self.defend).rjust(10)
+        thisString += str(self.pincerAtk).rjust(10)
+        thisString += str(self.hp).rjust(10)
+        thisString += str(self.crtRate).rjust(10)
+        thisString += str(self.crtDmg).rjust(10)
+        thisString += str(self.acc).rjust(10)
+        thisString += str(self.res).rjust(10) + "\n"
+        thisString += "  Collection Effect:"
+        thisString += str(self.collectionEffectAtk).rjust(10)
+        thisString += str(self.collectionEffectDef).rjust(10)
+        thisString += str(self.collectionEffectPincerAtk).rjust(10)
+        thisString += str(self.collectionEffectHp).rjust(10)
+        thisString += str(self.collectionEffectCrtRate).rjust(10)
+        thisString += str(self.collectionEffectCrtDmg).rjust(10)
+        thisString += str(self.collectionEffectAcc).rjust(10)
+        thisString += str(self.collectionEffectRes).rjust(10) + "\n"
         if self.weapon is not None:
-            thisString += "   Weapon Buff\n"
-            thisString += "     ATK           : " + str(self.weapon.GetBuffAtk(self)) + "\n"
-            thisString += "     DEF           : " + str(self.weapon.GetBuffDef(self)) + "\n"
-            thisString += "     Pincer ATK    : " + str(self.weapon.GetBuffPincerAtk(self)) + "\n"
-            thisString += "     HP            : " + str(self.weapon.GetBuffHP(self)) + "\n"
-            thisString += "     CRT Rate      : " + str(self.weapon.crtRate) + "\n"
-            thisString += "     CRT Dmg       : " + str(self.weapon.crtDmg) + "\n"
-            thisString += "     ACC           : " + str(self.weapon.accuracy) + "\n"
-            thisString += "     RES           : " + str(self.weapon.resistance) + "\n"
+            thisString += "  Weapon Buff      :"
+            thisString += str(self.weapon.GetBuffAtk(self)).rjust(10)
+            thisString += str(self.weapon.GetBuffDef(self)).rjust(10)
+            thisString += str(self.weapon.GetBuffPincerAtk(self)).rjust(10)
+            thisString += str(self.weapon.GetBuffHP(self)).rjust(10)
+            thisString += str(self.weapon.crtRate).rjust(10)
+            thisString += str(self.weapon.crtDmg).rjust(10)
+            thisString += str(self.weapon.accuracy).rjust(10)
+            thisString += str(self.weapon.resistance).rjust(10) + "\n"
         if self.armor is not None:
-            thisString += "   Armor Buff\n"
-            thisString += "     ATK           : " + str(self.armor.GetBuffAtk(self)) + "\n"
-            thisString += "     DEF           : " + str(self.armor.GetBuffDef(self)) + "\n"
-            thisString += "     Pincer ATK    : " + str(self.armor.GetBuffPincerAtk(self)) + "\n"
-            thisString += "     HP            : " + str(self.armor.GetBuffHP(self)) + "\n"
-            thisString += "     CRT Rate      : " + str(self.armor.crtRate) + "\n"
-            thisString += "     CRT Dmg       : " + str(self.armor.crtDmg) + "\n"
-            thisString += "     ACC           : " + str(self.armor.accuracy) + "\n"
-            thisString += "     RES           : " + str(self.armor.resistance) + "\n"
+            thisString += "  Armor Buff       :"
+            thisString += str(self.armor.GetBuffAtk(self)).rjust(10)
+            thisString += str(self.armor.GetBuffDef(self)).rjust(10)
+            thisString += str(self.armor.GetBuffPincerAtk(self)).rjust(10)
+            thisString += str(self.armor.GetBuffHP(self)).rjust(10)
+            thisString += str(self.armor.crtRate).rjust(10)
+            thisString += str(self.armor.crtDmg).rjust(10)
+            thisString += str(self.armor.accuracy).rjust(10)
+            thisString += str(self.armor.resistance).rjust(10) + "\n"
         if self.shield is not None:
-            thisString += "   Shield Buff\n"
-            thisString += "     ATK           : " + str(self.shield.GetBuffAtk(self)) + "\n"
-            thisString += "     DEF           : " + str(self.shield.GetBuffDef(self)) + "\n"
-            thisString += "     Pincer ATK    : " + str(self.shield.GetBuffPincerAtk(self)) + "\n"
-            thisString += "     HP            : " + str(self.shield.GetBuffHP(self)) + "\n"
-            thisString += "     CRT Rate      : " + str(self.shield.crtRate) + "\n"
-            thisString += "     CRT Dmg       : " + str(self.shield.crtDmg) + "\n"
-            thisString += "     ACC           : " + str(self.shield.accuracy) + "\n"
-            thisString += "     RES           : " + str(self.shield.resistance) + "\n"
+            thisString += "  Shield Buff      :"
+            thisString += str(self.shield.GetBuffAtk(self)).rjust(10)
+            thisString += str(self.shield.GetBuffDef(self)).rjust(10)
+            thisString += str(self.shield.GetBuffPincerAtk(self)).rjust(10)
+            thisString += str(self.shield.GetBuffHP(self)).rjust(10)
+            thisString += str(self.shield.crtRate).rjust(10)
+            thisString += str(self.shield.crtDmg).rjust(10)
+            thisString += str(self.shield.accuracy).rjust(10)
+            thisString += str(self.shield.resistance).rjust(10) + "\n"
         if self.gloves is not None:
-            thisString += "   Gloves Buff\n"
-            thisString += "     ATK           : " + str(self.gloves.GetBuffAtk(self)) + "\n"
-            thisString += "     DEF           : " + str(self.gloves.GetBuffDef(self)) + "\n"
-            thisString += "     Pincer ATK    : " + str(self.gloves.GetBuffPincerAtk(self)) + "\n"
-            thisString += "     HP            : " + str(self.gloves.GetBuffHP(self)) + "\n"
-            thisString += "     CRT Rate      : " + str(self.gloves.crtRate) + "\n"
-            thisString += "     CRT Dmg       : " + str(self.gloves.crtDmg) + "\n"
-            thisString += "     ACC           : " + str(self.gloves.accuracy) + "\n"
-            thisString += "     RES           : " + str(self.gloves.resistance) + "\n"
+            thisString += "  Gloves Buff      :"
+            thisString += str(self.gloves.GetBuffAtk(self)).rjust(10)
+            thisString += str(self.gloves.GetBuffDef(self)).rjust(10)
+            thisString += str(self.gloves.GetBuffPincerAtk(self)).rjust(10)
+            thisString += str(self.gloves.GetBuffHP(self)).rjust(10)
+            thisString += str(self.gloves.crtRate).rjust(10)
+            thisString += str(self.gloves.crtDmg).rjust(10)
+            thisString += str(self.gloves.accuracy).rjust(10)
+            thisString += str(self.gloves.resistance).rjust(10) + "\n"
         if self.necklace is not None:
-            thisString += "   Necklace Buff\n"
-            thisString += "     ATK           : " + str(self.necklace.GetBuffAtk(self)) + "\n"
-            thisString += "     DEF           : " + str(self.necklace.GetBuffDef(self)) + "\n"
-            thisString += "     Pincer ATK    : " + str(self.necklace.GetBuffPincerAtk(self)) + "\n"
-            thisString += "     HP            : " + str(self.necklace.GetBuffHP(self)) + "\n"
-            thisString += "     CRT Rate      : " + str(self.necklace.crtRate) + "\n"
-            thisString += "     CRT Dmg       : " + str(self.necklace.crtDmg) + "\n"
-            thisString += "     ACC           : " + str(self.necklace.accuracy) + "\n"
-            thisString += "     RES           : " + str(self.necklace.resistance) + "\n"
+            thisString += "  Necklace Buff    :"
+            thisString += str(self.necklace.GetBuffAtk(self)).rjust(10)
+            thisString += str(self.necklace.GetBuffDef(self)).rjust(10)
+            thisString += str(self.necklace.GetBuffPincerAtk(self)).rjust(10)
+            thisString += str(self.necklace.GetBuffHP(self)).rjust(10)
+            thisString += str(self.necklace.crtRate).rjust(10)
+            thisString += str(self.necklace.crtDmg).rjust(10)
+            thisString += str(self.necklace.accuracy).rjust(10)
+            thisString += str(self.necklace.resistance).rjust(10) + "\n"
         if self.ring is not None:
-            thisString += "   Ring Buff\n"
-            thisString += "     ATK           : " + str(self.ring.GetBuffAtk(self)) + "\n"
-            thisString += "     DEF           : " + str(self.ring.GetBuffDef(self)) + "\n"
-            thisString += "     Pincer ATK    : " + str(self.ring.GetBuffPincerAtk(self)) + "\n"
-            thisString += "     HP            : " + str(self.ring.GetBuffHP(self)) + "\n"
-            thisString += "     CRT Rate      : " + str(self.ring.crtRate) + "\n"
-            thisString += "     CRT Dmg       : " + str(self.ring.crtDmg) + "\n"
-            thisString += "     ACC           : " + str(self.ring.accuracy) + "\n"
-            thisString += "     RES           : " + str(self.ring.resistance) + "\n"
+            thisString += "  Ring Buff        :"
+            thisString += str(self.ring.GetBuffAtk(self)).rjust(10)
+            thisString += str(self.ring.GetBuffDef(self)).rjust(10)
+            thisString += str(self.ring.GetBuffPincerAtk(self)).rjust(10)
+            thisString += str(self.ring.GetBuffHP(self)).rjust(10)
+            thisString += str(self.ring.crtRate).rjust(10)
+            thisString += str(self.ring.crtDmg).rjust(10)
+            thisString += str(self.ring.accuracy).rjust(10)
+            thisString += str(self.ring.resistance).rjust(10) + "\n"
         thisString += "  Equipment Set    : "
         for key in self.equipmentSets.keys():
             if self.equipmentSets[key] >= 2:
