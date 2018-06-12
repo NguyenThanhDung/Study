@@ -5,10 +5,10 @@ def main():
     equipmentList = EquipmentList("data/equipments.json")
     guardianList = GuardianList("data/guardians.json")
 
-    guardian = guardianList.GetGuardianAt(2)
+    guardian = guardianList.GetGuardianAt(0)
     print(guardian.ToString())
 
-    equipment = equipmentList.GetEquipmentAt(4)
+    equipment = equipmentList.GetEquipmentById(14)
     print(equipment.ToString())
 
     guardian.Equip(equipment)

@@ -18,6 +18,11 @@ class EquipmentList:
     def GetEquipmentAt(self, index):
         return self.equipments[index]
     
+    def GetEquipmentById(self, id):
+        for equipment in self.equipments:
+            if equipment.id == id:
+                return equipment
+    
     def ToString(self):
         thisString = "EQUIPMENT LIST:\n\n"
         for equipment in self.equipments:
