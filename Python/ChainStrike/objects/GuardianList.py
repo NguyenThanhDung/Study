@@ -21,6 +21,9 @@ class GuardianList:
             id += 1
         return guardians
 
+    def GetGuardianAt(self, index):
+        return self.guardians[index]
+
     def ToString(self):
         thisString = "GUARDIAN LIST:\n\n"
         for guardian in self.guardians:

@@ -3,10 +3,9 @@ from objects.GuardianList import GuardianList
 
 def main():
     equipmentList = EquipmentList("data/equipments.json")
-    print(equipmentList.ToString())
-
     guardianList = GuardianList("data/guardians.json")
-    print(guardianList.ToString())
+    guardian = guardianList.GetGuardianAt(2)
+    print(guardian.ToString())
 
 if __name__ == "__main__":
     main()
