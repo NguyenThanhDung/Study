@@ -11,5 +11,8 @@ def main():
     equipment = equipmentList.GetEquipmentAt(4)
     print(equipment.ToString())
 
+    guardian.Equip(equipment)
+    print(guardian.ToString())
+
 if __name__ == "__main__":
     main()
