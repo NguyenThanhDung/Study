@@ -15,6 +15,9 @@ class EquipmentList:
             equipments.append(equipment)
         return equipments
     
+    def GetEquipmentAt(self, index):
+        return self.equipments[index]
+    
     def ToString(self):
         thisString = "EQUIPMENT LIST:\n\n"
         for equipment in self.equipments:
