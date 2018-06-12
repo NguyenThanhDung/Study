@@ -18,6 +18,18 @@ class Equipment:
         self.set = set
         self.starCount = starCount
         self.level = level
+    
+    def GetBuffAtk(self, guardian):
+        return guardian.atk * self.atkPercent / 100 + self.atkPlus
+    
+    def GetBuffDef(self, guardian):
+        return guardian.defend * self.defPercent / 100 + self.defPlus
+    
+    def GetBuffPincerAtk(self, guardian):
+        return guardian.pincerAtk * self.pincerAtkPercent / 100 + self.pincerAtkPlus
+    
+    def GetBuffHP(self, guardian):
+        return guardian.hp * self.hpPercent / 100 + self.hpPlus
 
     def ToString(self):
         thisString = "Equipment #" + str(self.id) + "\n"

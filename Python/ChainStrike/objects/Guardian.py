@@ -56,7 +56,7 @@ class Guardian:
             thisString += "     Necklace ID   : " + str(self.necklace.id) + "\n"
         if self.ring is not None:
             thisString += "     Ring ID       : " + str(self.ring.id) + "\n"
-        thisString += "  Base\n"
+        thisString += "  Base Statistic\n"
         thisString += "     ATK           : " + str(self.atk) + "\n"
         thisString += "     DEF           : " + str(self.defend) + "\n"
         thisString += "     Pincer ATK    : " + str(self.pincerAtk) + "\n"
@@ -74,4 +74,14 @@ class Guardian:
         thisString += "     CRT Dmg       : " + str(self.collectionEffectCrtDmg) + "\n"
         thisString += "     ACC           : " + str(self.collectionEffectAcc) + "\n"
         thisString += "     RES           : " + str(self.collectionEffectRes) + "\n"
+        if self.weapon is not None:
+            thisString += "   Weapon Buff\n"
+            thisString += "     ATK           : " + str(self.weapon.GetBuffAtk(self)) + "\n"
+            thisString += "     DEF           : " + str(self.weapon.GetBuffDef(self)) + "\n"
+            thisString += "     Pincer ATK    : " + str(self.weapon.GetBuffPincerAtk(self)) + "\n"
+            thisString += "     HP            : " + str(self.weapon.GetBuffHP(self)) + "\n"
+            thisString += "     CRT Rate      : " + str(self.weapon.crtRate) + "\n"
+            thisString += "     CRT Dmg       : " + str(self.weapon.crtDmg) + "\n"
+            thisString += "     ACC           : " + str(self.weapon.accuracy) + "\n"
+            thisString += "     RES           : " + str(self.weapon.resistance) + "\n"
         return thisString
