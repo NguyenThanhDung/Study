@@ -159,6 +159,11 @@ class Guardian:
                 thisString += str(setBuffPercent.get("crtRate", 0)).rjust(10)
                 thisString += str(setBuffPercent.get("crtDmg", 0)).rjust(10)
                 thisString += str(setBuffPercent.get("acc", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("res", 0)).rjust(10) + "\n"
+                thisString += str(setBuffPercent.get("res", 0)).rjust(10) + "   "
+                thisString += str(setBuffPercent.get("CounterAtk", "")) + "   "
+                thisString += str(setBuffPercent.get("LifeDrain", "")) + "   "
+                thisString += str(setBuffPercent.get("ReduceTargetMaxHP", "")) + "   "
+                thisString += str(setBuffPercent.get("Stun", "")) + "   "
+                thisString += "\n"
         thisString += "\n"
         return thisString
