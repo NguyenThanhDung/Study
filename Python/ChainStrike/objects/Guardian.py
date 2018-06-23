@@ -226,7 +226,7 @@ class Guardian:
         for key in self.equipmentSets.keys():
             if self.equipmentSets[key] >= 2:
                 thisString += "  " + key + " Set Buff  :"
-                setBuffPercent = Equipment.GetSetBuffPercent(key)
+                setBuffPercent = Equipment.GetSetBuff(key, self)
                 thisString += str(setBuffPercent.get("atk", 0)).rjust(10)
                 thisString += str(setBuffPercent.get("def", 0)).rjust(10)
                 thisString += str(setBuffPercent.get("pincerAtk", 0)).rjust(10)

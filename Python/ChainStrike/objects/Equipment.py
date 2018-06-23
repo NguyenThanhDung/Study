@@ -48,30 +48,30 @@ class Equipment:
         return thisString
     
     @staticmethod
-    def GetSetBuffPercent(setName):
-        setBuffPercent = {}
+    def GetSetBuff(setName, guardian):
+        setBuff = {}
         if setName == "Strike":
-            setBuffPercent["atk"] = 0.1
+            setBuff["atk"] = guardian.atk * 0.1
         elif setName == "Guard":
-            setBuffPercent["def"] = 0.1
+            setBuff["def"] = guardian.defend * 0.1
         elif setName == "Pincer":
-            setBuffPercent["pincerAtk"] = 0.1
+            setBuff["pincerAtk"] = guardian.pincerAtk * 0.1
         elif setName == "Energy":
-            setBuffPercent["hp"] = 0.1
+            setBuff["hp"] = guardian.hp * 0.1
         elif setName == "Blade":
-            setBuffPercent["crtRate"] = 0.08
+            setBuff["crtRate"] = 0.08
         elif setName == "Violent":
-            setBuffPercent["crtDmg"] = 0
+            setBuff["crtDmg"] = 0
         elif setName == "Focus":
-            setBuffPercent["acc"] = 0.15
+            setBuff["acc"] = 0.15
         elif setName == "Endure":
-            setBuffPercent["res"] = 0.15
+            setBuff["res"] = 0.15
         elif setName == "Revenge":
-            setBuffPercent["CounterAtk"] = 0.1
+            setBuff["CounterAtk"] = 0.1
         elif setName == "Vampire":
-            setBuffPercent["LifeDrain"] = 0.2
+            setBuff["LifeDrain"] = 0.2
         elif setName == "Pulverize":
-            setBuffPercent["ReduceTargetMaxHP"] = 0.03
+            setBuff["ReduceTargetMaxHP"] = 0.03
         elif setName == "Stun":
-            setBuffPercent["Stun"] = 0.2
-        return setBuffPercent
+            setBuff["Stun"] = 0.2
+        return setBuff
