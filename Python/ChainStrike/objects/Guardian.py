@@ -1,3 +1,5 @@
+from Equipment import Equipment
+
 class Guardian:
 
     def __init__(self, id, name, atk, defend, pincerAtk, hp, crtRate, crtDmg, acc, res, collectionEffectAtk, collectionEffectDef, collectionEffectPincerAtk, collectionEffectHp, collectionEffectCrtRate, collectionEffectCrtDmg, collectionEffectAcc, collectionEffectRes):
@@ -148,6 +150,15 @@ class Guardian:
             thisString += str(self.ring.resistance).rjust(10) + "\n"
         for key in self.equipmentSets.keys():
             if self.equipmentSets[key] >= 2:
-                thisString += "  " + key + " Set Buff  :\n"
+                thisString += "  " + key + " Set Buff  :"
+                setBuffPercent = Equipment.GetSetBuffPercent(key)
+                thisString += str(setBuffPercent.get("atk", 0)).rjust(10)
+                thisString += str(setBuffPercent.get("def", 0)).rjust(10)
+                thisString += str(setBuffPercent.get("pincerAtk", 0)).rjust(10)
+                thisString += str(setBuffPercent.get("hp", 0)).rjust(10)
+                thisString += str(setBuffPercent.get("crtRate", 0)).rjust(10)
+                thisString += str(setBuffPercent.get("crtDmg", 0)).rjust(10)
+                thisString += str(setBuffPercent.get("acc", 0)).rjust(10)
+                thisString += str(setBuffPercent.get("res", 0)).rjust(10) + "\n"
         thisString += "\n"
         return thisString

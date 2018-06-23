@@ -46,3 +46,32 @@ class Equipment:
         thisString += "  Star Count: " + str(self.starCount) + "\n"
         thisString += "  Level     : " + str(self.level) + "\n"
         return thisString
+    
+    @staticmethod
+    def GetSetBuffPercent(setName):
+        setBuffPercent = {}
+        if setName == "Strike":
+            setBuffPercent["atk"] = 0.1
+        elif setName == "Guard":
+            setBuffPercent["def"] = 0.1
+        elif setName == "Pincer":
+            setBuffPercent["pincerAtk"] = 0.1
+        elif setName == "Energy":
+            setBuffPercent["hp"] = 0.1
+        elif setName == "Blade":
+            setBuffPercent["crtRate"] = 0.08
+        elif setName == "Violent":
+            setBuffPercent["crtDmg"] = 0
+        elif setName == "Focus":
+            setBuffPercent["acc"] = 0.15
+        elif setName == "Endure":
+            setBuffPercent["res"] = 0.15
+        elif setName == "Revenge":
+            setBuffPercent["revenge"] = 0
+        elif setName == "Vampire":
+            setBuffPercent["vampire"] = 0
+        elif setName == "Pulverize":
+            setBuffPercent["pulverize"] = 0
+        elif setName == "Stun":
+            setBuffPercent["stun"] = 0
+        return setBuffPercent
