@@ -67,11 +67,11 @@ class Equipment:
         elif setName == "Endure":
             setBuffPercent["res"] = 0.15
         elif setName == "Revenge":
-            setBuffPercent["revenge"] = 0
+            setBuffPercent["CounterAtk"] = 0.1
         elif setName == "Vampire":
-            setBuffPercent["vampire"] = 0
+            setBuffPercent["LifeDrain"] = 0.2
         elif setName == "Pulverize":
-            setBuffPercent["pulverize"] = 0
+            setBuffPercent["ReduceTargetMaxHP"] = 0.03
         elif setName == "Stun":
-            setBuffPercent["stun"] = 0
+            setBuffPercent["Stun"] = 0.2
         return setBuffPercent
