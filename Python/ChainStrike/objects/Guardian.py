@@ -66,7 +66,7 @@ class Guardian:
         if self.ring is not None:
             thisString += str(self.ring.id) + "\n"
         
-        thisString += "                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
+        thisString += "                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
 
         thisString += "  Base Statistic   :" 
         thisString += str(self.atk).rjust(10)
