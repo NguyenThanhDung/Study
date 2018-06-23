@@ -146,9 +146,8 @@ class Guardian:
             thisString += str(self.ring.crtDmg).rjust(10)
             thisString += str(self.ring.accuracy).rjust(10)
             thisString += str(self.ring.resistance).rjust(10) + "\n"
-        thisString += "  Equipment Set    : "
         for key in self.equipmentSets.keys():
             if self.equipmentSets[key] >= 2:
-                thisString += key + " "
+                thisString += "  " + key + " Set Buff  :\n"
         thisString += "\n"
         return thisString
