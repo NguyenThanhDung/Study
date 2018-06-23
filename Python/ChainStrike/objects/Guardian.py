@@ -50,6 +50,81 @@ class Guardian:
         else:
             self.equipmentSets[equipmentSet] = 1
 
+    def GetFinalStats(self):
+        finalStats = {}
+        
+        finalStats["atk"] = self.atk
+        finalStats["atk"] += self.collectionEffectAtk
+        finalStats["atk"] += self.weapon.GetBuffAtk(self)
+        finalStats["atk"] += self.armor.GetBuffAtk(self)
+        finalStats["atk"] += self.shield.GetBuffAtk(self)
+        finalStats["atk"] += self.gloves.GetBuffAtk(self)
+        finalStats["atk"] += self.necklace.GetBuffAtk(self)
+        finalStats["atk"] += self.ring.GetBuffAtk(self)
+        
+        finalStats["def"] = self.atk
+        finalStats["def"] += self.collectionEffectDef
+        finalStats["def"] += self.weapon.GetBuffDef(self)
+        finalStats["def"] += self.armor.GetBuffDef(self)
+        finalStats["def"] += self.shield.GetBuffDef(self)
+        finalStats["def"] += self.gloves.GetBuffDef(self)
+        finalStats["def"] += self.necklace.GetBuffDef(self)
+        finalStats["def"] += self.ring.GetBuffDef(self)
+        
+        finalStats["pincerAtk"] = self.atk
+        finalStats["pincerAtk"] += self.collectionEffectPincerAtk
+        finalStats["pincerAtk"] += self.weapon.GetBuffPincerAtk(self)
+        finalStats["pincerAtk"] += self.armor.GetBuffPincerAtk(self)
+        finalStats["pincerAtk"] += self.shield.GetBuffPincerAtk(self)
+        finalStats["pincerAtk"] += self.gloves.GetBuffPincerAtk(self)
+        finalStats["pincerAtk"] += self.necklace.GetBuffPincerAtk(self)
+        finalStats["pincerAtk"] += self.ring.GetBuffPincerAtk(self)
+        
+        finalStats["hp"] = self.atk
+        finalStats["hp"] += self.collectionEffectHp
+        finalStats["hp"] += self.weapon.GetBuffHP(self)
+        finalStats["hp"] += self.armor.GetBuffHP(self)
+        finalStats["hp"] += self.shield.GetBuffHP(self)
+        finalStats["hp"] += self.gloves.GetBuffHP(self)
+        finalStats["hp"] += self.necklace.GetBuffHP(self)
+        finalStats["hp"] += self.ring.GetBuffHP(self)
+        
+        finalStats["crtRate"] = self.atk
+        finalStats["crtRate"] += self.collectionEffectCrtRate
+        finalStats["crtRate"] += self.weapon.crtRate
+        finalStats["crtRate"] += self.armor.crtRate
+        finalStats["crtRate"] += self.shield.crtRate
+        finalStats["crtRate"] += self.gloves.crtRate
+        finalStats["crtRate"] += self.necklace.crtRate
+        finalStats["crtRate"] += self.ring.crtRate
+        
+        finalStats["crtDmg"] = self.atk
+        finalStats["crtDmg"] += self.collectionEffectCrtDmg
+        finalStats["crtDmg"] += self.weapon.crtDmg
+        finalStats["crtDmg"] += self.armor.crtDmg
+        finalStats["crtDmg"] += self.shield.crtDmg
+        finalStats["crtDmg"] += self.gloves.crtDmg
+        finalStats["crtDmg"] += self.necklace.crtDmg
+        finalStats["crtDmg"] += self.ring.crtDmg
+        
+        finalStats["acc"] = self.atk
+        finalStats["acc"] += self.collectionEffectAcc
+        finalStats["acc"] += self.weapon.accuracy
+        finalStats["acc"] += self.armor.accuracy
+        finalStats["acc"] += self.shield.accuracy
+        finalStats["acc"] += self.gloves.accuracy
+        finalStats["acc"] += self.necklace.accuracy
+        finalStats["acc"] += self.ring.accuracy
+        
+        finalStats["res"] = self.atk
+        finalStats["res"] += self.collectionEffectRes
+        finalStats["res"] += self.weapon.resistance
+        finalStats["res"] += self.armor.resistance
+        finalStats["res"] += self.shield.resistance
+        finalStats["res"] += self.gloves.resistance
+        finalStats["res"] += self.necklace.resistance
+        finalStats["res"] += self.ring.resistance
+
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
         thisString += "  Name             : " + str(self.name) + "\n"
