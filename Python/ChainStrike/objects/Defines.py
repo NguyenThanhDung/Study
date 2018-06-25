@@ -1,6 +1,6 @@
 import enum
 
-class EquipmentType(enum.IntEnum):
+class EquipmentType(enum.Enum):
     Weapon = 0
     Armor = 1
     Shield = 2
@@ -8,7 +8,7 @@ class EquipmentType(enum.IntEnum):
     Necklace = 4
     Ring = 5
 
-class StatisticType(enum.IntEnum):
+class StatisticType(enum.Enum):
     Attack = 0
     Defend = 1
     PincerAttack = 2
@@ -18,6 +18,6 @@ class StatisticType(enum.IntEnum):
     Accuracy = 6
     Resistance = 7
 
-class ValueType(enum.IntEnum):
+class ValueType(enum.Enum):
     Percent = 0
     Plus = 1

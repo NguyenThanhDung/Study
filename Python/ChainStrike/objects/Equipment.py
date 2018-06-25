@@ -38,7 +38,7 @@ class Equipment:
         return self.statistics[statisticType]
     
     def GetBuffedStatistic(self, statisticType, guardian):
-        if statisticType <= StatisticType.HP:
+        if statisticType.value <= StatisticType.HP.value:
             return guardian.statistics[statisticType] * self.statistics[statisticType][ValueType.Percent] / 100 + self.statistics[statisticType][ValueType.Plus]
         else:
             return self.statistics[statisticType]
