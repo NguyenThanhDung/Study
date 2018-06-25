@@ -1,20 +1,30 @@
 from Defines import StatisticType
+from Defines import ValueType
 
 class Equipment:
 
     def __init__(self, id, equipmentType, atkPercent, atkPlus, defPercent, defPlus, pincerAtkPercent, pincerAtkPlus, hpPercent, hpPlus, crtRate, crtDmg, accuracy, resistance, set, starCount, level):
         self.id = id
         self.type = equipmentType
-        self.atkPercent = atkPercent or 0
-        self.atkPlus = atkPlus or 0
-        self.defPercent = defPercent or 0
-        self.defPlus = defPlus or 0
-        self.pincerAtkPercent = pincerAtkPercent or 0
-        self.pincerAtkPlus = pincerAtkPlus or 0
-        self.hpPercent = hpPercent or 0
-        self.hpPlus = hpPlus or 0
 
         self.statistics = {}
+
+        self.statistics[StatisticType.Attack] = {}
+        self.statistics[StatisticType.Attack][ValueType.Percent] = atkPercent or 0
+        self.statistics[StatisticType.Attack][ValueType.Plus] = atkPlus or 0
+
+        self.statistics[StatisticType.Defend] = {}
+        self.statistics[StatisticType.Defend][ValueType.Percent] = defPercent or 0
+        self.statistics[StatisticType.Defend][ValueType.Plus] = defPlus or 0
+
+        self.statistics[StatisticType.PincerAttack] = {}
+        self.statistics[StatisticType.PincerAttack][ValueType.Percent] = pincerAtkPercent or 0
+        self.statistics[StatisticType.PincerAttack][ValueType.Plus] = pincerAtkPlus or 0
+
+        self.statistics[StatisticType.HP] = {}
+        self.statistics[StatisticType.HP][ValueType.Percent] = hpPercent or 0
+        self.statistics[StatisticType.HP][ValueType.Plus] = hpPlus or 0
+        
         self.statistics[StatisticType.CrtRate] = crtRate or 0
         self.statistics[StatisticType.CrtDmg] = crtDmg or 0
         self.statistics[StatisticType.Accuracy] = accuracy or 0
@@ -28,28 +38,28 @@ class Equipment:
         return self.statistics[statisticType]
     
     def GetBuffAtk(self, guardian):
-        return guardian.atk * self.atkPercent / 100 + self.atkPlus
+        return guardian.atk * self.statistics[StatisticType.Attack][ValueType.Percent] / 100 + self.statistics[StatisticType.Attack][ValueType.Plus]
     
     def GetBuffDef(self, guardian):
-        return guardian.defend * self.defPercent / 100 + self.defPlus
+        return guardian.defend * self.statistics[StatisticType.Defend][ValueType.Percent] / 100 + self.statistics[StatisticType.Defend][ValueType.Plus]
     
     def GetBuffPincerAtk(self, guardian):
-        return guardian.pincerAtk * self.pincerAtkPercent / 100 + self.pincerAtkPlus
+        return guardian.pincerAtk * self.statistics[StatisticType.PincerAttack][ValueType.Percent] / 100 + self.statistics[StatisticType.PincerAttack][ValueType.Plus]
     
     def GetBuffHP(self, guardian):
-        return guardian.hp * self.hpPercent / 100 + self.hpPlus
+        return guardian.hp * self.statistics[StatisticType.HP][ValueType.Percent] / 100 + self.statistics[StatisticType.HP][ValueType.Plus]
 
     def ToString(self):
         thisString = "Equipment #" + str(self.id) + "\n"
         thisString += "  Type      : " + self.type + "\n"
-        thisString += "  ATK       : " + str(self.atkPercent) + "% +" + str(self.atkPlus) + "\n"
-        thisString += "  DEF       : " + str(self.defPercent) + "% +" + str(self.defPlus) + "\n"
-        thisString += "  Pincer ATK: " + str(self.pincerAtkPercent) + "% +" + str(self.pincerAtkPercent) + "\n"
-        thisString += "  HP        : " + str(self.hpPercent) + "% +" + str(self.hpPlus) + "\n"
-        thisString += "  CRT Rate  : " + str(self.crtRate) + "%\n"
-        thisString += "  CRT Dmg   : " + str(self.crtDmg) + "%\n"
-        thisString += "  Accuracy  : " + str(self.accuracy) + "%\n"
-        thisString += "  Resistance: " + str(self.resistance) + "%\n"
+        thisString += "  ATK       : " + str(self.statistics[StatisticType.Attack][ValueType.Percent]) + "% +" + str(self.statistics[StatisticType.Attack][ValueType.Plus]) + "\n"
+        thisString += "  DEF       : " + str(self.statistics[StatisticType.Defend][ValueType.Percent]) + "% +" + str(self.statistics[StatisticType.Defend][ValueType.Plus]) + "\n"
+        thisString += "  Pincer ATK: " + str(self.statistics[StatisticType.PincerAttack][ValueType.Percent]) + "% +" + str(self.statistics[StatisticType.PincerAttack][ValueType.Plus]) + "\n"
+        thisString += "  HP        : " + str(self.statistics[StatisticType.HP][ValueType.Percent]) + "% +" + str(self.statistics[StatisticType.HP][ValueType.Plus]) + "\n"
+        thisString += "  CRT Rate  : " + str(self.statistics[StatisticType.CrtRate]) + "%\n"
+        thisString += "  CRT Dmg   : " + str(self.statistics[StatisticType.CrtDmg]) + "%\n"
+        thisString += "  Accuracy  : " + str(self.statistics[StatisticType.Accuracy]) + "%\n"
+        thisString += "  Resistance: " + str(self.statistics[StatisticType.Resistance]) + "%\n"
         thisString += "  Set       : " + self.set + "\n"
         thisString += "  Star Count: " + str(self.starCount) + "\n"
         thisString += "  Level     : " + str(self.level) + "\n"
