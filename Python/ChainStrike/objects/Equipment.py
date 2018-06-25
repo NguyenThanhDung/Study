@@ -1,8 +1,10 @@
+from Defines import StatisticType
+
 class Equipment:
 
-    def __init__(self, id, type, atkPercent, atkPlus, defPercent, defPlus, pincerAtkPercent, pincerAtkPlus, hpPercent, hpPlus, crtRate, crtDmg, accuracy, resistance, set, starCount, level):
+    def __init__(self, id, equipmentType, atkPercent, atkPlus, defPercent, defPlus, pincerAtkPercent, pincerAtkPlus, hpPercent, hpPlus, crtRate, crtDmg, accuracy, resistance, set, starCount, level):
         self.id = id
-        self.type = type
+        self.type = equipmentType
         self.atkPercent = atkPercent or 0
         self.atkPlus = atkPlus or 0
         self.defPercent = defPercent or 0
@@ -11,13 +13,19 @@ class Equipment:
         self.pincerAtkPlus = pincerAtkPlus or 0
         self.hpPercent = hpPercent or 0
         self.hpPlus = hpPlus or 0
-        self.crtRate = crtRate or 0
-        self.crtDmg = crtDmg or 0
-        self.accuracy = accuracy or 0
-        self.resistance = resistance or 0
+
+        self.statistics = {}
+        self.statistics[StatisticType.CrtRate] = crtRate or 0
+        self.statistics[StatisticType.CrtDmg] = crtDmg or 0
+        self.statistics[StatisticType.Accuracy] = accuracy or 0
+        self.statistics[StatisticType.Resistance] = resistance or 0
+
         self.set = set
         self.starCount = starCount
         self.level = level
+    
+    def GetStatistic(self, statisticType):
+        return self.statistics[statisticType]
     
     def GetBuffAtk(self, guardian):
         return guardian.atk * self.atkPercent / 100 + self.atkPlus
