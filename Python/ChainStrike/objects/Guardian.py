@@ -12,14 +12,17 @@ class Guardian:
         self.gloves = None
         self.necklace = None
         self.ring = None
-        self.atk = atk
-        self.defend = defend
-        self.pincerAtk = pincerAtk
-        self.hp = hp
-        self.crtRate = crtRate
-        self.crtDmg = crtDmg
-        self.acc = acc
-        self.res = res
+
+        self.statistics = {}
+        self.statistics[StatisticType.Attack] = atk
+        self.statistics[StatisticType.Defend] = defend
+        self.statistics[StatisticType.PincerAttack] = pincerAtk
+        self.statistics[StatisticType.HP] = hp
+        self.statistics[StatisticType.CrtRate] = crtRate
+        self.statistics[StatisticType.CrtDmg] = crtDmg
+        self.statistics[StatisticType.Accuracy] = acc
+        self.statistics[StatisticType.Resistance] = res
+
         self.collectionEffectAtk = collectionEffectAtk or 0
         self.collectionEffectDef = collectionEffectDef or 0
         self.collectionEffectPincerAtk = collectionEffectPincerAtk or 0
@@ -54,7 +57,7 @@ class Guardian:
     def GetFinalStats(self):
         finalStats = {}
         
-        finalStats["atk"] = self.atk
+        finalStats["atk"] = self.statistics[StatisticType.Attack]
         finalStats["atk"] += self.collectionEffectAtk
         finalStats["atk"] += self.weapon.GetBuffAtk(self)
         finalStats["atk"] += self.armor.GetBuffAtk(self)
@@ -63,7 +66,7 @@ class Guardian:
         finalStats["atk"] += self.necklace.GetBuffAtk(self)
         finalStats["atk"] += self.ring.GetBuffAtk(self)
         
-        finalStats["def"] = self.atk
+        finalStats["def"] = self.statistics[StatisticType.Defend]
         finalStats["def"] += self.collectionEffectDef
         finalStats["def"] += self.weapon.GetBuffDef(self)
         finalStats["def"] += self.armor.GetBuffDef(self)
@@ -72,7 +75,7 @@ class Guardian:
         finalStats["def"] += self.necklace.GetBuffDef(self)
         finalStats["def"] += self.ring.GetBuffDef(self)
         
-        finalStats["pincerAtk"] = self.atk
+        finalStats["pincerAtk"] = self.statistics[StatisticType.PincerAttack]
         finalStats["pincerAtk"] += self.collectionEffectPincerAtk
         finalStats["pincerAtk"] += self.weapon.GetBuffPincerAtk(self)
         finalStats["pincerAtk"] += self.armor.GetBuffPincerAtk(self)
@@ -81,7 +84,7 @@ class Guardian:
         finalStats["pincerAtk"] += self.necklace.GetBuffPincerAtk(self)
         finalStats["pincerAtk"] += self.ring.GetBuffPincerAtk(self)
         
-        finalStats["hp"] = self.atk
+        finalStats["hp"] = self.statistics[StatisticType.HP]
         finalStats["hp"] += self.collectionEffectHp
         finalStats["hp"] += self.weapon.GetBuffHP(self)
         finalStats["hp"] += self.armor.GetBuffHP(self)
@@ -90,7 +93,7 @@ class Guardian:
         finalStats["hp"] += self.necklace.GetBuffHP(self)
         finalStats["hp"] += self.ring.GetBuffHP(self)
         
-        finalStats["crtRate"] = self.atk
+        finalStats["crtRate"] = self.statistics[StatisticType.CrtRate]
         finalStats["crtRate"] += self.collectionEffectCrtRate
         finalStats["crtRate"] += self.weapon.crtRate
         finalStats["crtRate"] += self.armor.crtRate
@@ -99,7 +102,7 @@ class Guardian:
         finalStats["crtRate"] += self.necklace.crtRate
         finalStats["crtRate"] += self.ring.crtRate
         
-        finalStats["crtDmg"] = self.atk
+        finalStats["crtDmg"] = self.statistics[StatisticType.CrtDmg]
         finalStats["crtDmg"] += self.collectionEffectCrtDmg
         finalStats["crtDmg"] += self.weapon.crtDmg
         finalStats["crtDmg"] += self.armor.crtDmg
@@ -108,7 +111,7 @@ class Guardian:
         finalStats["crtDmg"] += self.necklace.crtDmg
         finalStats["crtDmg"] += self.ring.crtDmg
         
-        finalStats["acc"] = self.atk
+        finalStats["acc"] = self.statistics[StatisticType.Accuracy]
         finalStats["acc"] += self.collectionEffectAcc
         finalStats["acc"] += self.weapon.accuracy
         finalStats["acc"] += self.armor.accuracy
@@ -117,7 +120,7 @@ class Guardian:
         finalStats["acc"] += self.necklace.accuracy
         finalStats["acc"] += self.ring.accuracy
         
-        finalStats["res"] = self.atk
+        finalStats["res"] = self.statistics[StatisticType.Resistance]
         finalStats["res"] += self.collectionEffectRes
         finalStats["res"] += self.weapon.resistance
         finalStats["res"] += self.armor.resistance
@@ -147,14 +150,14 @@ class Guardian:
         thisString += "                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
 
         thisString += "  Base Statistic   :" 
-        thisString += str(self.atk).rjust(10)
-        thisString += str(self.defend).rjust(10)
-        thisString += str(self.pincerAtk).rjust(10)
-        thisString += str(self.hp).rjust(10)
-        thisString += str(self.crtRate).rjust(10)
-        thisString += str(self.crtDmg).rjust(10)
-        thisString += str(self.acc).rjust(10)
-        thisString += str(self.res).rjust(10) + "\n"
+        thisString += str(self.statistics[StatisticType.Attack]).rjust(10)
+        thisString += str(self.statistics[StatisticType.Defend]).rjust(10)
+        thisString += str(self.statistics[StatisticType.PincerAttack]).rjust(10)
+        thisString += str(self.statistics[StatisticType.HP]).rjust(10)
+        thisString += str(self.statistics[StatisticType.CrtRate]).rjust(10)
+        thisString += str(self.statistics[StatisticType.CrtDmg]).rjust(10)
+        thisString += str(self.statistics[StatisticType.Accuracy]).rjust(10)
+        thisString += str(self.statistics[StatisticType.Resistance]).rjust(10) + "\n"
         thisString += "  Collection Effect:"
         thisString += str(self.collectionEffectAtk).rjust(10)
         thisString += str(self.collectionEffectDef).rjust(10)
