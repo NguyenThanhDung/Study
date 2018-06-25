@@ -169,64 +169,34 @@ class Guardian:
         thisString += str(self.collectionEffectRes).rjust(10) + "\n"
         if self.weapon is not None:
             thisString += "  Weapon Buff      :"
-            thisString += str(self.weapon.GetBuffAtk(self)).rjust(10)
-            thisString += str(self.weapon.GetBuffDef(self)).rjust(10)
-            thisString += str(self.weapon.GetBuffPincerAtk(self)).rjust(10)
-            thisString += str(self.weapon.GetBuffHP(self)).rjust(10)
-            thisString += str(self.weapon.GetStatistic(StatisticType.CrtRate)).rjust(10)
-            thisString += str(self.weapon.GetStatistic(StatisticType.CrtDmg)).rjust(10)
-            thisString += str(self.weapon.GetStatistic(StatisticType.Accuracy)).rjust(10)
-            thisString += str(self.weapon.GetStatistic(StatisticType.Resistance)).rjust(10) + "\n"
+            for statisticType in self.weapon.statistics:
+                thisString += str(self.weapon.GetBuffedStatistic(statisticType, self)).rjust(10)
+            thisString += "\n"
         if self.armor is not None:
             thisString += "  Armor Buff       :"
-            thisString += str(self.armor.GetBuffAtk(self)).rjust(10)
-            thisString += str(self.armor.GetBuffDef(self)).rjust(10)
-            thisString += str(self.armor.GetBuffPincerAtk(self)).rjust(10)
-            thisString += str(self.armor.GetBuffHP(self)).rjust(10)
-            thisString += str(self.armor.GetStatistic(StatisticType.CrtRate)).rjust(10)
-            thisString += str(self.armor.GetStatistic(StatisticType.CrtDmg)).rjust(10)
-            thisString += str(self.armor.GetStatistic(StatisticType.Accuracy)).rjust(10)
-            thisString += str(self.armor.GetStatistic(StatisticType.Resistance)).rjust(10) + "\n"
+            for statisticType in self.armor.statistics:
+                thisString += str(self.armor.GetBuffedStatistic(statisticType, self)).rjust(10)
+            thisString += "\n"
         if self.shield is not None:
             thisString += "  Shield Buff      :"
-            thisString += str(self.shield.GetBuffAtk(self)).rjust(10)
-            thisString += str(self.shield.GetBuffDef(self)).rjust(10)
-            thisString += str(self.shield.GetBuffPincerAtk(self)).rjust(10)
-            thisString += str(self.shield.GetBuffHP(self)).rjust(10)
-            thisString += str(self.shield.GetStatistic(StatisticType.CrtRate)).rjust(10)
-            thisString += str(self.shield.GetStatistic(StatisticType.CrtDmg)).rjust(10)
-            thisString += str(self.shield.GetStatistic(StatisticType.Accuracy)).rjust(10)
-            thisString += str(self.shield.GetStatistic(StatisticType.Resistance)).rjust(10) + "\n"
+            for statisticType in self.shield.statistics:
+                thisString += str(self.shield.GetBuffedStatistic(statisticType, self)).rjust(10)
+            thisString += "\n"
         if self.gloves is not None:
             thisString += "  Gloves Buff      :"
-            thisString += str(self.gloves.GetBuffAtk(self)).rjust(10)
-            thisString += str(self.gloves.GetBuffDef(self)).rjust(10)
-            thisString += str(self.gloves.GetBuffPincerAtk(self)).rjust(10)
-            thisString += str(self.gloves.GetBuffHP(self)).rjust(10)
-            thisString += str(self.gloves.GetStatistic(StatisticType.CrtRate)).rjust(10)
-            thisString += str(self.gloves.GetStatistic(StatisticType.CrtDmg)).rjust(10)
-            thisString += str(self.gloves.GetStatistic(StatisticType.Accuracy)).rjust(10)
-            thisString += str(self.gloves.GetStatistic(StatisticType.Resistance)).rjust(10) + "\n"
+            for statisticType in self.gloves.statistics:
+                thisString += str(self.gloves.GetBuffedStatistic(statisticType, self)).rjust(10)
+            thisString += "\n"
         if self.necklace is not None:
             thisString += "  Necklace Buff    :"
-            thisString += str(self.necklace.GetBuffAtk(self)).rjust(10)
-            thisString += str(self.necklace.GetBuffDef(self)).rjust(10)
-            thisString += str(self.necklace.GetBuffPincerAtk(self)).rjust(10)
-            thisString += str(self.necklace.GetBuffHP(self)).rjust(10)
-            thisString += str(self.necklace.GetStatistic(StatisticType.CrtRate)).rjust(10)
-            thisString += str(self.necklace.GetStatistic(StatisticType.CrtDmg)).rjust(10)
-            thisString += str(self.necklace.GetStatistic(StatisticType.Accuracy)).rjust(10)
-            thisString += str(self.necklace.GetStatistic(StatisticType.Resistance)).rjust(10) + "\n"
+            for statisticType in self.necklace.statistics:
+                thisString += str(self.necklace.GetBuffedStatistic(statisticType, self)).rjust(10)
+            thisString += "\n"
         if self.ring is not None:
             thisString += "  Ring Buff        :"
-            thisString += str(self.ring.GetBuffAtk(self)).rjust(10)
-            thisString += str(self.ring.GetBuffDef(self)).rjust(10)
-            thisString += str(self.ring.GetBuffPincerAtk(self)).rjust(10)
-            thisString += str(self.ring.GetBuffHP(self)).rjust(10)
-            thisString += str(self.ring.GetStatistic(StatisticType.CrtRate)).rjust(10)
-            thisString += str(self.ring.GetStatistic(StatisticType.CrtDmg)).rjust(10)
-            thisString += str(self.ring.GetStatistic(StatisticType.Accuracy)).rjust(10)
-            thisString += str(self.ring.GetStatistic(StatisticType.Resistance)).rjust(10) + "\n"
+            for statisticType in self.ring.statistics:
+                thisString += str(self.ring.GetBuffedStatistic(statisticType, self)).rjust(10)
+            thisString += "\n"
         for key in self.equipmentSets.keys():
             if self.equipmentSets[key] >= 2:
                 thisString += "  " + key + " Set Buff  :"

@@ -37,17 +37,11 @@ class Equipment:
     def GetStatistic(self, statisticType):
         return self.statistics[statisticType]
     
-    def GetBuffAtk(self, guardian):
-        return guardian.atk * self.statistics[StatisticType.Attack][ValueType.Percent] / 100 + self.statistics[StatisticType.Attack][ValueType.Plus]
-    
-    def GetBuffDef(self, guardian):
-        return guardian.defend * self.statistics[StatisticType.Defend][ValueType.Percent] / 100 + self.statistics[StatisticType.Defend][ValueType.Plus]
-    
-    def GetBuffPincerAtk(self, guardian):
-        return guardian.pincerAtk * self.statistics[StatisticType.PincerAttack][ValueType.Percent] / 100 + self.statistics[StatisticType.PincerAttack][ValueType.Plus]
-    
-    def GetBuffHP(self, guardian):
-        return guardian.hp * self.statistics[StatisticType.HP][ValueType.Percent] / 100 + self.statistics[StatisticType.HP][ValueType.Plus]
+    def GetBuffedStatistic(self, statisticType, guardian):
+        if statisticType <= StatisticType.HP:
+            return guardian.statistics[statisticType] * self.statistics[statisticType][ValueType.Percent] / 100 + self.statistics[statisticType][ValueType.Plus]
+        else:
+            return self.statistics[statisticType]
 
     def ToString(self):
         thisString = "Equipment #" + str(self.id) + "\n"
@@ -69,27 +63,27 @@ class Equipment:
     def GetSetBuff(setName, guardian):
         setBuff = {}
         if setName == "Strike":
-            setBuff["atk"] = guardian.atk * 0.1
+            setBuff["atk"] = guardian.statistics[StatisticType.Attack] * 0.1
         elif setName == "Guard":
-            setBuff["def"] = guardian.defend * 0.1
+            setBuff["def"] = guardian.statistics[StatisticType.Defend] * 0.1
         elif setName == "Pincer":
-            setBuff["pincerAtk"] = guardian.pincerAtk * 0.1
+            setBuff["pincerAtk"] = guardian.statistics[StatisticType.PincerAttack] * 0.1
         elif setName == "Energy":
-            setBuff["hp"] = guardian.hp * 0.1
+            setBuff["hp"] = guardian.statistics[StatisticType.HP] * 0.1
         elif setName == "Blade":
-            setBuff["crtRate"] = 0.08
+            setBuff["crtRate"] = 8
         elif setName == "Violent":
             setBuff["crtDmg"] = 0
         elif setName == "Focus":
-            setBuff["acc"] = 0.15
+            setBuff["acc"] =15
         elif setName == "Endure":
-            setBuff["res"] = 0.15
+            setBuff["res"] = 15
         elif setName == "Revenge":
-            setBuff["CounterAtk"] = 0.1
+            setBuff["CounterAtk"] = 10
         elif setName == "Vampire":
-            setBuff["LifeDrain"] = 0.2
+            setBuff["LifeDrain"] = 20
         elif setName == "Pulverize":
-            setBuff["ReduceTargetMaxHP"] = 0.03
+            setBuff["ReduceTargetMaxHP"] = 3
         elif setName == "Stun":
-            setBuff["Stun"] = 0.2
+            setBuff["Stun"] = 20
         return setBuff
