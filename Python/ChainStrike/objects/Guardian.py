@@ -1,5 +1,6 @@
 ﻿from Defines import EquipmentType
 from Defines import StatisticType
+from Defines import SpecialSkill
 from Equipment import Equipment
 
 class Guardian:
@@ -92,18 +93,10 @@ class Guardian:
             if self.equipmentSets[key] >= 2:
                 thisString += (str(key)[8:] + " Set Buff:").rjust(20)
                 setBuffPercent = Equipment.GetSetBuff(key, self)
-                thisString += str(setBuffPercent.get("atk", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("def", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("pincerAtk", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("hp", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("crtRate", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("crtDmg", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("acc", 0)).rjust(10)
-                thisString += str(setBuffPercent.get("res", 0)).rjust(10) + "   "
-                thisString += str(setBuffPercent.get("CounterAtk", "")) + "   "
-                thisString += str(setBuffPercent.get("LifeDrain", "")) + "   "
-                thisString += str(setBuffPercent.get("ReduceTargetMaxHP", "")) + "   "
-                thisString += str(setBuffPercent.get("Stun", "")) + "   "
+                for statisticType in StatisticType:
+                    thisString += str(setBuffPercent.get(statisticType, 0)).rjust(10)
+                for specialSkill in SpecialSkill:
+                    thisString += str(setBuffPercent.get(specialSkill, ""))
                 thisString += "\n"
         thisString += "\n"
         return thisString

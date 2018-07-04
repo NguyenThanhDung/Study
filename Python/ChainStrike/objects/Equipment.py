@@ -1,6 +1,7 @@
 ﻿from Defines import StatisticType
 from Defines import ValueType
 from Defines import SetType
+from Defines import SpecialSkill
 
 class Equipment:
 
@@ -68,28 +69,28 @@ class Equipment:
     def GetSetBuff(setType, guardian):
         setBuff = {}
         if setType == SetType.Strike:
-            setBuff[setType] = guardian.statistics[StatisticType.Attack] * 0.1
+            setBuff[StatisticType.Attack] = guardian.statistics[StatisticType.Attack] * 0.1
         elif setType == SetType.Guard:
-            setBuff[setType] = guardian.statistics[StatisticType.Defend] * 0.1
+            setBuff[StatisticType.Defend] = guardian.statistics[StatisticType.Defend] * 0.1
         elif setType == SetType.Pincer:
-            setBuff[setType] = guardian.statistics[StatisticType.PincerAttack] * 0.1
+            setBuff[StatisticType.PincerAttack] = guardian.statistics[StatisticType.PincerAttack] * 0.1
         elif setType == SetType.Energy:
-            setBuff[setType] = guardian.statistics[StatisticType.HP] * 0.1
+            setBuff[StatisticType.HP] = guardian.statistics[StatisticType.HP] * 0.1
         elif setType == SetType.Blade:
-            setBuff[setType] = 8
+            setBuff[StatisticType.CrtRate] = 8
         elif setType == SetType.Violent:
             #TODO: Update value
-            setBuff[setType] = 0
+            setBuff[StatisticType.CrtRate] = 0
         elif setType == SetType.Focus:
-            setBuff[setType] = 15
+            setBuff[StatisticType.Accuracy] = 15
         elif setType == SetType.Endure:
-            setBuff[setType] = 15
+            setBuff[StatisticType.Resistance] = 15
         elif setType == SetType.Revenge:
-            setBuff[setType] = 10
+            setBuff[SpecialSkill.CounterAttack] = 10
         elif setType == SetType.Vampire:
-            setBuff[setType] = 20
+            setBuff[SpecialSkill.LifeDrain] = 20
         elif setType == SetType.Pulverize:
-            setBuff[setType] = 3
+            setBuff[SpecialSkill.ReduceTargetMaxHP] = 3
         elif setType == SetType.Stun:
-            setBuff[setType] = 20
+            setBuff[SpecialSkill.Stun] = 20
         return setBuff

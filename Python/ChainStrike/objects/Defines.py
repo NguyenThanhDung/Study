@@ -1,4 +1,4 @@
-import enum
+﻿import enum
 
 class EquipmentType(enum.Enum):
     Weapon = 0
@@ -35,3 +35,9 @@ class SetType(enum.Enum):
     Vampire = 9
     Pulverize = 10
     Stun = 11
+
+class SpecialSkill(enum.Enum):
+    CounterAttack = 0
+    LifeDrain = 1
+    ReduceTargetMaxHP = 2
+    Stun = 3
