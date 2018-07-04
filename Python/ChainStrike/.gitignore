@@ -2,3 +2,4 @@ config.json
 AutoTouchStable.py
 Screenshot.png
 *.pyc
+*.suo

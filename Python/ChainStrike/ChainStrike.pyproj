@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0df4015d-7001-4eac-bd03-4e8636cb3996}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>AutoTouch.py</StartupFile>
+    <StartupFile>EquipmentArranger.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -34,6 +34,7 @@
     <Compile Include="ScreenCapture.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".vscode\" />
     <Folder Include=".vscode\.ropeproject" />
     <Folder Include="objects" />
   </ItemGroup>
