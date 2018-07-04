@@ -1,5 +1,6 @@
-from Defines import StatisticType
+﻿from Defines import StatisticType
 from Defines import ValueType
+from Defines import SetType
 
 class Equipment:
 
@@ -29,8 +30,12 @@ class Equipment:
         self.statistics[StatisticType.CrtDmg] = crtDmg or 0
         self.statistics[StatisticType.Accuracy] = accuracy or 0
         self.statistics[StatisticType.Resistance] = resistance or 0
+        
+        self.set = SetType.Strike
+        for setType in SetType:
+            if setType.name == set:
+                self.set = setType
 
-        self.set = set
         self.starCount = starCount
         self.level = level
     
@@ -54,36 +59,37 @@ class Equipment:
         thisString += "  CRT Dmg   : " + str(self.statistics[StatisticType.CrtDmg]) + "%\n"
         thisString += "  Accuracy  : " + str(self.statistics[StatisticType.Accuracy]) + "%\n"
         thisString += "  Resistance: " + str(self.statistics[StatisticType.Resistance]) + "%\n"
-        thisString += "  Set       : " + self.set + "\n"
+        thisString += "  Set       : " + str(self.set)[8:] + "\n"
         thisString += "  Star Count: " + str(self.starCount) + "\n"
         thisString += "  Level     : " + str(self.level) + "\n"
         return thisString
     
     @staticmethod
-    def GetSetBuff(setName, guardian):
+    def GetSetBuff(setType, guardian):
         setBuff = {}
-        if setName == "Strike":
-            setBuff["atk"] = guardian.statistics[StatisticType.Attack] * 0.1
-        elif setName == "Guard":
-            setBuff["def"] = guardian.statistics[StatisticType.Defend] * 0.1
-        elif setName == "Pincer":
-            setBuff["pincerAtk"] = guardian.statistics[StatisticType.PincerAttack] * 0.1
-        elif setName == "Energy":
-            setBuff["hp"] = guardian.statistics[StatisticType.HP] * 0.1
-        elif setName == "Blade":
-            setBuff["crtRate"] = 8
-        elif setName == "Violent":
-            setBuff["crtDmg"] = 0
-        elif setName == "Focus":
-            setBuff["acc"] =15
-        elif setName == "Endure":
-            setBuff["res"] = 15
-        elif setName == "Revenge":
-            setBuff["CounterAtk"] = 10
-        elif setName == "Vampire":
-            setBuff["LifeDrain"] = 20
-        elif setName == "Pulverize":
-            setBuff["ReduceTargetMaxHP"] = 3
-        elif setName == "Stun":
-            setBuff["Stun"] = 20
+        if setType == SetType.Strike:
+            setBuff[setType] = guardian.statistics[StatisticType.Attack] * 0.1
+        elif setType == SetType.Guard:
+            setBuff[setType] = guardian.statistics[StatisticType.Defend] * 0.1
+        elif setType == SetType.Pincer:
+            setBuff[setType] = guardian.statistics[StatisticType.PincerAttack] * 0.1
+        elif setType == SetType.Energy:
+            setBuff[setType] = guardian.statistics[StatisticType.HP] * 0.1
+        elif setType == SetType.Blade:
+            setBuff[setType] = 8
+        elif setType == SetType.Violent:
+            #TODO: Update value
+            setBuff[setType] = 0
+        elif setType == SetType.Focus:
+            setBuff[setType] = 15
+        elif setType == SetType.Endure:
+            setBuff[setType] = 15
+        elif setType == SetType.Revenge:
+            setBuff[setType] = 10
+        elif setType == SetType.Vampire:
+            setBuff[setType] = 20
+        elif setType == SetType.Pulverize:
+            setBuff[setType] = 3
+        elif setType == SetType.Stun:
+            setBuff[setType] = 20
         return setBuff

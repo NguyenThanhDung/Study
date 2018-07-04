@@ -21,3 +21,17 @@ class StatisticType(enum.Enum):
 class ValueType(enum.Enum):
     Percent = 0
     Plus = 1
+
+class SetType(enum.Enum):
+    Strike = 0
+    Guard = 1
+    Pincer = 2
+    Energy = 3
+    Blade = 4
+    Violent = 5
+    Focus = 6
+    Endure = 7
+    Revenge = 8
+    Vampire = 9
+    Pulverize = 10
+    Stun = 11

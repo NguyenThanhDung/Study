@@ -1,4 +1,4 @@
-from objects.EquipmentList import EquipmentList
+﻿from objects.EquipmentList import EquipmentList
 from objects.GuardianList import GuardianList
 from objects.Defines import EquipmentType
 
@@ -6,8 +6,10 @@ def main():
     equipmentList = EquipmentList("data/equipments.json")
     guardianList = GuardianList("data/guardians.json")
 
+    equipment = equipmentList.GetEquipmentById(14)
+    print(equipment.ToString())
+    
     guardian = guardianList.GetGuardianAt(0)
-
     equipment = equipmentList.GetEquipmentById(14)
     guardian.Equip(equipment, EquipmentType.Weapon)
     equipment = equipmentList.GetEquipmentById(15)
@@ -20,7 +22,6 @@ def main():
     guardian.Equip(equipment, EquipmentType.Necklace)
     equipment = equipmentList.GetEquipmentById(19)
     guardian.Equip(equipment, EquipmentType.Ring)
-
     print(guardian.ToString())
 
 if __name__ == "__main__":
