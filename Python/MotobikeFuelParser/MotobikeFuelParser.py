@@ -7,7 +7,7 @@ if __name__=="__main__":
         parts = line.split("\t")
         parsedData += parts[0]
         amountAndDistance = parts[3].split(" - ")
-        amount = str(amountAndDistance[1][0:len(amountAndDistance[1])-1]).replace(".", ",")
+        amount = str(amountAndDistance[1][0:len(amountAndDistance[1])-1]).replace(",", ".")
         distance = amountAndDistance[2][0:len(amountAndDistance[2])-3]
         parsedData += "\t\t\t" + amount + "\t" + distance + "\n"
     print(parsedData)
