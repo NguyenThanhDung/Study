@@ -6,6 +6,7 @@ public class Vehicle : MonoBehaviour
 {
     [SerializeField] float maxSpeed;
     [SerializeField] float timeToMaxSpeed;
+    [SerializeField] ParticleSystem smoke;
 
     public float Speed
     {
@@ -32,10 +33,15 @@ public class Vehicle : MonoBehaviour
         // steeringVolume   -> deductSpeed
         float deductSpeed = steeringVolume * 30f / 45f;
 
-        // 2s           -> deductSpeed
+        // 1s           -> deductSpeed
         // deltaTime    -> deltaDeductSpeed
-        float deltaDeductSpeed = deductSpeed / 2f * Time.deltaTime;
+        float deltaDeductSpeed = deductSpeed * Time.deltaTime;
 
         this.Speed = Mathf.Max(5f, this.Speed - deltaDeductSpeed);
+
+        if (steeringVolume > 1f)
+            this.smoke.Play();
+        else
+            this.smoke.Stop();
     }
 }
