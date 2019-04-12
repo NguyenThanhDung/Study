@@ -5451,6 +5451,7 @@ MonoBehaviour:
   frontPoint: {fileID: 835445690}
   backPoint: {fileID: 1765794988}
   destPoint: {fileID: 911922781}
+  roadBorderDistance: 2.5
 --- !u!114 &1573975783
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class VelocityController : MonoBehaviour
     [SerializeField] Transform frontPoint;
     [SerializeField] Transform backPoint;
     [SerializeField] Transform destPoint;
+    [SerializeField] float roadBorderDistance;
 
     private const float SPEED_VELOC_RATIO = 0.1f;
     private const float TIME_TO_REACH_DEST_POINT = 20f;
@@ -62,12 +63,20 @@ public class VelocityController : MonoBehaviour
         // Move frontPoint to destPoint
         float deltaDistance = direction.magnitude / TIME_TO_REACH_DEST_POINT * Time.deltaTime;
         this.frontPoint.position += direction * deltaDistance;
+        if(this.frontPoint.position.x < -this.roadBorderDistance)
+            this.frontPoint.position = new Vector3(-this.roadBorderDistance, this.frontPoint.position.y, this.frontPoint.position.z);
+        if(this.frontPoint.position.x > this.roadBorderDistance)
+            this.frontPoint.position = new Vector3(this.roadBorderDistance, this.frontPoint.position.y, this.frontPoint.position.z);
 
         // Move backPoint to frontPoint
         Vector3 moveDirectionOfBackPoint = this.frontPoint.position - this.backPoint.position;
         float moveDistanceOfBackPoint = moveDirectionOfBackPoint.magnitude - this.vehicleLength;
         this.backPoint.position += moveDirectionOfBackPoint.normalized * moveDistanceOfBackPoint;
         this.backPoint.RotateAround(this.frontPoint.position, Vector3.up, -steeringAngle * 5f * Time.deltaTime);
+        if(this.backPoint.position.x < -this.roadBorderDistance)
+            this.backPoint.position = new Vector3(-this.roadBorderDistance, this.backPoint.position.y, this.backPoint.position.z);
+        if(this.backPoint.position.x > this.roadBorderDistance)
+            this.backPoint.position = new Vector3(this.roadBorderDistance, this.backPoint.position.y, this.backPoint.position.z);
 
         // Move vehicle position to middle point of frontPoint and backPoint
         Vector3 moveDirectionOfVehicle = (this.frontPoint.position - this.backPoint.position) * 0.5f;
