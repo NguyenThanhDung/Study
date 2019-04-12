@@ -53,8 +53,8 @@ public class VelocityController : MonoBehaviour
         direction = direction.normalized * speed.magnitude;
 
         // Calculate steeringAngle
-        float steeringAngle = Vector3.Angle(direction, this.frontPoint.position - this.backPoint.position);
-        this.vehicle.DeductSpeed(steeringAngle);
+        float steeringAngle = Vector3.SignedAngle(direction, this.frontPoint.position - this.backPoint.position, Vector3.up);
+        this.vehicle.DeductSpeed(Mathf.Abs(steeringAngle));
 
         // Set destPoint position
         this.destPoint.position = this.frontPoint.position + direction;
@@ -67,6 +67,7 @@ public class VelocityController : MonoBehaviour
         Vector3 moveDirectionOfBackPoint = this.frontPoint.position - this.backPoint.position;
         float moveDistanceOfBackPoint = moveDirectionOfBackPoint.magnitude - this.vehicleLength;
         this.backPoint.position += moveDirectionOfBackPoint.normalized * moveDistanceOfBackPoint;
+        this.backPoint.RotateAround(this.frontPoint.position, Vector3.up, -steeringAngle * 3f * Time.deltaTime);
 
         // Move vehicle position to middle point of frontPoint and backPoint
         Vector3 moveDirectionOfVehicle = (this.frontPoint.position - this.backPoint.position) * 0.5f;
