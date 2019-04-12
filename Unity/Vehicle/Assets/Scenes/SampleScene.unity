@@ -752,9 +752,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicle: {fileID: 1573975783}
-  frontPoint: {fileID: 835445689}
-  backPoint: {fileID: 1765794987}
-  destPoint: {fileID: 911922780}
+  display: {fileID: 736652863}
+  frontPoint: {fileID: 835445690}
+  backPoint: {fileID: 1765794988}
+  destPoint: {fileID: 911922781}
 --- !u!114 &1573975783
 MonoBehaviour:
   m_ObjectHideFlags: 0

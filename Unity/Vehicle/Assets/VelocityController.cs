@@ -5,9 +5,10 @@ using UnityEngine;
 public class VelocityController : MonoBehaviour
 {
     [SerializeField] Vehicle vehicle;
-    [SerializeField] GameObject frontPoint;
-    [SerializeField] GameObject backPoint;
-    [SerializeField] GameObject destPoint;
+    [SerializeField] Transform display;
+    [SerializeField] Transform frontPoint;
+    [SerializeField] Transform backPoint;
+    [SerializeField] Transform destPoint;
 
     private const float SPEED_VELOC_RATIO = 0.1f;
     private const float TIME_TO_REACH_DEST_POINT = 20f;
@@ -19,13 +20,13 @@ public class VelocityController : MonoBehaviour
 
     void Start()
     {
-        this.vehicleLength = (this.frontPoint.transform.position - this.backPoint.transform.position).magnitude;
+        this.vehicleLength = (this.frontPoint.position - this.backPoint.position).magnitude;
     }
 
     void Update()
     {
         // Calculate speed vector
-        Vector3 vehicleDirection = this.frontPoint.transform.position - this.backPoint.transform.position;
+        Vector3 vehicleDirection = this.frontPoint.position - this.backPoint.position;
         this.speed = vehicleDirection.normalized * this.vehicle.Speed * SPEED_VELOC_RATIO;
 
         // Calculate steering vector
@@ -38,7 +39,7 @@ public class VelocityController : MonoBehaviour
             float swipeDistance = Input.mousePosition.x - this.lastTouchPosX;
             float steeringVolume = swipeDistance / Screen.width;
             float steerVectorLength = steeringVolume * 10f;
-            Vector3 steerVector = this.frontPoint.transform.position - this.backPoint.transform.position;
+            Vector3 steerVector = this.frontPoint.position - this.backPoint.position;
             steerVector.Normalize();
             steerVector = Quaternion.Euler(0f, 90f, 0f) * steerVector;
             this.steer = steerVector * steerVectorLength;
@@ -53,22 +54,19 @@ public class VelocityController : MonoBehaviour
         direction = direction.normalized * speed.magnitude;
 
         // Set destPoint position
-        this.destPoint.transform.position = this.frontPoint.transform.position + direction;
+        this.destPoint.position = this.frontPoint.position + direction;
 
         // Move frontPoint to destPoint
         float deltaDistance = direction.magnitude / TIME_TO_REACH_DEST_POINT * Time.deltaTime;
-        this.frontPoint.transform.position += direction * deltaDistance;
+        this.frontPoint.position += direction * deltaDistance;
 
         // Move backPoint to frontPoint
-        Vector3 moveDirectionOfBackPoint = this.frontPoint.transform.position - this.backPoint.transform.position;
+        Vector3 moveDirectionOfBackPoint = this.frontPoint.position - this.backPoint.position;
         float moveDistanceOfBackPoint = moveDirectionOfBackPoint.magnitude - this.vehicleLength;
-        this.backPoint.transform.position += moveDirectionOfBackPoint.normalized * moveDistanceOfBackPoint;
+        this.backPoint.position += moveDirectionOfBackPoint.normalized * moveDistanceOfBackPoint;
 
         // Move vehicle position to middle point of frontPoint and backPoint
-        // float midX = this.backPoint.transform.position.x + (this.frontPoint.transform.position.x - this.backPoint.transform.position.x) / 2f;
-        // float midZ = this.backPoint.transform.position.z + (this.frontPoint.transform.position.z - this.backPoint.transform.position.z) / 2f;
-        // this.transform.position = new Vector3(midX, this.transform.position.y, midZ);
-        Vector3 moveDirectionOfVehicle = (this.frontPoint.transform.position - this.backPoint.transform.position) * 0.5f;
-        this.transform.position = this.backPoint.transform.position + moveDirectionOfVehicle;
+        Vector3 moveDirectionOfVehicle = (this.frontPoint.position - this.backPoint.position) * 0.5f;
+        this.display.position = this.backPoint.position + moveDirectionOfVehicle;
     }
 }
