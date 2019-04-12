@@ -67,5 +67,8 @@ public class VelocityController : MonoBehaviour
         // Move vehicle position to middle point of frontPoint and backPoint
         Vector3 moveDirectionOfVehicle = (this.frontPoint.position - this.backPoint.position) * 0.5f;
         this.transform.position = this.backPoint.position + moveDirectionOfVehicle;
+
+        float angle = Vector3.SignedAngle(Vector3.forward, this.frontPoint.position - this.backPoint.position, Vector3.up);
+        this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 }
