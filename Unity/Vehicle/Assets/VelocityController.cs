@@ -52,6 +52,10 @@ public class VelocityController : MonoBehaviour
         Vector3 direction = this.speed + this.steer;
         direction = direction.normalized * speed.magnitude;
 
+        // Calculate steeringAngle
+        float steeringAngle = Vector3.Angle(direction, this.frontPoint.position - this.backPoint.position);
+        this.vehicle.DeductSpeed(steeringAngle);
+
         // Set destPoint position
         this.destPoint.position = this.frontPoint.position + direction;
 
