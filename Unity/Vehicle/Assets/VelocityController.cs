@@ -5,7 +5,6 @@ using UnityEngine;
 public class VelocityController : MonoBehaviour
 {
     [SerializeField] Vehicle vehicle;
-    [SerializeField] Transform display;
     [SerializeField] Transform frontPoint;
     [SerializeField] Transform backPoint;
     [SerializeField] Transform destPoint;
@@ -67,6 +66,6 @@ public class VelocityController : MonoBehaviour
 
         // Move vehicle position to middle point of frontPoint and backPoint
         Vector3 moveDirectionOfVehicle = (this.frontPoint.position - this.backPoint.position) * 0.5f;
-        this.display.position = this.backPoint.position + moveDirectionOfVehicle;
+        this.transform.position = this.backPoint.position + moveDirectionOfVehicle;
     }
 }
