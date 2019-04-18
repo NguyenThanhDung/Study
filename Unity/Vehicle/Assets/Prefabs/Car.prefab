@@ -4958,10 +4958,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicle: {fileID: 3418879838360705699}
+  defaultFrontPointPosition: {x: 0, y: 0, z: 1}
+  defaultBackPointPosition: {x: 0, y: 0, z: -1}
   frontPoint: {fileID: 0}
   backPoint: {fileID: 0}
   destPoint: {fileID: 0}
   roadBorderDistance: 2.5
+  speedVelocityRatio: 0.1
+  timeToReachDestPoint: 5
+  steeringMethod: 1
+  steeringSensitivity: 3
 --- !u!114 &3418879838360705699
 MonoBehaviour:
   m_ObjectHideFlags: 0
