@@ -4963,10 +4963,9 @@ MonoBehaviour:
   frontPoint: {fileID: 0}
   backPoint: {fileID: 0}
   destPoint: {fileID: 0}
-  roadBorderDistance: 2.5
   speedVelocityRatio: 0.1
   timeToReachDestPoint: 5
-  steeringMethod: 1
+  steeringMethod: 0
   steeringSensitivity: 3
 --- !u!114 &3418879838360705699
 MonoBehaviour:

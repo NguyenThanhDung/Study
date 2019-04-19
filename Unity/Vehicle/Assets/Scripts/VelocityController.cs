@@ -16,7 +16,6 @@ public class VelocityController : MonoBehaviour
     [SerializeField] Transform frontPoint;
     [SerializeField] Transform backPoint;
     [SerializeField] Transform destPoint;
-    [SerializeField] float roadBorderDistance;
     [SerializeField] float speedVelocityRatio;
     [SerializeField] float timeToReachDestPoint;
     [SerializeField] SteeringMethod steeringMethod;
@@ -56,20 +55,12 @@ public class VelocityController : MonoBehaviour
         // Move frontPoint to destPoint
         float deltaDistance = direction.magnitude / timeToReachDestPoint * Time.deltaTime;
         this.frontPoint.position += direction * deltaDistance;
-        if (this.frontPoint.position.x < -this.roadBorderDistance)
-            this.frontPoint.position = new Vector3(-this.roadBorderDistance, this.frontPoint.position.y, this.frontPoint.position.z);
-        if (this.frontPoint.position.x > this.roadBorderDistance)
-            this.frontPoint.position = new Vector3(this.roadBorderDistance, this.frontPoint.position.y, this.frontPoint.position.z);
 
         // Move backPoint to frontPoint
         Vector3 moveDirectionOfBackPoint = this.frontPoint.position - this.backPoint.position;
         float moveDistanceOfBackPoint = moveDirectionOfBackPoint.magnitude - this.vehicleLength;
         this.backPoint.position += moveDirectionOfBackPoint.normalized * moveDistanceOfBackPoint;
         this.backPoint.RotateAround(this.frontPoint.position, Vector3.up, -steeringAngle * 5f * Time.deltaTime);
-        if (this.backPoint.position.x < -this.roadBorderDistance)
-            this.backPoint.position = new Vector3(-this.roadBorderDistance, this.backPoint.position.y, this.backPoint.position.z);
-        if (this.backPoint.position.x > this.roadBorderDistance)
-            this.backPoint.position = new Vector3(this.roadBorderDistance, this.backPoint.position.y, this.backPoint.position.z);
 
         // Move vehicle position to middle point of frontPoint and backPoint
         Vector3 moveDirectionOfVehicle = (this.frontPoint.position - this.backPoint.position) * 0.5f;
