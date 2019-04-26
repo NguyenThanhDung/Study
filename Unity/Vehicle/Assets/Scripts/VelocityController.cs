@@ -63,8 +63,10 @@ public class VelocityController : MonoBehaviour
         this.backPoint.RotateAround(this.frontPoint.position, Vector3.up, -steeringAngle * 5f * Time.deltaTime);
 
         // Move vehicle position to middle point of frontPoint and backPoint
-        Vector3 moveDirectionOfVehicle = (this.frontPoint.position - this.backPoint.position) * 0.5f;
-        this.transform.position = this.backPoint.position + moveDirectionOfVehicle;
+        Vector3 backToMiddleVector = (this.frontPoint.position - this.backPoint.position) * 0.5f;
+        Vector3 middlePoint = this.backPoint.position + backToMiddleVector;
+        Vector3 translateVector = middlePoint - this.transform.position;
+        this.transform.Translate(translateVector);
 
         // Rotate vehicle follow the direction of frontPoint and backPoint
         float angle = Vector3.SignedAngle(Vector3.forward, this.frontPoint.position - this.backPoint.position, Vector3.up);
