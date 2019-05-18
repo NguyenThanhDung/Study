@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public static MainMenu Instance;
-
-    void Awake()
-    {
-        Instance = this;
-    }
-
     public void StartGame()
     {
         if (GameEvents.OnGameStart != null)
