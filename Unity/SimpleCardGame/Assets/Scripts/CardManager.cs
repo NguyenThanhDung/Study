@@ -33,7 +33,8 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < MAX_CARD_COUNT; i++)
         {
             GameObject card = Instantiate(this.cardPrefab);
-            card.transform.position = new Vector3(i - 5f, 0f, i * 0.1f - 0.5f);
+            card.transform.position = new Vector3(i * 0.5f - 2.5f, 1.5f, i * 0.1f - 0.5f);
+            card.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             card.transform.parent = this.transform;
             this.cards.Add(card);
         }
