@@ -9,19 +9,21 @@ public class Player : MonoBehaviour
     void Start()
     {
         this.cards = new List<Card>();
-        GameEvents.OnSelectCard += OnSelectCard;
+        GameEvents.OnSelectACard += AddCard;
     }
 
     void Destroy()
     {
-        GameEvents.OnSelectCard -= OnSelectCard;
+        GameEvents.OnSelectACard -= AddCard;
     }
 
-    private void OnSelectCard(Card card)
+    private void AddCard(Card card)
     {
         card.MarkOwnByPlayer();
         this.cards.Add(card);
         AlignCards();
+        if(GameEvents.OnFinishSelectingACard != null)
+            GameEvents.OnFinishSelectingACard.Invoke(card);
         if(this.cards.Count >= 5 && GameEvents.OnPlayerFinishSelectingCard != null)
             GameEvents.OnPlayerFinishSelectingCard.Invoke();
     }

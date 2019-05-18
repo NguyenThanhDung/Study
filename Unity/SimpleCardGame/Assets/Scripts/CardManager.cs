@@ -21,14 +21,14 @@ public class CardManager : MonoBehaviour
     {
         this.cards = new List<Card>();
         GameEvents.OnGameStart += OnGameStart;
-        GameEvents.OnSelectCard += OnSelectCard;
+        GameEvents.OnFinishSelectingACard += RemoveSelectedCard;
         GameEvents.OnPlayerFinishSelectingCard += DeliverCardsToOpponent;
     }
 
     void Destroy()
     {
         GameEvents.OnGameStart -= OnGameStart;
-        GameEvents.OnSelectCard -= OnSelectCard;
+        GameEvents.OnFinishSelectingACard -= RemoveSelectedCard;
         GameEvents.OnPlayerFinishSelectingCard -= DeliverCardsToOpponent;
     }
 
@@ -45,7 +45,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void OnSelectCard(Card card)
+    private void RemoveSelectedCard(Card card)
     {
         this.cards.Remove(card);
     }
