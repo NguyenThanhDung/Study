@@ -691,3 +691,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d0eb6af1a1d7482d803ce729b4193d5, type: 3}
+--- !u!1001 &7358964191060344295
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6666360818752059766, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_Name
+      value: CardManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133965491228213573, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507661618645014948, guid: f92f0ec7a4d618f4dbd790e27bd8da6d,
+        type: 3}
+      propertyPath: cardPrefab
+      value: 
+      objectReference: {fileID: 711083092960207922, guid: ccd630b1ea38e4275b54f6c0aa3652c6,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f92f0ec7a4d618f4dbd790e27bd8da6d, type: 3}
