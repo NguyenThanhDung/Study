@@ -36,6 +36,7 @@ public class CardManager : MonoBehaviour
             card.transform.position = new Vector3(i * 0.5f - 2.5f, 1.5f, i * 0.1f - 0.5f);
             card.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             card.transform.parent = this.transform;
+            card.GetComponent<Card>().ID = i;
             this.cards.Add(card);
         }
     }
