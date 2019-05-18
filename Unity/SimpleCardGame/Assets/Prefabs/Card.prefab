@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 711083092960207923}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 711083093025172068}
   - component: {fileID: 711083093025172075}
   - component: {fileID: 711083093025172074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FrontBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 711083093329516257}
-  m_Layer: 0
+  - component: {fileID: 6845607226749160740}
+  m_Layer: 9
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,6 +159,19 @@ Transform:
   m_Father: {fileID: 711083092960207923}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6845607226749160740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711083093329516256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.5, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &819937512448692336
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +184,7 @@ GameObject:
   - component: {fileID: 5540075644296053390}
   - component: {fileID: 6121057017308151056}
   - component: {fileID: 8126512902187326409}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +277,7 @@ GameObject:
   - component: {fileID: 7089734693545516951}
   - component: {fileID: 453104607145095009}
   - component: {fileID: 3352661600914955798}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +484,7 @@ GameObject:
   - component: {fileID: 1395801145437689080}
   - component: {fileID: 5577164336545525320}
   - component: {fileID: 6481422405373181636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +690,7 @@ GameObject:
   - component: {fileID: 9119616982406241704}
   - component: {fileID: 5408418304191916995}
   - component: {fileID: 7999545402497422524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
