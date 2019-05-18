@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59caed6ca2235144f9e6f33aec45f0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 711083092960207922, guid: ccd630b1ea38e4275b54f6c0aa3652c6,
+    type: 3}

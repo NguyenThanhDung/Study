@@ -30,6 +30,6 @@ public class GameManager : MonoBehaviour
 
     private void OnGameStart()
     {
-        Debug.Log("Start game");
+        Instantiate(cardPrefab);
     }
 }
