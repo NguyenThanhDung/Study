@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
         card.MarkOwnByPlayer();
         this.cards.Add(card);
         AlignCards();
+        if(this.cards.Count >= 5 && GameEvents.OnPlayerFinishSelectingCard != null)
+            GameEvents.OnPlayerFinishSelectingCard.Invoke();
     }
 
     private void AlignCards()

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Opponent : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        GameEvents.OnDeliverCardToOpponent += GetCards;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Destroy()
     {
-        
+        GameEvents.OnDeliverCardToOpponent -= GetCards;
+    }
+
+    private void GetCards(List<Card> cards)
+    {
+        Debug.Log(cards.Count.ToString());
     }
 }
