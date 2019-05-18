@@ -4,5 +4,5 @@ using UnityEngine;
 public class GameEvents : MonoBehaviour
 {
     public static Action OnGameStart;
-    public static Action<GameObject> OnSelectCard;
+    public static Action<Card> OnSelectCard;
 }
