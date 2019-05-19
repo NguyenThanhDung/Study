@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
     void Start()
     {
         this.cards = new List<Card>();
-        GameEvents.OnSelectACard += AddCard;
+        GameEvents.OnUserObtainCard += AddCard;
     }
 
     void Destroy()
     {
-        GameEvents.OnSelectACard -= AddCard;
+        GameEvents.OnUserObtainCard -= AddCard;
     }
 
     private void AddCard(Card card)

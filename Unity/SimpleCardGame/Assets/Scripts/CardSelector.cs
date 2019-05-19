@@ -15,8 +15,8 @@ public class CardSelector : MonoBehaviour
             RaycastHit raycastHit;
             if(Physics.Raycast(ray, out raycastHit, 100f, cardLayer))
             {
-                if(GameManager.Instance.gameState == GameState.DeliverCardsToPlayer && GameEvents.OnSelectACard != null)
-                    GameEvents.OnSelectACard.Invoke(raycastHit.collider.transform.parent.gameObject.GetComponent<Card>());
+                if(GameManager.Instance.gameState == GameState.DeliverCardsToPlayer && GameEvents.OnUserObtainCard != null)
+                    GameEvents.OnUserObtainCard.Invoke(raycastHit.collider.transform.parent.gameObject.GetComponent<Card>());
             }
         }
     }
