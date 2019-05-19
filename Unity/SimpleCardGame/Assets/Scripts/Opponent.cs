@@ -9,12 +9,12 @@ public class Opponent : MonoBehaviour
     void Start()
     {
         this.cards = new List<Card>();
-        GameEvents.OnDeliverCardToOpponent += GetCards;
+        GameEvents.OnDeliverCardsToOpponent += GetCards;
     }
 
     void Destroy()
     {
-        GameEvents.OnDeliverCardToOpponent -= GetCards;
+        GameEvents.OnDeliverCardsToOpponent -= GetCards;
     }
 
     private void GetCards(List<Card> cards)
@@ -22,6 +22,8 @@ public class Opponent : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
             this.cards.Add(cards[i]);
         AlignCards();
+        if(GameEvents.OnFinishDeliveringCardsToOpponent != null)
+            GameEvents.OnFinishDeliveringCardsToOpponent.Invoke();
     }
 
     private void AlignCards()

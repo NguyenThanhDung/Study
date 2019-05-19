@@ -9,5 +9,6 @@ public class GameEvents : MonoBehaviour
     public static Action<Card> OnSelectACard;
     public static Action<Card> OnFinishSelectingACard;
     public static Action OnPlayerFinishSelectingCards;
-    public static Action<List<Card>> OnDeliverCardToOpponent;
+    public static Action<List<Card>> OnDeliverCardsToOpponent;
+    public static Action OnFinishDeliveringCardsToOpponent;
 }
