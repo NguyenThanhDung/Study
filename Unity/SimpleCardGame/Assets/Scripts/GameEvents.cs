@@ -8,6 +8,6 @@ public class GameEvents : MonoBehaviour
     public static Action OnGameStart;
     public static Action<Card> OnSelectACard;
     public static Action<Card> OnFinishSelectingACard;
-    public static Action OnPlayerFinishSelectingCard;
+    public static Action OnPlayerFinishSelectingCards;
     public static Action<List<Card>> OnDeliverCardToOpponent;
 }

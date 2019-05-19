@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
         AlignCards();
         if(GameEvents.OnFinishSelectingACard != null)
             GameEvents.OnFinishSelectingACard.Invoke(card);
-        if(this.cards.Count >= 5 && GameEvents.OnPlayerFinishSelectingCard != null)
-            GameEvents.OnPlayerFinishSelectingCard.Invoke();
+        if(this.cards.Count >= 5)
+            StartCoroutine(FinishSelectingCards());
     }
 
     private void AlignCards()
@@ -38,5 +38,12 @@ public class Player : MonoBehaviour
             Vector3 position = new Vector3(x, 1f, -3f);
             this.cards[i].MoveTo(position);
         }
+    }
+
+    private IEnumerator FinishSelectingCards()
+    {
+        yield return new WaitForSeconds(1f);
+        if(GameEvents.OnPlayerFinishSelectingCards != null)
+            GameEvents.OnPlayerFinishSelectingCards.Invoke();
     }
 }
