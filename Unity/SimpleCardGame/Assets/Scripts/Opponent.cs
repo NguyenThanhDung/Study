@@ -43,8 +43,7 @@ public class Opponent : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         int index = Random.Range(0, this.cards.Count);
-        Debug.Log("Opponent play card " + index.ToString());
-        // if(GameEvents.OnOpponentPlayCard != null)
-        //     GameEvents.OnOpponentPlayCard.Invoke(this.cards[index]);
+        if(GameEvents.OnOpponentPlayCard != null)
+            GameEvents.OnOpponentPlayCard.Invoke(this.cards[index]);
     }
 }
