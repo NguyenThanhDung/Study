@@ -24,6 +24,7 @@ public class Opponent : MonoBehaviour
         AlignCards();
         if(GameEvents.OnFinishDeliveringCardsToOpponent != null)
             GameEvents.OnFinishDeliveringCardsToOpponent.Invoke();
+        StartCoroutine(PlayFirstCard());
     }
 
     private void AlignCards()
@@ -36,5 +37,14 @@ public class Opponent : MonoBehaviour
             Vector3 position = new Vector3(x, 1f, 3f);
             this.cards[i].MoveToDesk(position);
         }
+    }
+
+    private IEnumerator PlayFirstCard()
+    {
+        yield return new WaitForSeconds(1f);
+        int index = Random.Range(0, this.cards.Count);
+        Debug.Log("Opponent play card " + index.ToString());
+        // if(GameEvents.OnOpponentPlayCard != null)
+        //     GameEvents.OnOpponentPlayCard.Invoke(this.cards[index]);
     }
 }
