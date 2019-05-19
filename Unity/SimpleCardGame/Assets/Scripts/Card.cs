@@ -40,8 +40,15 @@ public class Card : MonoBehaviour
     private void Play(Card card)
     {
         if(card.ID == this.ID)
-        {
-            Debug.Log("Play card ID " + this.ID.ToString());
-        }
+            MoveToBattleZone();
+    }
+
+    private void MoveToBattleZone()
+    {
+        if(this.isOwnedByPlayer)
+            this.transform.position = new Vector3(1f, 1f, 0f);
+        else
+            this.transform.position = new Vector3(-1f, 1f, 0f);
+        this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
     }
 }
