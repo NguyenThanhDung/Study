@@ -1,12 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
-    private bool isOwnedByPlayer;
+    [SerializeField] TextMeshPro attackText;
+    [SerializeField] TextMeshPro healthText;
 
-    public int ID { get; set; }
+    private bool isOwnedByPlayer;
+    private int attackPoint;
+    private int healthPoint;
+
+    public int ID { get; private set; }
+
+    public int AttackPoint
+    {
+        get
+        {
+            return this.attackPoint;
+        }
+        private set
+        {
+            this.attackPoint = value;
+            this.attackText.text = value.ToString();
+        }
+    }
+
+    public int HealthPoint
+    {
+        get
+        {
+            return this.healthPoint;
+        }
+        private set
+        {
+            this.healthPoint = value;
+            this.healthText.text = value.ToString();
+        }
+    }
 
     void Start()
     {
@@ -23,6 +55,13 @@ public class Card : MonoBehaviour
         GameEvents.OnOpponentPlayCard -= Play;
     }
 
+    public void Initialize()
+    {
+        this.ID = CardManager.Instance.GenerateCardID();
+        this.AttackPoint = Random.Range(1, 10);
+        this.HealthPoint = Random.Range(1, 10);
+    }
+
     public void MarkOwnByPlayer()
     {
         this.isOwnedByPlayer = true;
@@ -31,7 +70,7 @@ public class Card : MonoBehaviour
     public void MoveToDesk(Vector3 position)
     {
         this.transform.position = position;
-        if(this.isOwnedByPlayer)
+        if (this.isOwnedByPlayer)
             this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         else
             this.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
@@ -39,13 +78,13 @@ public class Card : MonoBehaviour
 
     private void Play(Card card)
     {
-        if(card.ID == this.ID)
+        if (card.ID == this.ID)
             MoveToBattleZone();
     }
 
     private void MoveToBattleZone()
     {
-        if(this.isOwnedByPlayer)
+        if (this.isOwnedByPlayer)
             this.transform.position = new Vector3(1f, 1f, 0f);
         else
             this.transform.position = new Vector3(-1f, 1f, 0f);

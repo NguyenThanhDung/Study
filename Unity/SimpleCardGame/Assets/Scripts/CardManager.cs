@@ -10,6 +10,7 @@ public class CardManager : MonoBehaviour
 
     private const int MAX_CARD_COUNT = 10;
 
+    private int cardID;
     private List<Card> cards;
 
     void Awake()
@@ -32,15 +33,23 @@ public class CardManager : MonoBehaviour
         GameEvents.OnPlayerFinishSelectingCards -= OnDeliverCardsToOpponent;
     }
 
+    public int GenerateCardID()
+    {
+        int currentCardID = this.cardID;
+        cardID++;
+        return currentCardID;
+    }
+
     private void OnGameStart()
     {
+        this.cardID = 0;
         for (int i = 0; i < MAX_CARD_COUNT; i++)
         {
             Card card = Instantiate(this.cardPrefab);
             card.transform.position = new Vector3(i * 0.5f - 2.5f, i * 0.1f + 1.5f, 0f);
             card.transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
             card.transform.parent = this.transform;
-            card.ID = i;
+            card.Initialize();
             this.cards.Add(card);
         }
     }
