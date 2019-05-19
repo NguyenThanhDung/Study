@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         {
             float x = i * dist - (count - 1) * 0.5f;
             Vector3 position = new Vector3(x, 1f, -3f);
-            this.cards[i].MoveTo(position);
+            this.cards[i].MoveToDesk(position);
         }
     }
 }

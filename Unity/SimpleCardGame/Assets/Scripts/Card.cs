@@ -22,7 +22,7 @@ public class Card : MonoBehaviour
         this.isOwnedByPlayer = true;
     }
 
-    public void MoveTo(Vector3 position)
+    public void MoveToDesk(Vector3 position)
     {
         this.transform.position = position;
         if(this.isOwnedByPlayer)
