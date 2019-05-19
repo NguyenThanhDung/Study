@@ -10,11 +10,13 @@ public class Opponent : MonoBehaviour
     {
         this.cards = new List<Card>();
         GameEvents.OnDeliverCardsToOpponent += GetCards;
+        GameEvents.OnStartOpponentTurn += Play;
     }
 
     void Destroy()
     {
         GameEvents.OnDeliverCardsToOpponent -= GetCards;
+        GameEvents.OnStartOpponentTurn -= Play;
     }
 
     private void GetCards(List<Card> cards)
@@ -22,16 +24,15 @@ public class Opponent : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
             this.cards.Add(cards[i]);
         AlignCards();
-        if(GameEvents.OnFinishDeliveringCardsToOpponent != null)
+        if (GameEvents.OnFinishDeliveringCardsToOpponent != null)
             GameEvents.OnFinishDeliveringCardsToOpponent.Invoke();
-        StartCoroutine(PlayFirstCard());
     }
 
     private void AlignCards()
     {
         float dist = 1.1f;
         int count = this.cards.Count;
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             float x = i * dist - (count - 1) * 0.5f;
             Vector3 position = new Vector3(x, 1f, 3f);
@@ -39,11 +40,10 @@ public class Opponent : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayFirstCard()
+    private void Play()
     {
-        yield return new WaitForSeconds(1f);
         int index = Random.Range(0, this.cards.Count);
-        if(GameEvents.OnOpponentPlayCard != null)
+        if (GameEvents.OnOpponentPlayCard != null)
             GameEvents.OnOpponentPlayCard.Invoke(this.cards[index]);
     }
 }

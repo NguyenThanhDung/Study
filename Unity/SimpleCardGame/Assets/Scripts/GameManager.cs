@@ -7,7 +7,8 @@ public enum GameState
     Idle,
     DeliverCardsToPlayer,
     DeliverCardsToOpponent,
-    Playing
+    OpponentTurn,
+    UserTurn
 }
 
 public class GameManager : MonoBehaviour
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnGameStart += OnGameStart;
         GameEvents.OnPlayerFinishSelectingCards += DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToOpponent += StartPlaying;
+        GameEvents.OnOpponentPlayCard += WaitForUserToPlay;
     }
 
     void Destroy()
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnGameStart -= OnGameStart;
         GameEvents.OnPlayerFinishSelectingCards -= DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToOpponent -= StartPlaying;
+        GameEvents.OnOpponentPlayCard -= WaitForUserToPlay;
     }
 
     private void OnGameStart()
@@ -52,6 +55,19 @@ public class GameManager : MonoBehaviour
 
     private void StartPlaying()
     {
-        this.gameState = GameState.Playing;
+        this.gameState = GameState.OpponentTurn;
+        StartCoroutine(StartOpponentTurn());
+    }
+
+    private IEnumerator StartOpponentTurn()
+    {
+        yield return new WaitForSeconds(1f);
+        if(GameEvents.OnStartOpponentTurn != null)
+            GameEvents.OnStartOpponentTurn.Invoke();
+    }
+
+    private void WaitForUserToPlay(Card card)
+    {
+        this.gameState = GameState.UserTurn;
     }
 }
