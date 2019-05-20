@@ -48,11 +48,13 @@ public class Card : MonoBehaviour
     void OnEnable()
     {
         GameEvents.OnOpponentPlayCard += Play;
+        GameEvents.OnUserPlayCard += Play;
     }
 
     void OnDisable()
     {
         GameEvents.OnOpponentPlayCard -= Play;
+        GameEvents.OnUserPlayCard -= Play;
     }
 
     public void Initialize()
