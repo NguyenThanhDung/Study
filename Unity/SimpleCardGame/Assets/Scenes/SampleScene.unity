@@ -648,7 +648,7 @@ PrefabInstance:
     - target: {fileID: 4273851661236074114, guid: 914a1942ac6440b499cb48345f1cd5c8,
         type: 3}
       propertyPath: m_Name
-      value: Opponent
+      value: Computer
       objectReference: {fileID: 0}
     - target: {fileID: 4273851661236074115, guid: 914a1942ac6440b499cb48345f1cd5c8,
         type: 3}
