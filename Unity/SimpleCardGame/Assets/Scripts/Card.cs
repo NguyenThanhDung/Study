@@ -47,13 +47,13 @@ public class Card : MonoBehaviour
 
     void OnEnable()
     {
-        GameEvents.OnOpponentPlayCard += Play;
+        GameEvents.OnComputerPlayCard += Play;
         GameEvents.OnUserPlayCard += Play;
     }
 
     void OnDisable()
     {
-        GameEvents.OnOpponentPlayCard -= Play;
+        GameEvents.OnComputerPlayCard -= Play;
         GameEvents.OnUserPlayCard -= Play;
     }
 

@@ -7,12 +7,12 @@ public class Human : Player
     public override void Start()
     {
         base.Start();
-        GameEvents.OnUserObtainCard += AddCard;
+        GameEvents.OnHumanObtainCard += AddCard;
     }
 
     void Destroy()
     {
-        GameEvents.OnUserObtainCard -= AddCard;
+        GameEvents.OnHumanObtainCard -= AddCard;
     }
 
     private void AddCard(Card card)
@@ -20,9 +20,9 @@ public class Human : Player
         card.MarkOwnByPlayer();
         this.cards.Add(card);
         AlignCards();
-        if(GameEvents.OnFinishSelectingACard != null)
-            GameEvents.OnFinishSelectingACard.Invoke(card);
-        if(this.cards.Count >= 5 && GameEvents.OnPlayerFinishSelectingCards != null)
-            GameEvents.OnPlayerFinishSelectingCards.Invoke();
+        if(GameEvents.OnFinishSelectingCard != null)
+            GameEvents.OnFinishSelectingCard.Invoke(card);
+        if(this.cards.Count >= 5 && GameEvents.OnHumanFinishSelectingCards != null)
+            GameEvents.OnHumanFinishSelectingCards.Invoke();
     }
 }

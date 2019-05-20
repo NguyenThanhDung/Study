@@ -22,15 +22,15 @@ public class CardManager : MonoBehaviour
     {
         this.cards = new List<Card>();
         GameEvents.OnGameStart += OnGameStart;
-        GameEvents.OnFinishSelectingACard += RemoveSelectedCard;
-        GameEvents.OnPlayerFinishSelectingCards += OnDeliverCardsToOpponent;
+        GameEvents.OnFinishSelectingCard += RemoveSelectedCard;
+        GameEvents.OnHumanFinishSelectingCards += OnDeliverCardsToOpponent;
     }
 
     void Destroy()
     {
         GameEvents.OnGameStart -= OnGameStart;
-        GameEvents.OnFinishSelectingACard -= RemoveSelectedCard;
-        GameEvents.OnPlayerFinishSelectingCards -= OnDeliverCardsToOpponent;
+        GameEvents.OnFinishSelectingCard -= RemoveSelectedCard;
+        GameEvents.OnHumanFinishSelectingCards -= OnDeliverCardsToOpponent;
     }
 
     public int GenerateCardID()
@@ -67,8 +67,8 @@ public class CardManager : MonoBehaviour
     private IEnumerator DeliverCardsToOpponent()
     {
         yield return new WaitForSeconds(1f);
-        if(GameEvents.OnDeliverCardsToOpponent != null)
-            GameEvents.OnDeliverCardsToOpponent.Invoke(this.cards);
+        if(GameEvents.OnDeliverCardsToComputer != null)
+            GameEvents.OnDeliverCardsToComputer.Invoke(this.cards);
         this.cards.Clear();
     }
 }

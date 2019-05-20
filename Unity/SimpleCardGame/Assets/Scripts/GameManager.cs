@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState
-{
-    Idle,
-    DeliverCardsToPlayer,
-    DeliverCardsToOpponent,
-    OpponentTurn,
-    UserTurn
-}
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -30,44 +21,44 @@ public class GameManager : MonoBehaviour
     {
         this.gameState = GameState.Idle;
         GameEvents.OnGameStart += OnGameStart;
-        GameEvents.OnPlayerFinishSelectingCards += DeliverCardsToOpponent;
-        GameEvents.OnFinishDeliveringCardsToOpponent += StartPlaying;
-        GameEvents.OnOpponentPlayCard += WaitForUserToPlay;
+        GameEvents.OnHumanFinishSelectingCards += DeliverCardsToOpponent;
+        GameEvents.OnFinishDeliveringCardsToComputer += StartPlaying;
+        GameEvents.OnComputerPlayCard += WaitForUserToPlay;
     }
 
     void Destroy()
     {
         GameEvents.OnGameStart -= OnGameStart;
-        GameEvents.OnPlayerFinishSelectingCards -= DeliverCardsToOpponent;
-        GameEvents.OnFinishDeliveringCardsToOpponent -= StartPlaying;
-        GameEvents.OnOpponentPlayCard -= WaitForUserToPlay;
+        GameEvents.OnHumanFinishSelectingCards -= DeliverCardsToOpponent;
+        GameEvents.OnFinishDeliveringCardsToComputer -= StartPlaying;
+        GameEvents.OnComputerPlayCard -= WaitForUserToPlay;
     }
 
     private void OnGameStart()
     {
-        this.gameState = GameState.DeliverCardsToPlayer;
+        this.gameState = GameState.DeliverCardsToHuman;
     }
 
     private void DeliverCardsToOpponent()
     {
-        this.gameState = GameState.DeliverCardsToOpponent;
+        this.gameState = GameState.DeliverCardsToComputer;
     }
 
     private void StartPlaying()
     {
-        this.gameState = GameState.OpponentTurn;
+        this.gameState = GameState.ComputerTurn;
         StartCoroutine(StartOpponentTurn());
     }
 
     private IEnumerator StartOpponentTurn()
     {
         yield return new WaitForSeconds(1f);
-        if(GameEvents.OnStartOpponentTurn != null)
-            GameEvents.OnStartOpponentTurn.Invoke();
+        if(GameEvents.OnStartCopmuterTurn != null)
+            GameEvents.OnStartCopmuterTurn.Invoke();
     }
 
     private void WaitForUserToPlay(Card card)
     {
-        this.gameState = GameState.UserTurn;
+        this.gameState = GameState.HumanTurn;
     }
 }

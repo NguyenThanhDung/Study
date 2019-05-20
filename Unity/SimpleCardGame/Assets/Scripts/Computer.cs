@@ -7,14 +7,14 @@ public class Computer : Player
     public override void Start()
     {
         base.Start();
-        GameEvents.OnDeliverCardsToOpponent += GetCards;
-        GameEvents.OnStartOpponentTurn += Play;
+        GameEvents.OnDeliverCardsToComputer += GetCards;
+        GameEvents.OnStartCopmuterTurn += Play;
     }
 
     void Destroy()
     {
-        GameEvents.OnDeliverCardsToOpponent -= GetCards;
-        GameEvents.OnStartOpponentTurn -= Play;
+        GameEvents.OnDeliverCardsToComputer -= GetCards;
+        GameEvents.OnStartCopmuterTurn -= Play;
     }
 
     private void GetCards(List<Card> cards)
@@ -22,14 +22,14 @@ public class Computer : Player
         for (int i = 0; i < cards.Count; i++)
             this.cards.Add(cards[i]);
         AlignCards();
-        if (GameEvents.OnFinishDeliveringCardsToOpponent != null)
-            GameEvents.OnFinishDeliveringCardsToOpponent.Invoke();
+        if (GameEvents.OnFinishDeliveringCardsToComputer != null)
+            GameEvents.OnFinishDeliveringCardsToComputer.Invoke();
     }
 
     private void Play()
     {
         int index = Random.Range(0, this.cards.Count);
-        if (GameEvents.OnOpponentPlayCard != null)
-            GameEvents.OnOpponentPlayCard.Invoke(this.cards[index]);
+        if (GameEvents.OnComputerPlayCard != null)
+            GameEvents.OnComputerPlayCard.Invoke(this.cards[index]);
     }
 }
