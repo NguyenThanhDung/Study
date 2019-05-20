@@ -4,39 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private List<Card> cards;
+    protected List<Card> cards;
 
-    void Start()
+    public virtual void Start()
     {
         this.cards = new List<Card>();
-        GameEvents.OnUserObtainCard += AddCard;
     }
 
-    void Destroy()
+    protected void AlignCards()
     {
-        GameEvents.OnUserObtainCard -= AddCard;
-    }
-
-    private void AddCard(Card card)
-    {
-        card.MarkOwnByPlayer();
-        this.cards.Add(card);
-        AlignCards();
-        if(GameEvents.OnFinishSelectingACard != null)
-            GameEvents.OnFinishSelectingACard.Invoke(card);
-        if(this.cards.Count >= 5 && GameEvents.OnPlayerFinishSelectingCards != null)
-            GameEvents.OnPlayerFinishSelectingCards.Invoke();
-    }
-
-    private void AlignCards()
-    {
-        float dist = 1.1f;
         int count = this.cards.Count;
         for(int i = 0; i < count; i++)
-        {
-            float x = i * dist - (count - 1) * 0.5f;
-            Vector3 position = new Vector3(x, 1f, -3f);
-            this.cards[i].MoveToDesk(position);
-        }
+            this.cards[i].MoveToDesk(i, count);
     }
 }

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Opponent : MonoBehaviour
+public class Opponent : Player
 {
-    private List<Card> cards;
-
-    void Start()
+    public override void Start()
     {
-        this.cards = new List<Card>();
+        base.Start();
         GameEvents.OnDeliverCardsToOpponent += GetCards;
         GameEvents.OnStartOpponentTurn += Play;
     }
@@ -26,18 +24,6 @@ public class Opponent : MonoBehaviour
         AlignCards();
         if (GameEvents.OnFinishDeliveringCardsToOpponent != null)
             GameEvents.OnFinishDeliveringCardsToOpponent.Invoke();
-    }
-
-    private void AlignCards()
-    {
-        float dist = 1.1f;
-        int count = this.cards.Count;
-        for (int i = 0; i < count; i++)
-        {
-            float x = i * dist - (count - 1) * 0.5f;
-            Vector3 position = new Vector3(x, 1f, 3f);
-            this.cards[i].MoveToDesk(position);
-        }
     }
 
     private void Play()

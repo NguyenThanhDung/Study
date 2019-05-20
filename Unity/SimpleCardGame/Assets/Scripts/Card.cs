@@ -69,13 +69,19 @@ public class Card : MonoBehaviour
         this.isOwnedByPlayer = true;
     }
 
-    public void MoveToDesk(Vector3 position)
+    public void MoveToDesk(int slotId, int slotCount)
     {
-        this.transform.position = position;
+        float x = slotId * 1.1f - (slotCount - 1) * 0.5f;
         if (this.isOwnedByPlayer)
+        {
+            this.transform.position = new Vector3(x, 1f, -3f);
             this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        }
         else
+        {
+            this.transform.position = new Vector3(x, 1f, 3f);
             this.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+        }
     }
 
     private void Play(Card card)
