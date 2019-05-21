@@ -17,7 +17,7 @@ public class Human : Player
 
     private void AddCard(Card card)
     {
-        card.MarkOwnByPlayer();
+        card.MarkOwnedByHuman();
         this.cards.Add(card);
         AlignCards();
         if(GameEvents.OnFinishSelectingCard != null)

@@ -8,11 +8,11 @@ public class Card : MonoBehaviour
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
 
-    private bool isOwnedByPlayer;
     private int attackPoint;
     private int healthPoint;
 
     public int ID { get; private set; }
+    public PlayerType OwnedPlayer { get; private set; }
 
     public int AttackPoint
     {
@@ -40,9 +40,17 @@ public class Card : MonoBehaviour
         }
     }
 
+    public bool IsDie
+    {
+        get
+        {
+            return this.HealthPoint <= 0;
+        }
+    }
+
     void Start()
     {
-        this.isOwnedByPlayer = false;
+        this.OwnedPlayer = PlayerType.Computer;
     }
 
     void OnEnable()
@@ -62,15 +70,15 @@ public class Card : MonoBehaviour
         this.HealthPoint = Random.Range(1, 10);
     }
 
-    public void MarkOwnByPlayer()
+    public void MarkOwnedByHuman()
     {
-        this.isOwnedByPlayer = true;
+        this.OwnedPlayer = PlayerType.Human;
     }
 
     public void MoveToDesk(int slotId, int slotCount)
     {
         float x = slotId * 1.1f - (slotCount - 1) * 0.5f;
-        if (this.isOwnedByPlayer)
+        if (this.OwnedPlayer == PlayerType.Human)
         {
             this.transform.position = new Vector3(x, 1f, -3f);
             this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
@@ -82,6 +90,11 @@ public class Card : MonoBehaviour
         }
     }
 
+    public void OnAttackedBy(Card attackCard)
+    {
+        this.HealthPoint -= attackCard.AttackPoint;
+    }
+
     private void Play(PlayerType playerType, Card card)
     {
         if (card.ID == this.ID)
@@ -90,7 +103,7 @@ public class Card : MonoBehaviour
 
     private void MoveToBattleZone()
     {
-        if (this.isOwnedByPlayer)
+        if (this.OwnedPlayer == PlayerType.Human)
             this.transform.position = new Vector3(1f, 1f, 0f);
         else
             this.transform.position = new Vector3(-1f, 1f, 0f);
