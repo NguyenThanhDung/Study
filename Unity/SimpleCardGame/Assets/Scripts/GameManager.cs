@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
                 GameEvents.OnStartTurn.Invoke(PlayerType.Computer);
             }
         }
-        this.defendCard = this.attackCard;
+        SwapBattle();
     }
 
     private void SwapBattle()
