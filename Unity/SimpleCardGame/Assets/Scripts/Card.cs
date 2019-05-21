@@ -47,14 +47,12 @@ public class Card : MonoBehaviour
 
     void OnEnable()
     {
-        GameEvents.OnComputerPlayCard += Play;
-        GameEvents.OnUserPlayCard += Play;
+        GameEvents.OnPlayerPlayCard += Play;
     }
 
     void OnDisable()
     {
-        GameEvents.OnComputerPlayCard -= Play;
-        GameEvents.OnUserPlayCard -= Play;
+        GameEvents.OnPlayerPlayCard -= Play;
     }
 
     public void Initialize()
@@ -84,7 +82,7 @@ public class Card : MonoBehaviour
         }
     }
 
-    private void Play(Card card)
+    private void Play(PlayerType playerType, Card card)
     {
         if (card.ID == this.ID)
             MoveToBattleZone();

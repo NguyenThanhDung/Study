@@ -17,8 +17,8 @@ public class CardSelector : MonoBehaviour
             {
                 if (GameManager.Instance.gameState == GameState.DeliverCardsToHuman && GameEvents.OnHumanObtainCard != null)
                     GameEvents.OnHumanObtainCard.Invoke(raycastHit.collider.transform.parent.gameObject.GetComponent<Card>());
-                if (GameManager.Instance.gameState == GameState.HumanTurn && GameEvents.OnUserPlayCard != null)
-                    GameEvents.OnUserPlayCard.Invoke(raycastHit.collider.transform.parent.gameObject.GetComponent<Card>());
+                if (GameManager.Instance.gameState == GameState.HumanTurn && GameEvents.OnPlayerPlayCard != null)
+                    GameEvents.OnPlayerPlayCard.Invoke(PlayerType.Human, raycastHit.collider.transform.parent.gameObject.GetComponent<Card>());
             }
         }
     }

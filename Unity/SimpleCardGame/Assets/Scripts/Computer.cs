@@ -29,7 +29,7 @@ public class Computer : Player
     private void Play()
     {
         int index = Random.Range(0, this.cards.Count);
-        if (GameEvents.OnComputerPlayCard != null)
-            GameEvents.OnComputerPlayCard.Invoke(this.cards[index]);
+        if (GameEvents.OnPlayerPlayCard != null)
+            GameEvents.OnPlayerPlayCard.Invoke(PlayerType.Computer, this.cards[index]);
     }
 }

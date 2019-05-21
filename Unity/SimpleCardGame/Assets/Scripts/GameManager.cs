@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnGameStart += OnGameStart;
         GameEvents.OnHumanFinishSelectingCards += DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer += StartPlaying;
-        GameEvents.OnComputerPlayCard += WaitForUserToPlay;
+        GameEvents.OnPlayerPlayCard += OnPlayerPlayCard;
     }
 
     void Destroy()
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnGameStart -= OnGameStart;
         GameEvents.OnHumanFinishSelectingCards -= DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer -= StartPlaying;
-        GameEvents.OnComputerPlayCard -= WaitForUserToPlay;
+        GameEvents.OnPlayerPlayCard -= OnPlayerPlayCard;
     }
 
     private void OnGameStart()
@@ -57,8 +57,9 @@ public class GameManager : MonoBehaviour
             GameEvents.OnStartCopmuterTurn.Invoke();
     }
 
-    private void WaitForUserToPlay(Card card)
+    private void OnPlayerPlayCard(PlayerType playerType, Card card)
     {
+        // TODO: Check player type and decide action
         this.gameState = GameState.HumanTurn;
     }
 }
