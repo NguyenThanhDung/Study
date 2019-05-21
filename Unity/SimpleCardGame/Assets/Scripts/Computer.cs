@@ -11,8 +11,9 @@ public class Computer : Player
         GameEvents.OnStartTurn += Play;
     }
 
-    void Destroy()
+    public override void Destroy()
     {
+        base.Start();
         GameEvents.OnDeliverCardsToComputer -= GetCards;
         GameEvents.OnStartTurn -= Play;
     }
