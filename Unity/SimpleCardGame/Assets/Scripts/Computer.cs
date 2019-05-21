@@ -8,13 +8,13 @@ public class Computer : Player
     {
         base.Start();
         GameEvents.OnDeliverCardsToComputer += GetCards;
-        GameEvents.OnStartCopmuterTurn += Play;
+        GameEvents.OnStartTurn += Play;
     }
 
     void Destroy()
     {
         GameEvents.OnDeliverCardsToComputer -= GetCards;
-        GameEvents.OnStartCopmuterTurn -= Play;
+        GameEvents.OnStartTurn -= Play;
     }
 
     private void GetCards(List<Card> cards)
@@ -26,10 +26,13 @@ public class Computer : Player
             GameEvents.OnFinishDeliveringCardsToComputer.Invoke();
     }
 
-    private void Play()
+    private void Play(PlayerType playerType)
     {
-        int index = Random.Range(0, this.cards.Count);
-        if (GameEvents.OnPlayerPlayCard != null)
-            GameEvents.OnPlayerPlayCard.Invoke(PlayerType.Computer, this.cards[index]);
+        if (playerType == PlayerType.Computer)
+        {
+            int index = Random.Range(0, this.cards.Count);
+            if (GameEvents.OnPlayerPlayCard != null)
+                GameEvents.OnPlayerPlayCard.Invoke(PlayerType.Computer, this.cards[index]);
+        }
     }
 }

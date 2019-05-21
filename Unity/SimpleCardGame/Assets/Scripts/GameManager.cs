@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    private Card attackCard;
+    private Card defendCard;
+
     public GameState gameState
     {
         get;
@@ -53,13 +56,36 @@ public class GameManager : MonoBehaviour
     private IEnumerator StartOpponentTurn()
     {
         yield return new WaitForSeconds(1f);
-        if(GameEvents.OnStartCopmuterTurn != null)
-            GameEvents.OnStartCopmuterTurn.Invoke();
+        if (GameEvents.OnStartTurn != null)
+            GameEvents.OnStartTurn.Invoke(PlayerType.Computer);
     }
 
     private void OnPlayerPlayCard(PlayerType playerType, Card card)
     {
-        // TODO: Check player type and decide action
-        this.gameState = GameState.HumanTurn;
+        this.attackCard = card;
+        StartCoroutine(VerivyCardBattle(playerType));
+    }
+
+    private IEnumerator VerivyCardBattle(PlayerType playerType)
+    {
+        if (this.defendCard == null)
+        {
+            this.defendCard = this.attackCard;
+            yield return new WaitForSeconds(1f);
+            if (playerType == PlayerType.Computer)
+            {
+                this.gameState = GameState.HumanTurn;
+                GameEvents.OnStartTurn.Invoke(PlayerType.Human);
+            }
+            else
+            {
+                this.gameState = GameState.ComputerTurn;
+                GameEvents.OnStartTurn.Invoke(PlayerType.Computer);
+            }
+        }
+        else
+        {
+
+        }
     }
 }
