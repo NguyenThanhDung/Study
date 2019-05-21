@@ -8,12 +8,14 @@ public class Human : Player
     {
         base.Start();
         GameEvents.OnHumanObtainCard += AddCard;
+        GameEvents.OnStartTurn += OnStartTurn;
     }
 
     public override void Destroy()
     {
         base.Destroy();
         GameEvents.OnHumanObtainCard -= AddCard;
+        GameEvents.OnStartTurn -= OnStartTurn;
     }
 
     private void AddCard(Card card)
@@ -25,5 +27,14 @@ public class Human : Player
             GameEvents.OnFinishSelectingCard.Invoke(card);
         if(this.cards.Count >= 5 && GameEvents.OnHumanFinishSelectingCards != null)
             GameEvents.OnHumanFinishSelectingCards.Invoke();
+    }
+
+    private void OnStartTurn(PlayerType playerType)
+    {
+        if(playerType == PlayerType.Human && this.cards.Count == 0)
+        {
+            if(GameEvents.OnEndGame != null)
+                GameEvents.OnEndGame.Invoke(PlayerType.Computer);
+        }
     }
 }
