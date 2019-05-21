@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         if (this.defendCard == null)
         {
+            this.defendCard = this.attackCard;
             yield return new WaitForSeconds(1f);
             if (playerType == PlayerType.Computer)
             {
@@ -97,22 +98,25 @@ public class GameManager : MonoBehaviour
             if (GameEvents.OnCardDie != null)
                 GameEvents.OnCardDie.Invoke(this.defendCard);
 
-            yield return new WaitForSeconds(1f);
-
             if (this.defendCard.OwnedPlayer == PlayerType.Human)
             {
+                this.defendCard = this.attackCard;
                 this.gameState = GameState.HumanTurn;
+
+                yield return new WaitForSeconds(1f);
                 if (GameEvents.OnStartTurn != null)
                     GameEvents.OnStartTurn.Invoke(PlayerType.Human);
             }
             else
             {
+                this.defendCard = this.attackCard;
                 this.gameState = GameState.ComputerTurn;
+
+                yield return new WaitForSeconds(1f);
                 if (GameEvents.OnStartTurn != null)
                     GameEvents.OnStartTurn.Invoke(PlayerType.Computer);
             }
         }
-        this.defendCard = this.attackCard;
     }
 
     private void SwapBattle()
