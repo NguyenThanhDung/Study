@@ -94,18 +94,25 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
+            if (GameEvents.OnCardDie != null)
+                GameEvents.OnCardDie.Invoke(this.defendCard);
+
+            yield return new WaitForSeconds(1f);
+
             if (this.defendCard.OwnedPlayer == PlayerType.Human)
             {
                 this.gameState = GameState.HumanTurn;
-                GameEvents.OnStartTurn.Invoke(PlayerType.Human);
+                if (GameEvents.OnStartTurn != null)
+                    GameEvents.OnStartTurn.Invoke(PlayerType.Human);
             }
             else
             {
                 this.gameState = GameState.ComputerTurn;
-                GameEvents.OnStartTurn.Invoke(PlayerType.Computer);
+                if (GameEvents.OnStartTurn != null)
+                    GameEvents.OnStartTurn.Invoke(PlayerType.Computer);
             }
         }
-        SwapBattle();
+        this.defendCard = this.attackCard;
     }
 
     private void SwapBattle()

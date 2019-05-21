@@ -56,11 +56,13 @@ public class Card : MonoBehaviour
     void OnEnable()
     {
         GameEvents.OnPlayerPlayCard += Play;
+        GameEvents.OnCardDie += OnDie;
     }
 
     void OnDisable()
     {
         GameEvents.OnPlayerPlayCard -= Play;
+        GameEvents.OnCardDie -= OnDie;
     }
 
     public void Initialize()
@@ -108,5 +110,17 @@ public class Card : MonoBehaviour
         else
             this.transform.position = new Vector3(-1f, 1f, 0f);
         this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+    }
+
+    private void OnDie(Card card)
+    {
+        if (card.ID == this.ID)
+            StartCoroutine(SelfDestroy());
+    }
+
+    private IEnumerator SelfDestroy()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(this.gameObject);
     }
 }

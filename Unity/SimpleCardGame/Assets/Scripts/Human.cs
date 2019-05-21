@@ -10,8 +10,9 @@ public class Human : Player
         GameEvents.OnHumanObtainCard += AddCard;
     }
 
-    void Destroy()
+    public override void Destroy()
     {
+        base.Destroy();
         GameEvents.OnHumanObtainCard -= AddCard;
     }
 

@@ -13,4 +13,5 @@ public class GameEvents : MonoBehaviour
     public static Action OnFinishDeliveringCardsToComputer;
     public static Action<PlayerType> OnStartTurn;
     public static Action<PlayerType, Card> OnPlayerPlayCard;
+    public static Action<Card> OnCardDie;
 }
