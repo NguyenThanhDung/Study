@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ResultMenu : MonoBehaviour
 {
     [SerializeField] GameObject display;
+    [SerializeField] TMP_Text winnerText;
 
     void OnEnable()
     {
@@ -23,6 +25,7 @@ public class ResultMenu : MonoBehaviour
 
     private void OnEndGame(PlayerType winner)
     {
+        this.winnerText.text = winner.ToString();
         this.display.SetActive(true);
     }
 }
