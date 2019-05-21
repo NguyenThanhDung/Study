@@ -31,9 +31,17 @@ public class Computer : Player
     {
         if (playerType == PlayerType.Computer)
         {
-            int index = Random.Range(0, this.cards.Count);
-            if (GameEvents.OnPlayerPlayCard != null)
-                GameEvents.OnPlayerPlayCard.Invoke(PlayerType.Computer, this.cards[index]);
+            if (this.cards.Count > 0)
+            {
+                int index = Random.Range(0, this.cards.Count);
+                if (GameEvents.OnPlayerPlayCard != null)
+                    GameEvents.OnPlayerPlayCard.Invoke(PlayerType.Computer, this.cards[index]);
+            }
+            else
+            {
+                if(GameEvents.OnEndGame != null)
+                    GameEvents.OnEndGame.Invoke(PlayerType.Human);
+            }
         }
     }
 }

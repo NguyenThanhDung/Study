@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnHumanFinishSelectingCards += DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer += StartPlaying;
         GameEvents.OnPlayerPlayCard += OnPlayerPlayCard;
+        GameEvents.OnEndGame += OnEndGame;
     }
 
     void Destroy()
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnHumanFinishSelectingCards -= DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer -= StartPlaying;
         GameEvents.OnPlayerPlayCard -= OnPlayerPlayCard;
+        GameEvents.OnEndGame -= OnEndGame;
     }
 
     private void OnGameStart()
@@ -124,5 +126,10 @@ public class GameManager : MonoBehaviour
         Card temp = this.attackCard;
         this.attackCard = this.defendCard;
         this.defendCard = temp;
+    }
+
+    private void OnEndGame(PlayerType playerType)
+    {
+        Debug.Log("Winner: " + playerType.ToString());
     }
 }
