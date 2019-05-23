@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card9
   m_EditorClassIdentifier: 
   AttackPoint: 4
-  DefendPoint: 9
+  HealthPoint: 9
   avatarFileName: card9.png
   description: Talentazo levantaba id confianza soberania si el senoritas

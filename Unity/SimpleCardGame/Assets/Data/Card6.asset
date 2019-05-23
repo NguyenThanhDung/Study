@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card6
   m_EditorClassIdentifier: 
   AttackPoint: 3
-  DefendPoint: 8
+  HealthPoint: 8
   avatarFileName: card6.png
   description: Fue arrastraba inspiraban chapurraba dos solemnidad aberracion

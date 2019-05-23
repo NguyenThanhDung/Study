@@ -6,7 +6,7 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public int AttackPoint;
-    public int DefendPoint;
+    public int HealthPoint;
     public string avatarFileName;
     public string description;
 }

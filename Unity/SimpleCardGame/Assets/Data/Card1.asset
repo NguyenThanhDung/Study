@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card1
   m_EditorClassIdentifier: 
   AttackPoint: 4
-  DefendPoint: 8
+  HealthPoint: 8
   avatarFileName: card1.png
   description: Sienes rey italia exacta rio sea grande las

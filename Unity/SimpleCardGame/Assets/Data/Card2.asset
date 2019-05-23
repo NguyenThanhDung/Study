@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card2
   m_EditorClassIdentifier: 
   AttackPoint: 6
-  DefendPoint: 2
+  HealthPoint: 2
   avatarFileName: card2.png
   description: Pagarselos gr levantaban en ex ineludible entenderlo
