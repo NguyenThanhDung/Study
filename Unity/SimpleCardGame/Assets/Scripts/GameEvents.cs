@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static Action OnGameStart;
+    public static Action OnStartGame;
     public static Action<Card> OnHumanObtainCard;
     public static Action<Card> OnFinishSelectingCard;
     public static Action OnHumanFinishSelectingCards;

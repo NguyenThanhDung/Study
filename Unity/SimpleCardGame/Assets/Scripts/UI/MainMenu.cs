@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        if (GameEvents.OnGameStart != null)
-            GameEvents.OnGameStart.Invoke();
+        if (GameEvents.OnStartGame != null)
+            GameEvents.OnStartGame.Invoke();
     }
 }

@@ -21,14 +21,14 @@ public class CardManager : MonoBehaviour
     void Start()
     {
         this.cards = new List<Card>();
-        GameEvents.OnGameStart += OnGameStart;
+        GameEvents.OnStartGame += OnGameStart;
         GameEvents.OnFinishSelectingCard += RemoveSelectedCard;
         GameEvents.OnHumanFinishSelectingCards += OnDeliverCardsToOpponent;
     }
 
     void Destroy()
     {
-        GameEvents.OnGameStart -= OnGameStart;
+        GameEvents.OnStartGame -= OnGameStart;
         GameEvents.OnFinishSelectingCard -= RemoveSelectedCard;
         GameEvents.OnHumanFinishSelectingCards -= OnDeliverCardsToOpponent;
     }

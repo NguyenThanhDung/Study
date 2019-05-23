@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         this.gameState = GameState.Idle;
-        GameEvents.OnGameStart += OnGameStart;
+        GameEvents.OnStartGame += OnGameStart;
         GameEvents.OnHumanFinishSelectingCards += DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer += StartPlaying;
         GameEvents.OnPlayerPlayCard += OnPlayerPlayCard;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     void Destroy()
     {
-        GameEvents.OnGameStart -= OnGameStart;
+        GameEvents.OnStartGame -= OnGameStart;
         GameEvents.OnHumanFinishSelectingCards -= DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer -= StartPlaying;
         GameEvents.OnPlayerPlayCard -= OnPlayerPlayCard;
