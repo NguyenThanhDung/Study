@@ -65,11 +65,11 @@ public class Card : MonoBehaviour
         GameEvents.OnCardDie -= OnDie;
     }
 
-    public void Initialize()
+    public void Initialize(CardData cardData)
     {
         this.ID = CardManager.Instance.GenerateCardID();
-        this.AttackPoint = Random.Range(1, 10);
-        this.HealthPoint = Random.Range(1, 10);
+        this.AttackPoint = cardData.AttackPoint;
+        this.HealthPoint = cardData.HealthPoint;
     }
 
     public void MarkOwnedByHuman()

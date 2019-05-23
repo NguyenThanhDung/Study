@@ -7,6 +7,7 @@ public class CardManager : MonoBehaviour
     public static CardManager Instance;
 
     [SerializeField] Card cardPrefab;
+    [SerializeField] CardData[] cardData;
 
     private const int MAX_CARD_COUNT = 10;
 
@@ -49,7 +50,7 @@ public class CardManager : MonoBehaviour
             card.transform.position = new Vector3(i * 0.5f - 2.5f, i * 0.1f + 1.5f, 0f);
             card.transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
             card.transform.parent = this.transform;
-            card.Initialize();
+            card.Initialize(this.cardData[i]);
             this.cards.Add(card);
         }
     }
