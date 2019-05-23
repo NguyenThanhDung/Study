@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
     {
         this.cards = new List<Card>();
         GameEvents.OnCardDie += RemoveCard;
+        GameEvents.OnEndGame += ReturnCard;
     }
 
     public virtual void Destroy()
     {
         GameEvents.OnCardDie -= RemoveCard;
+        GameEvents.OnEndGame -= ReturnCard;
     }
 
     protected void AlignCards()
@@ -33,6 +35,15 @@ public class Player : MonoBehaviour
                 this.cards.RemoveAt(i);
                 break;
             }
+        }
+    }
+
+    private void ReturnCard(PlayerType winner)
+    {
+        if (this.cards.Count > 0)
+        {
+            GameEvents.OnReturnCards.Invoke(this.cards);
+            this.cards.Clear();
         }
     }
 }

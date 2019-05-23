@@ -25,7 +25,8 @@ public class CardManager : MonoBehaviour
         GameEvents.OnStartGame += OnGameStart;
         GameEvents.OnFinishSelectingCard += RemoveSelectedCard;
         GameEvents.OnHumanFinishSelectingCards += OnDeliverCardsToOpponent;
-        GameEvents.OnCardDie += ReturnCard;
+        GameEvents.OnCardDie += ReceiveDiedCard;
+        GameEvents.OnReturnCards += OnReceiveRemainingCards;
     }
 
     void Destroy()
@@ -33,7 +34,8 @@ public class CardManager : MonoBehaviour
         GameEvents.OnStartGame -= OnGameStart;
         GameEvents.OnFinishSelectingCard -= RemoveSelectedCard;
         GameEvents.OnHumanFinishSelectingCards -= OnDeliverCardsToOpponent;
-        GameEvents.OnCardDie -= ReturnCard;
+        GameEvents.OnCardDie -= ReceiveDiedCard;
+        GameEvents.OnReturnCards -= OnReceiveRemainingCards;
     }
 
     public int GenerateCardID()
@@ -85,8 +87,14 @@ public class CardManager : MonoBehaviour
         this.cards.Clear();
     }
 
-    private void ReturnCard(Card card)
+    private void ReceiveDiedCard(Card card)
     {
         this.cards.Add(card);
+    }
+
+    private void OnReceiveRemainingCards(List<Card> cards)
+    {
+        foreach(Card card in cards)
+            this.cards.Add(card);
     }
 }

@@ -15,4 +15,5 @@ public class GameEvents : MonoBehaviour
     public static Action<PlayerType, Card> OnPlayerPlayCard;
     public static Action<Card> OnCardDie;
     public static Action<PlayerType> OnEndGame;
+    public static Action<List<Card>> OnReturnCards;
 }
