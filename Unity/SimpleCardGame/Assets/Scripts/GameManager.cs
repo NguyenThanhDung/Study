@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     private void OnGameStart()
     {
+        this.defendCard = null;
+        this.attackCard = null;
         this.gameState = GameState.DeliverCardsToHuman;
     }
 
