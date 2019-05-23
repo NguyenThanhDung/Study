@@ -8,6 +8,7 @@ public class Card : MonoBehaviour
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
 
+    private CardData initialData;
     private int attackPoint;
     private int healthPoint;
 
@@ -51,16 +52,14 @@ public class Card : MonoBehaviour
     void Start()
     {
         this.OwnedPlayer = PlayerType.Computer;
-    }
-
-    void OnEnable()
-    {
+        GameEvents.OnStartGame += ResetPoint;
         GameEvents.OnPlayerPlayCard += Play;
         GameEvents.OnCardDie += OnDie;
     }
 
-    void OnDisable()
+    void Destroy()
     {
+        GameEvents.OnStartGame -= ResetPoint;
         GameEvents.OnPlayerPlayCard -= Play;
         GameEvents.OnCardDie -= OnDie;
     }
@@ -68,8 +67,8 @@ public class Card : MonoBehaviour
     public void Initialize(CardData cardData)
     {
         this.ID = CardManager.Instance.GenerateCardID();
-        this.AttackPoint = cardData.AttackPoint;
-        this.HealthPoint = cardData.HealthPoint;
+        this.initialData = cardData;
+        ResetPoint();
     }
 
     public void MarkOwnedByHuman()
@@ -95,6 +94,13 @@ public class Card : MonoBehaviour
     public void OnAttackedBy(Card attackCard)
     {
         this.HealthPoint -= attackCard.AttackPoint;
+    }
+
+    private void ResetPoint()
+    {
+        this.AttackPoint = this.initialData.AttackPoint;
+        this.HealthPoint = this.initialData.HealthPoint;
+        this.OwnedPlayer = PlayerType.Computer;
     }
 
     private void Play(PlayerType playerType, Card card)
