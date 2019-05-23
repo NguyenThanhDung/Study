@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: 6
   DefendPoint: 2
-  avatarFileName: 
-  description: 
+  avatarFileName: card2.png
+  description: Pagarselos gr levantaban en ex ineludible entenderlo

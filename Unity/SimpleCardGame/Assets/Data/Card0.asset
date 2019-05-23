@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: 1
   DefendPoint: 3
-  avatarFileName: 
-  description: 
+  avatarFileName: card0.png
+  description: Sonreido mia eso los presento audicion era
