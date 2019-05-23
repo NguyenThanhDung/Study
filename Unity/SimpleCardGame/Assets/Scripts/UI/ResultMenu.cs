@@ -20,7 +20,8 @@ public class ResultMenu : MonoBehaviour
 
     public void Retry()
     {
-
+        if (GameEvents.OnStartGame != null)
+            GameEvents.OnStartGame.Invoke();
     }
 
     private void OnEndGame(PlayerType winner)
