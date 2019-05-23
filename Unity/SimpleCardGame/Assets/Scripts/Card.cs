@@ -115,12 +115,12 @@ public class Card : MonoBehaviour
     private void OnDie(Card card)
     {
         if (card.ID == this.ID)
-            StartCoroutine(SelfDestroy());
+            StartCoroutine(Disable());
     }
 
-    private IEnumerator SelfDestroy()
+    private IEnumerator Disable()
     {
         yield return new WaitForSeconds(0.5f);
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

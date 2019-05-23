@@ -21,10 +21,11 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        this.cards = new List<Card>();
+        Initialize();
         GameEvents.OnStartGame += OnGameStart;
         GameEvents.OnFinishSelectingCard += RemoveSelectedCard;
         GameEvents.OnHumanFinishSelectingCards += OnDeliverCardsToOpponent;
+        GameEvents.OnCardDie += ReturnCard;
     }
 
     void Destroy()
@@ -32,6 +33,7 @@ public class CardManager : MonoBehaviour
         GameEvents.OnStartGame -= OnGameStart;
         GameEvents.OnFinishSelectingCard -= RemoveSelectedCard;
         GameEvents.OnHumanFinishSelectingCards -= OnDeliverCardsToOpponent;
+        GameEvents.OnCardDie -= ReturnCard;
     }
 
     public int GenerateCardID()
@@ -41,17 +43,27 @@ public class CardManager : MonoBehaviour
         return currentCardID;
     }
 
-    private void OnGameStart()
+    private void Initialize()
     {
         this.cardID = 0;
+        this.cards = new List<Card>();
         for (int i = 0; i < MAX_CARD_COUNT; i++)
         {
             Card card = Instantiate(this.cardPrefab);
-            card.transform.position = new Vector3(i * 0.5f - 2.5f, i * 0.1f + 1.5f, 0f);
-            card.transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
             card.transform.parent = this.transform;
+            card.gameObject.SetActive(false);
             card.Initialize(this.cardData[i]);
             this.cards.Add(card);
+        }
+    }
+
+    private void OnGameStart()
+    {
+        for (int i = 0; i < this.cards.Count; i++)
+        {
+            this.cards[i].transform.position = new Vector3(i * 0.5f - 2.5f, i * 0.1f + 1.5f, 0f);
+            this.cards[i].transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
+            this.cards[i].gameObject.SetActive(true);
         }
     }
 
@@ -68,8 +80,13 @@ public class CardManager : MonoBehaviour
     private IEnumerator DeliverCardsToOpponent()
     {
         yield return new WaitForSeconds(1f);
-        if(GameEvents.OnDeliverCardsToComputer != null)
+        if (GameEvents.OnDeliverCardsToComputer != null)
             GameEvents.OnDeliverCardsToComputer.Invoke(this.cards);
         this.cards.Clear();
+    }
+
+    private void ReturnCard(Card card)
+    {
+        this.cards.Add(card);
     }
 }
