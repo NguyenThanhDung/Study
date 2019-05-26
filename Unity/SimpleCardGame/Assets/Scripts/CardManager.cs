@@ -6,13 +6,13 @@ public class CardManager : MonoBehaviour
 {
     public static CardManager Instance;
 
-    [SerializeField] Card cardPrefab;
+    [SerializeField] List<Card> cards;
     [SerializeField] CardData[] cardData;
 
     private const int MAX_CARD_COUNT = 10;
 
     private int cardID;
-    private List<Card> cards;
+    private Animator animator;
 
     void Awake()
     {
@@ -21,6 +21,7 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
+        this.animator = this.GetComponent<Animator>();
         Initialize();
         GameEvents.OnStartGame += OnGameStart;
         GameEvents.OnFinishSelectingCard += RemoveSelectedCard;
@@ -48,25 +49,21 @@ public class CardManager : MonoBehaviour
     private void Initialize()
     {
         this.cardID = 0;
-        this.cards = new List<Card>();
-        for (int i = 0; i < MAX_CARD_COUNT; i++)
-        {
-            Card card = Instantiate(this.cardPrefab);
-            card.transform.parent = this.transform;
-            card.gameObject.SetActive(false);
-            card.Initialize(this.cardData[i]);
-            this.cards.Add(card);
-        }
     }
 
     private void OnGameStart()
     {
-        for (int i = 0; i < this.cards.Count; i++)
+        List<int> indexPool = new List<int>();
+        for (int i = 0; i < MAX_CARD_COUNT; i++)
+            indexPool.Add(i);
+        for (int i = 0; i < MAX_CARD_COUNT; i++)
         {
-            this.cards[i].transform.position = new Vector3(i * 0.5f - 2.5f, i * 0.1f + 1.5f, 0f);
-            this.cards[i].transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
-            this.cards[i].gameObject.SetActive(true);
+            int indexOfIndexPool = Random.Range(0, indexPool.Count);
+            int selectedIndex = indexPool[indexOfIndexPool];
+            this.cards[i].Initialize(this.cardData[selectedIndex]);
+            indexPool.RemoveAt(indexOfIndexPool);
         }
+        this.animator.SetTrigger("Mix");
     }
 
     private void RemoveSelectedCard(Card card)
@@ -94,7 +91,7 @@ public class CardManager : MonoBehaviour
 
     private void OnReceiveRemainingCards(List<Card> cards)
     {
-        foreach(Card card in cards)
+        foreach (Card card in cards)
             this.cards.Add(card);
     }
 }

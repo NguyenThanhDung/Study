@@ -58,7 +58,7 @@ public class Card : MonoBehaviour
     void Start()
     {
         this.OwnedPlayer = PlayerType.Computer;
-        GameEvents.OnStartGame += ResetPoint;
+        // GameEvents.OnStartGame += ResetPoint;
         GameEvents.OnPlayerPlayCard += Play;
         GameEvents.OnCardDie += OnDie;
     }
@@ -66,7 +66,7 @@ public class Card : MonoBehaviour
     void Destroy()
     {
         GameEvents.OnStartGame -= ResetPoint;
-        GameEvents.OnPlayerPlayCard -= Play;
+        // GameEvents.OnPlayerPlayCard -= Play;
         GameEvents.OnCardDie -= OnDie;
     }
 
