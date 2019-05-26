@@ -12,9 +12,11 @@ public class Card : MonoBehaviour
     private CardData initialData;
     private int attackPoint;
     private int healthPoint;
-    private Vector3 startMovingPosition;
-    private Vector3 targetMovingPosition;
-    private float startMovingTime;
+    private Vector3 startAnimationPosition;
+    private Vector3 targetAnimationPosition;
+    private Quaternion startAnimationRotation;
+    private Quaternion targetAnimationRotation;
+    private float startAnimationTime;
 
     public int ID { get; private set; }
     public PlayerType OwnedPlayer { get; private set; }
@@ -82,18 +84,19 @@ public class Card : MonoBehaviour
 
     public void MoveToDesk(int slotId, int slotCount)
     {
-        this.startMovingPosition = this.transform.position;
-        this.startMovingTime = Time.time;
+        this.startAnimationPosition = this.transform.position;
+        this.startAnimationRotation = this.transform.rotation;
+        this.startAnimationTime = Time.time;
         float x = slotId * 1.1f - (slotCount - 1) * 0.5f;
         if (this.OwnedPlayer == PlayerType.Human)
         {
-            this.targetMovingPosition = new Vector3(x, 1f, -3f);
-            this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+            this.targetAnimationPosition = new Vector3(x, 1f, -3f);
+            this.targetAnimationRotation = Quaternion.Euler(90f, 0f, 0f);
         }
         else
         {
-            this.targetMovingPosition = new Vector3(x, 1f, 3f);
-            this.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+            this.targetAnimationPosition = new Vector3(x, 1f, 3f);
+            this.targetAnimationRotation = Quaternion.Euler(-90f, 0f, 0f);
         }
         StartCoroutine(Moving());
     }
@@ -112,13 +115,14 @@ public class Card : MonoBehaviour
 
     private IEnumerator Moving()
     {
-        float time = Time.time - this.startMovingTime;
+        float time = Time.time - this.startAnimationTime;
         float curve = this.moveAnimCurve.Evaluate(time);
         while (curve < 1f)
         {
-            this.transform.position = Vector3.Lerp(this.startMovingPosition, this.targetMovingPosition, curve);
+            this.transform.position = Vector3.Lerp(this.startAnimationPosition, this.targetAnimationPosition, curve);
+            this.transform.rotation = Quaternion.Lerp(this.startAnimationRotation, this.targetAnimationRotation, curve);
             yield return null;
-            time = Time.time - this.startMovingTime;
+            time = Time.time - this.startAnimationTime;
             curve = this.moveAnimCurve.Evaluate(time);
         }
     }
