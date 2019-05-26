@@ -46,6 +46,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackText: {fileID: 3352661600914955798}
   healthText: {fileID: 6481422405373181636}
+  moveAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4993543
+      value: 1.0023588
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &711083093025172072
 GameObject:
   m_ObjectHideFlags: 0

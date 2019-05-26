@@ -7,10 +7,14 @@ public class Card : MonoBehaviour
 {
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
+    [SerializeField] AnimationCurve moveAnimCurve;
 
     private CardData initialData;
     private int attackPoint;
     private int healthPoint;
+    private Vector3 startMovingPosition;
+    private Vector3 targetMovingPosition;
+    private float startMovingTime;
 
     public int ID { get; private set; }
     public PlayerType OwnedPlayer { get; private set; }
@@ -78,17 +82,20 @@ public class Card : MonoBehaviour
 
     public void MoveToDesk(int slotId, int slotCount)
     {
+        this.startMovingPosition = this.transform.position;
+        this.startMovingTime = Time.time;
         float x = slotId * 1.1f - (slotCount - 1) * 0.5f;
         if (this.OwnedPlayer == PlayerType.Human)
         {
-            this.transform.position = new Vector3(x, 1f, -3f);
+            this.targetMovingPosition = new Vector3(x, 1f, -3f);
             this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         }
         else
         {
-            this.transform.position = new Vector3(x, 1f, 3f);
+            this.targetMovingPosition = new Vector3(x, 1f, 3f);
             this.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         }
+        StartCoroutine(Moving());
     }
 
     public void OnAttackedBy(Card attackCard)
@@ -101,6 +108,19 @@ public class Card : MonoBehaviour
         this.AttackPoint = this.initialData.AttackPoint;
         this.HealthPoint = this.initialData.HealthPoint;
         this.OwnedPlayer = PlayerType.Computer;
+    }
+
+    private IEnumerator Moving()
+    {
+        float time = Time.time - this.startMovingTime;
+        float curve = this.moveAnimCurve.Evaluate(time);
+        while (curve < 1f)
+        {
+            this.transform.position = Vector3.Lerp(this.startMovingPosition, this.targetMovingPosition, curve);
+            yield return null;
+            time = Time.time - this.startMovingTime;
+            curve = this.moveAnimCurve.Evaluate(time);
+        }
     }
 
     private void Play(PlayerType playerType, Card card)
