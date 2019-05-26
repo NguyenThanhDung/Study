@@ -135,11 +135,17 @@ public class Card : MonoBehaviour
 
     private void MoveToBattleZone()
     {
+        this.startAnimationPosition = this.transform.position;
+        this.startAnimationRotation = this.transform.rotation;
+        this.startAnimationTime = Time.time;
+        
         if (this.OwnedPlayer == PlayerType.Human)
-            this.transform.position = new Vector3(1f, 1f, 0f);
+            this.targetAnimationPosition = new Vector3(1f, 1f, 0f);
         else
-            this.transform.position = new Vector3(-1f, 1f, 0f);
-        this.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+            this.targetAnimationPosition = new Vector3(-1f, 1f, 0f);
+        this.targetAnimationRotation = Quaternion.Euler(90f, 0f, 0f);
+
+        StartCoroutine(Moving());
     }
 
     private void OnDie(Card card)
