@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Computer : Player
 {
+    public static Player Instance;
+    
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public override void Start()
     {
+        this.playerType = PlayerType.Computer;
         base.Start();
         GameEvents.OnDeliverCardsToComputer += GetCards;
         GameEvents.OnStartTurn += Play;

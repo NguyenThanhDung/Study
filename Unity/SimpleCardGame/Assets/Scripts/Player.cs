@@ -4,19 +4,39 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    protected PlayerType playerType;
+    protected string scoreSaveKey;
     protected List<Card> cards;
+
+    public int Score
+    {
+        get;
+        protected set;
+    }
 
     public virtual void Start()
     {
         this.cards = new List<Card>();
+        this.scoreSaveKey = (this.playerType == PlayerType.Human) ? "ScoreHuman" : "ScoreComputer";
+        LoadData();
         GameEvents.OnCardDie += RemoveCard;
-        GameEvents.OnEndGame += ReturnCard;
+        GameEvents.OnEndGame += OnEndGame;
     }
 
     public virtual void Destroy()
     {
         GameEvents.OnCardDie -= RemoveCard;
-        GameEvents.OnEndGame -= ReturnCard;
+        GameEvents.OnEndGame -= OnEndGame;
+    }
+
+    protected void LoadData()
+    {
+        this.Score = PlayerPrefs.GetInt(this.scoreSaveKey, 0);
+    }
+
+    protected void SaveData()
+    {
+        PlayerPrefs.SetInt(this.scoreSaveKey, this.Score);
     }
 
     protected void AlignCards()
@@ -38,12 +58,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ReturnCard(PlayerType winner)
+    protected void OnEndGame(PlayerType winner)
     {
         if (this.cards.Count > 0)
         {
             GameEvents.OnReturnCards.Invoke(this.cards);
             this.cards.Clear();
         }
+        if(winner == this.playerType)
+            this.Score++;
+        SaveData();
     }
 }

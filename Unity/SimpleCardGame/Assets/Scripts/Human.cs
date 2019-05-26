@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Human : Player
 {
+    public static Player Instance;
+    
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public override void Start()
     {
+        this.playerType = PlayerType.Human;
         base.Start();
         GameEvents.OnHumanObtainCard += AddCard;
         GameEvents.OnStartTurn += OnStartTurn;
