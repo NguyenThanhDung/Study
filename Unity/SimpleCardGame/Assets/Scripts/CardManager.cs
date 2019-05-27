@@ -69,6 +69,7 @@ public class CardManager : MonoBehaviour
             indexPool.RemoveAt(indexOfIndexPool);
         }
         this.animator.enabled = true;
+        this.animator.Play("Mixing", -1, 0f);
     }
 
     private void RemoveSelectedCard(Card card)
