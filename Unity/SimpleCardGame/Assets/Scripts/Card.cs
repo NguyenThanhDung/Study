@@ -16,8 +16,6 @@ public class Card : MonoBehaviour
     private static bool IsFirstCard;
 
     private CardData initialData;
-    private int attackPoint;
-    private int healthPoint;
     private Vector3 startAnimationPosition;
     private Vector3 targetAnimationPosition;
     private Quaternion startAnimationRotation;
@@ -29,28 +27,14 @@ public class Card : MonoBehaviour
 
     public int AttackPoint
     {
-        get
-        {
-            return this.attackPoint;
-        }
-        private set
-        {
-            this.attackPoint = value;
-            this.attackText.text = value.ToString();
-        }
+        get;
+        private set;
     }
 
     public int HealthPoint
     {
-        get
-        {
-            return this.healthPoint;
-        }
-        private set
-        {
-            this.healthPoint = value;
-            this.healthText.text = value.ToString();
-        }
+        get;
+        private set;
     }
 
     public bool IsDie
@@ -108,6 +92,7 @@ public class Card : MonoBehaviour
     public void OnAttackedBy(Card attackCard)
     {
         this.HealthPoint -= attackCard.AttackPoint;
+        StartCoroutine(UpdateHealthPointText());
     }
 
     private void OnStartGame()
@@ -115,6 +100,8 @@ public class Card : MonoBehaviour
         Card.IsFirstCard = true;
         this.AttackPoint = this.initialData.AttackPoint;
         this.HealthPoint = this.initialData.HealthPoint;
+        this.attackText.text = this.AttackPoint.ToString();
+        this.healthText.text = this.HealthPoint.ToString();
         this.OwnedPlayer = PlayerType.Computer;
     }
 
@@ -174,5 +161,11 @@ public class Card : MonoBehaviour
             else
                 this.rightFireParticle.Play();
         }
+    }
+
+    private IEnumerator UpdateHealthPointText()
+    {
+        yield return new WaitForSeconds(1f);
+        this.healthText.text = this.HealthPoint.ToString();
     }
 }

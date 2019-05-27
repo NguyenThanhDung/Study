@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
             this.defendCard.OnAttackedBy(this.attackCard);
             while (!this.defendCard.IsDie)
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
                 SwapBattle();
                 this.defendCard.OnAttackedBy(this.attackCard);
             }
