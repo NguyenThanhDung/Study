@@ -5,6 +5,7 @@ using TMPro;
 
 public class Card : MonoBehaviour
 {
+    [SerializeField] GameObject display;
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
     [SerializeField] AnimationCurve moveAnimCurve;
@@ -58,7 +59,6 @@ public class Card : MonoBehaviour
     void Start()
     {
         this.OwnedPlayer = PlayerType.Computer;
-        // GameEvents.OnStartGame += ResetPoint;
         GameEvents.OnPlayerPlayCard += Play;
         GameEvents.OnCardDie += OnDie;
     }
@@ -66,7 +66,6 @@ public class Card : MonoBehaviour
     void Destroy()
     {
         GameEvents.OnStartGame -= ResetPoint;
-        // GameEvents.OnPlayerPlayCard -= Play;
         GameEvents.OnCardDie -= OnDie;
     }
 
@@ -151,12 +150,6 @@ public class Card : MonoBehaviour
     private void OnDie(Card card)
     {
         if (card.ID == this.ID)
-            StartCoroutine(Disable());
-    }
-
-    private IEnumerator Disable()
-    {
-        yield return new WaitForSeconds(0.5f);
-        this.gameObject.SetActive(false);
+            this.display.SetActive(false);
     }
 }
