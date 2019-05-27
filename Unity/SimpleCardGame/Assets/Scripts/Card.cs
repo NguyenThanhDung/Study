@@ -9,7 +9,8 @@ public class Card : MonoBehaviour
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
     [SerializeField] AnimationCurve moveAnimCurve;
-    [SerializeField] ParticleSystem fireParticle;
+    [SerializeField] ParticleSystem leftFireParticle;
+    [SerializeField] ParticleSystem rightFireParticle;
 
     private CardData initialData;
     private int attackPoint;
@@ -157,9 +158,10 @@ public class Card : MonoBehaviour
 
     private IEnumerator EmitFireParticle()
     {
-        if(this.OwnedPlayer == PlayerType.Computer)
-            this.fireParticle.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         yield return new WaitForSeconds(0.6f);
-        this.fireParticle.Play();
+        if(this.OwnedPlayer == PlayerType.Human)
+            this.leftFireParticle.Play();
+        else
+            this.rightFireParticle.Play();
     }
 }
