@@ -9,6 +9,7 @@ public class Card : MonoBehaviour
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
     [SerializeField] AnimationCurve moveAnimCurve;
+    [SerializeField] ParticleSystem fireParticle;
 
     private CardData initialData;
     private int attackPoint;
@@ -131,6 +132,7 @@ public class Card : MonoBehaviour
         this.targetAnimationRotation = Quaternion.Euler(90f, 0f, 0f);
 
         StartCoroutine(Moving());
+        StartCoroutine(EmitFireParticle());
     }
 
     private void OnDie(Card card)
@@ -151,5 +153,13 @@ public class Card : MonoBehaviour
             time = Time.time - this.startAnimationTime;
             curve = this.moveAnimCurve.Evaluate(time);
         }
+    }
+
+    private IEnumerator EmitFireParticle()
+    {
+        if(this.OwnedPlayer == PlayerType.Computer)
+            this.fireParticle.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        yield return new WaitForSeconds(0.6f);
+        this.fireParticle.Play();
     }
 }
