@@ -5,12 +5,15 @@ using TMPro;
 
 public class Card : MonoBehaviour
 {
+    
     [SerializeField] GameObject display;
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
     [SerializeField] AnimationCurve moveAnimCurve;
     [SerializeField] ParticleSystem leftFireParticle;
     [SerializeField] ParticleSystem rightFireParticle;
+
+    private static bool IsFirstCard;
 
     private CardData initialData;
     private int attackPoint;
@@ -67,7 +70,7 @@ public class Card : MonoBehaviour
 
     void Destroy()
     {
-        GameEvents.OnStartGame -= ResetPoint;
+        GameEvents.OnPlayerPlayCard -= Play;
         GameEvents.OnCardDie -= OnDie;
     }
 
@@ -75,7 +78,7 @@ public class Card : MonoBehaviour
     {
         this.ID = CardManager.Instance.GenerateCardID();
         this.initialData = cardData;
-        ResetPoint();
+        OnStartGame();
     }
 
     public void MarkOwnedByHuman()
@@ -107,8 +110,9 @@ public class Card : MonoBehaviour
         this.HealthPoint -= attackCard.AttackPoint;
     }
 
-    private void ResetPoint()
+    private void OnStartGame()
     {
+        Card.IsFirstCard = true;
         this.AttackPoint = this.initialData.AttackPoint;
         this.HealthPoint = this.initialData.HealthPoint;
         this.OwnedPlayer = PlayerType.Computer;
@@ -125,7 +129,7 @@ public class Card : MonoBehaviour
         this.startAnimationPosition = this.transform.position;
         this.startAnimationRotation = this.transform.rotation;
         this.startAnimationTime = Time.time;
-        
+
         if (this.OwnedPlayer == PlayerType.Human)
             this.targetAnimationPosition = new Vector3(1f, 1f, 0f);
         else
@@ -159,9 +163,16 @@ public class Card : MonoBehaviour
     private IEnumerator EmitFireParticle()
     {
         yield return new WaitForSeconds(0.6f);
-        if(this.OwnedPlayer == PlayerType.Human)
-            this.leftFireParticle.Play();
+        if (Card.IsFirstCard)
+        {
+            Card.IsFirstCard = false;
+        }
         else
-            this.rightFireParticle.Play();
+        {
+            if (this.OwnedPlayer == PlayerType.Human)
+                this.leftFireParticle.Play();
+            else
+                this.rightFireParticle.Play();
+        }
     }
 }
