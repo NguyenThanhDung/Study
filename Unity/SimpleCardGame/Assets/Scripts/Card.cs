@@ -95,7 +95,7 @@ public class Card : MonoBehaviour
         else
         {
             this.targetAnimationPosition = new Vector3(x, 1f, 3f);
-            this.targetAnimationRotation = Quaternion.Euler(-90f, 0f, 0f);
+            this.targetAnimationRotation = Quaternion.Euler(-90f, 180f, 0f);
         }
         StartCoroutine(Moving());
     }
@@ -110,20 +110,6 @@ public class Card : MonoBehaviour
         this.AttackPoint = this.initialData.AttackPoint;
         this.HealthPoint = this.initialData.HealthPoint;
         this.OwnedPlayer = PlayerType.Computer;
-    }
-
-    private IEnumerator Moving()
-    {
-        float time = Time.time - this.startAnimationTime;
-        float curve = this.moveAnimCurve.Evaluate(time);
-        while (curve < 1f)
-        {
-            this.transform.position = Vector3.Lerp(this.startAnimationPosition, this.targetAnimationPosition, curve);
-            this.transform.rotation = Quaternion.Lerp(this.startAnimationRotation, this.targetAnimationRotation, curve);
-            yield return null;
-            time = Time.time - this.startAnimationTime;
-            curve = this.moveAnimCurve.Evaluate(time);
-        }
     }
 
     private void Play(PlayerType playerType, Card card)
@@ -151,5 +137,19 @@ public class Card : MonoBehaviour
     {
         if (card.ID == this.ID)
             this.display.SetActive(false);
+    }
+
+    private IEnumerator Moving()
+    {
+        float time = Time.time - this.startAnimationTime;
+        float curve = this.moveAnimCurve.Evaluate(time);
+        while (curve < 1f)
+        {
+            this.transform.position = Vector3.Lerp(this.startAnimationPosition, this.targetAnimationPosition, curve);
+            this.transform.rotation = Quaternion.Lerp(this.startAnimationRotation, this.targetAnimationRotation, curve);
+            yield return null;
+            time = Time.time - this.startAnimationTime;
+            curve = this.moveAnimCurve.Evaluate(time);
+        }
     }
 }
