@@ -46,6 +46,11 @@ public class CardManager : MonoBehaviour
         return currentCardID;
     }
 
+    public void OnEndMixingAnimation()
+    {
+        StartCoroutine(DisableAnimator());
+    }
+
     private void Initialize()
     {
         this.cardID = 0;
@@ -63,7 +68,7 @@ public class CardManager : MonoBehaviour
             this.cards[i].Initialize(this.cardData[selectedIndex]);
             indexPool.RemoveAt(indexOfIndexPool);
         }
-        this.animator.SetTrigger("Mix");
+        this.animator.enabled = true;
     }
 
     private void RemoveSelectedCard(Card card)
@@ -73,15 +78,9 @@ public class CardManager : MonoBehaviour
 
     private void OnDeliverCardsToOpponent()
     {
+        if(this.animator.enabled)
+            this.animator.enabled = false;
         StartCoroutine(DeliverCardsToOpponent());
-    }
-
-    private IEnumerator DeliverCardsToOpponent()
-    {
-        yield return new WaitForSeconds(1f);
-        if (GameEvents.OnDeliverCardsToComputer != null)
-            GameEvents.OnDeliverCardsToComputer.Invoke(this.cards);
-        this.cards.Clear();
     }
 
     private void ReceiveDiedCard(Card card)
@@ -93,5 +92,19 @@ public class CardManager : MonoBehaviour
     {
         foreach (Card card in cards)
             this.cards.Add(card);
+    }
+
+    private IEnumerator DeliverCardsToOpponent()
+    {
+        yield return new WaitForSeconds(1f);
+        if (GameEvents.OnDeliverCardsToComputer != null)
+            GameEvents.OnDeliverCardsToComputer.Invoke(this.cards);
+        this.cards.Clear();
+    }
+
+    private IEnumerator DisableAnimator()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.animator.enabled = false;
     }
 }
