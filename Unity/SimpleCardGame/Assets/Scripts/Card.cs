@@ -12,6 +12,7 @@ public class Card : MonoBehaviour
     [SerializeField] AnimationCurve moveAnimCurve;
     [SerializeField] ParticleSystem leftFireParticle;
     [SerializeField] ParticleSystem rightFireParticle;
+    [SerializeField] ParticleSystem disappearParticle;
 
     private static bool IsFirstCard;
 
@@ -136,7 +137,10 @@ public class Card : MonoBehaviour
     private void OnDie(Card card)
     {
         if (card.ID == this.ID)
+        {
             this.display.SetActive(false);
+            this.disappearParticle.Play();
+        }
     }
 
     private void EmitFireParticle()
