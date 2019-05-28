@@ -14,8 +14,6 @@ public class Card : MonoBehaviour
     [SerializeField] ParticleSystem rightFireParticle;
     [SerializeField] ParticleSystem disappearParticle;
 
-    private static bool IsFirstCard;
-
     private CardData initialData;
     private Vector3 startAnimationPosition;
     private Vector3 targetAnimationPosition;
@@ -94,7 +92,6 @@ public class Card : MonoBehaviour
 
     private void OnStartGame()
     {
-        Card.IsFirstCard = true;
         this.AttackPoint = this.initialData.AttackPoint;
         this.HealthPoint = this.initialData.HealthPoint;
         this.attackText.text = this.AttackPoint.ToString();
@@ -146,17 +143,10 @@ public class Card : MonoBehaviour
 
     private void EmitFireParticle()
     {
-        if (Card.IsFirstCard)
-        {
-            Card.IsFirstCard = false;
-        }
+        if (this.OwnedPlayer == PlayerType.Human)
+            this.leftFireParticle.Play();
         else
-        {
-            if (this.OwnedPlayer == PlayerType.Human)
-                this.leftFireParticle.Play();
-            else
-                this.rightFireParticle.Play();
-        }
+            this.rightFireParticle.Play();
     }
 
     private IEnumerator Moving()
