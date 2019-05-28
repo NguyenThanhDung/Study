@@ -171,7 +171,7 @@ public class Card : MonoBehaviour
 
     private IEnumerator FinishPlacingCard()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         GameEvents.OnFinishedPlacingCard.Invoke();
     }
 }
