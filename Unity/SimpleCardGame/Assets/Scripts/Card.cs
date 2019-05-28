@@ -121,6 +121,7 @@ public class Card : MonoBehaviour
         this.targetAnimationRotation = Quaternion.Euler(90f, 0f, 0f);
 
         StartCoroutine(Moving());
+        StartCoroutine(FinishPlacingCard());
     }
 
     private void StartBattle(Card attacker, Card defender)
@@ -176,5 +177,11 @@ public class Card : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         this.healthText.text = this.HealthPoint.ToString();
+    }
+
+    private IEnumerator FinishPlacingCard()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameEvents.OnFinishedPlacingCard.Invoke();
     }
 }

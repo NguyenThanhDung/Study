@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnHumanFinishSelectingCards += DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer += StartPlaying;
         GameEvents.OnPlayerPlayCard += OnPlayerPlayCard;
+        GameEvents.OnFinishedPlacingCard += StartCardBattle;
         GameEvents.OnEndGame += OnEndGame;
     }
 
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         GameEvents.OnHumanFinishSelectingCards -= DeliverCardsToOpponent;
         GameEvents.OnFinishDeliveringCardsToComputer -= StartPlaying;
         GameEvents.OnPlayerPlayCard -= OnPlayerPlayCard;
+        GameEvents.OnFinishedPlacingCard -= StartCardBattle;
         GameEvents.OnEndGame -= OnEndGame;
     }
 
@@ -67,25 +69,21 @@ public class GameManager : MonoBehaviour
     private void OnPlayerPlayCard(PlayerType playerType, Card card)
     {
         this.attackCard = card;
-        StartCoroutine(VerivyCardBattle(playerType));
     }
 
-    private IEnumerator VerivyCardBattle(PlayerType playerType)
+    private void StartCardBattle()
+    {
+        StartCoroutine(VerivyCardBattle());
+    }
+
+    private IEnumerator VerivyCardBattle()
     {
         if (this.defendCard == null)
         {
             this.defendCard = this.attackCard;
             yield return new WaitForSeconds(1f);
-            if (playerType == PlayerType.Computer)
-            {
-                this.gameState = GameState.HumanTurn;
-                GameEvents.OnStartTurn.Invoke(PlayerType.Human);
-            }
-            else
-            {
-                this.gameState = GameState.ComputerTurn;
-                GameEvents.OnStartTurn.Invoke(PlayerType.Computer);
-            }
+            this.gameState = GameState.HumanTurn;
+            GameEvents.OnStartTurn.Invoke(PlayerType.Human);
         }
         else
         {
