@@ -5,7 +5,7 @@ using TMPro;
 
 public class Card : MonoBehaviour
 {
-    
+
     [SerializeField] GameObject display;
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
@@ -49,12 +49,14 @@ public class Card : MonoBehaviour
     {
         this.OwnedPlayer = PlayerType.Computer;
         GameEvents.OnPlayerPlayCard += Play;
+        GameEvents.OnCardBattleStart += StartBattle;
         GameEvents.OnCardDie += OnDie;
     }
 
     void Destroy()
     {
         GameEvents.OnPlayerPlayCard -= Play;
+        GameEvents.OnCardBattleStart -= StartBattle;
         GameEvents.OnCardDie -= OnDie;
     }
 
@@ -89,12 +91,6 @@ public class Card : MonoBehaviour
         StartCoroutine(Moving());
     }
 
-    public void OnAttackedBy(Card attackCard)
-    {
-        this.HealthPoint -= attackCard.AttackPoint;
-        StartCoroutine(UpdateHealthPointText());
-    }
-
     private void OnStartGame()
     {
         Card.IsFirstCard = true;
@@ -124,13 +120,38 @@ public class Card : MonoBehaviour
         this.targetAnimationRotation = Quaternion.Euler(90f, 0f, 0f);
 
         StartCoroutine(Moving());
-        StartCoroutine(EmitFireParticle());
+    }
+
+    private void StartBattle(Card attacker, Card defender)
+    {
+        if (attacker.ID == this.ID)
+            EmitFireParticle();
+        if (defender.ID == this.ID)
+        {
+            this.HealthPoint -= attacker.AttackPoint;
+            StartCoroutine(UpdateHealthPointText());
+        }
     }
 
     private void OnDie(Card card)
     {
         if (card.ID == this.ID)
             this.display.SetActive(false);
+    }
+
+    private void EmitFireParticle()
+    {
+        if (Card.IsFirstCard)
+        {
+            Card.IsFirstCard = false;
+        }
+        else
+        {
+            if (this.OwnedPlayer == PlayerType.Human)
+                this.leftFireParticle.Play();
+            else
+                this.rightFireParticle.Play();
+        }
     }
 
     private IEnumerator Moving()
@@ -144,22 +165,6 @@ public class Card : MonoBehaviour
             yield return null;
             time = Time.time - this.startAnimationTime;
             curve = this.moveAnimCurve.Evaluate(time);
-        }
-    }
-
-    private IEnumerator EmitFireParticle()
-    {
-        yield return new WaitForSeconds(0.6f);
-        if (Card.IsFirstCard)
-        {
-            Card.IsFirstCard = false;
-        }
-        else
-        {
-            if (this.OwnedPlayer == PlayerType.Human)
-                this.leftFireParticle.Play();
-            else
-                this.rightFireParticle.Play();
         }
     }
 

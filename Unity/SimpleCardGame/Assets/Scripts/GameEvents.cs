@@ -13,6 +13,7 @@ public class GameEvents : MonoBehaviour
     public static Action OnFinishDeliveringCardsToComputer;
     public static Action<PlayerType> OnStartTurn;
     public static Action<PlayerType, Card> OnPlayerPlayCard;
+    public static Action<Card /*attacker*/, Card /*defender*/> OnCardBattleStart;
     public static Action<Card> OnCardDie;
     public static Action<PlayerType> OnEndGame;
     public static Action<List<Card>> OnReturnCards;

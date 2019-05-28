@@ -89,12 +89,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            this.defendCard.OnAttackedBy(this.attackCard);
+            GameEvents.OnCardBattleStart.Invoke(this.attackCard, this.defendCard);
             while (!this.defendCard.IsDie)
             {
                 yield return new WaitForSeconds(1f);
                 SwapBattle();
-                this.defendCard.OnAttackedBy(this.attackCard);
+                GameEvents.OnCardBattleStart.Invoke(this.attackCard, this.defendCard);
             }
 
             yield return new WaitForSeconds(1f);
