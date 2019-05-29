@@ -92,6 +92,11 @@ public class Card : MonoBehaviour
         StartCoroutine(Moving());
     }
 
+    public void OnFinishedShowingDeductedHP()
+    {
+        StartCoroutine(DisableAnimator());
+    }
+
     private void OnStartGame()
     {
         this.AttackPoint = this.initialData.AttackPoint;
@@ -130,9 +135,10 @@ public class Card : MonoBehaviour
         if (defender.ID == this.ID)
         {
             this.HealthPoint -= attacker.AttackPoint;
+            this.deductedHPText.text = "-" + attacker.AttackPoint.ToString();
             this.animator.enabled = true;
             this.animator.Play("ShowDeductedHP", -1, 0f);
-            StartCoroutine(UpdateHealthPointText());
+            this.healthText.text = this.HealthPoint.ToString();
         }
     }
 
@@ -167,15 +173,15 @@ public class Card : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateHealthPointText()
-    {
-        yield return new WaitForSeconds(1f);
-        this.healthText.text = this.HealthPoint.ToString();
-    }
-
     private IEnumerator FinishPlacingCard()
     {
         yield return new WaitForSeconds(0.5f);
         GameEvents.OnFinishedPlacingCard.Invoke();
+    }
+
+    private IEnumerator DisableAnimator()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.animator.enabled = false;
     }
 }
