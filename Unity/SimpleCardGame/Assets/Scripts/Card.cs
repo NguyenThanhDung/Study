@@ -138,7 +138,7 @@ public class Card : MonoBehaviour
             this.deductedHPText.text = "-" + attacker.AttackPoint.ToString();
             this.animator.enabled = true;
             this.animator.Play("ShowDeductedHP", -1, 0f);
-            this.healthText.text = this.HealthPoint.ToString();
+            this.healthText.text = (this.HealthPoint >= 0) ? this.HealthPoint.ToString() : "0";
         }
     }
 
