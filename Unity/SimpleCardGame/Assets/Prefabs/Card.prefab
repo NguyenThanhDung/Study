@@ -4747,6 +4747,7 @@ MonoBehaviour:
   display: {fileID: 711083093329516256}
   attackText: {fileID: 3352661600914955798}
   healthText: {fileID: 6481422405373181636}
+  avatarRenderer: {fileID: 6121057017308151056}
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -4775,6 +4776,7 @@ MonoBehaviour:
   rightFireParticle: {fileID: 5227888712784416665}
   disappearParticle: {fileID: 6794326752046718169}
   deductedHPText: {fileID: 1043186626172848088}
+  avatarMaterials: {fileID: 11400000, guid: a6f1df0828de249b79912807fb1059af, type: 2}
 --- !u!95 &375484447593659550
 Animator:
   serializedVersion: 3
