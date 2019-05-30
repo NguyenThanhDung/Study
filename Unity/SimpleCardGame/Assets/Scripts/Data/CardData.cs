@@ -7,6 +7,6 @@ public class CardData : ScriptableObject
 {
     public int AttackPoint;
     public int HealthPoint;
-    public string avatarFileName;
+    public int avatarID;
     public string description;
 }

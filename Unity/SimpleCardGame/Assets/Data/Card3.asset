@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: 8
   HealthPoint: 3
-  avatarFileName: card3.png
+  avatarID: 3
   description: Supremo non iba suertes dormido costado los
