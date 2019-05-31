@@ -7,8 +7,7 @@ public class ResultMenu : MonoBehaviour
 {
     [SerializeField] GameObject display;
     [SerializeField] TMP_Text humanResult;
-    [SerializeField] TMP_Text humanScoreText;
-    [SerializeField] TMP_Text computerScoreText;
+    [SerializeField] TMP_Text scoreText;
     [SerializeField] Color winColor;    // 0BAE2A
     [SerializeField] Color loseColor;   // AD0B17
 
@@ -40,8 +39,7 @@ public class ResultMenu : MonoBehaviour
         this.humanResult.color = (winner == PlayerType.Human) ? winColor : loseColor;
         this.humanResult.text = (winner == PlayerType.Human) ? "YOU WIN" : "YOU LOSE";
 
-        this.humanScoreText.text = Human.Instance.Score.ToString();
-        this.computerScoreText.text = Computer.Instance.Score.ToString();
+        this.scoreText.text = Human.Instance.Score.ToString() + "\n" + Computer.Instance.Score.ToString();
 
         this.display.SetActive(true);
     }
