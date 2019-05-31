@@ -7,7 +7,8 @@ public class ResultMenu : MonoBehaviour
 {
     [SerializeField] GameObject display;
     [SerializeField] TMP_Text humanResult;
-    [SerializeField] TMP_Text scoresText;
+    [SerializeField] TMP_Text humanScoreText;
+    [SerializeField] TMP_Text computerScoreText;
 
     void OnEnable()
     {
@@ -34,7 +35,8 @@ public class ResultMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         this.humanResult.text = (winner == PlayerType.Human) ? "YOU WIN" : "YOU LOSE";
-        this.scoresText.text = "YOU " + Human.Instance.Score + "\nCOMPUTER " + Computer.Instance.Score;
+        this.humanScoreText.text = Human.Instance.Score.ToString();
+        this.computerScoreText.text = Computer.Instance.Score.ToString();
         this.display.SetActive(true);
     }
 }
