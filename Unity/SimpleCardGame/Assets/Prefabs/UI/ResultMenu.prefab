@@ -328,6 +328,8 @@ MonoBehaviour:
   humanResult: {fileID: 6786227411074663236}
   humanScoreText: {fileID: 4289367383422875034}
   computerScoreText: {fileID: 4799555800301605042}
+  winColor: {r: 0.043137256, g: 0.68235296, b: 0.16470589, a: 1}
+  loseColor: {r: 0.6784314, g: 0.043137256, b: 0.09019608, a: 1}
 --- !u!1 &4178433465199084154
 GameObject:
   m_ObjectHideFlags: 0
