@@ -6,8 +6,7 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject scorePanel;
-    [SerializeField] TMP_Text humanScoreText;
-    [SerializeField] TMP_Text computerScoreText;
+    [SerializeField] TMP_Text scoreText;
 
     void Start()
     {
@@ -23,8 +22,7 @@ public class MainMenu : MonoBehaviour
     private IEnumerator ShowScore()
     {
         yield return new WaitForSeconds(0.3f);
-        this.humanScoreText.text = Human.Instance.Score.ToString();
-        this.computerScoreText.text = Computer.Instance.Score.ToString();
+        this.scoreText.text = Human.Instance.Score.ToString() + "\n" + Computer.Instance.Score.ToString();
         this.scorePanel.SetActive(true);
     }
 }
