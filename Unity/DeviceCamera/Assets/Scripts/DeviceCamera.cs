@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class DeviceCamera : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]  Renderer projectorScreen;
 
-    // Update is called once per frame
-    void Update()
+    private WebCamTexture deviceCamera;
+
+    IEnumerator Start()
     {
-        
+        yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
+        deviceCamera = new WebCamTexture();
+        projectorScreen.material.mainTexture = deviceCamera;
+        deviceCamera.Play();
     }
 }
