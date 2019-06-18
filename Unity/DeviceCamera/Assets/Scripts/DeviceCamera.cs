@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeviceCamera : MonoBehaviour
 {
-    [SerializeField]  Renderer projectorScreen;
+    [SerializeField] Renderer projectorScreen;
 
     private WebCamTexture deviceCamera;
 
