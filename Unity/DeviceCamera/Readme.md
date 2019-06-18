@@ -28,6 +28,24 @@ projectorScreen.material.mainTexture = deviceCamera;
 deviceCamera.Play();
 ```
 
+We will see that the projector screen is rotated to the left.
+We can rotate it base on the camera rotation angle
+
+```csharp
+private Quaternion projectorOriginalRotation;
+
+IEnumerator Start()
+{
+    // ...
+    this.projectorOriginalRotation = this.projectorScreen.transform.rotation;
+}
+
+void Update()
+{
+    this.projectorScreen.transform.rotation = this.projectorOriginalRotation * Quaternion.AngleAxis(this.deviceCamera.videoRotationAngle, Vector3.back);
+}
+```
+
 ### Todos
 
  - Expand projector screen
