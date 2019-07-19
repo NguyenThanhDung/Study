@@ -14,18 +14,22 @@ IEnumerator Start()
 }
 ```
 
-Decleration
+After acquired camera permission from user, we detect if there is any camera available, then assign renderer material by device camera capturing
 
 ```csharp
 Renderer projectorScreen;
 WebCamTexture deviceCamera;
-```
 
-Assign renderer material by device camera capturing
-
-```csharp
-projectorScreen.material.mainTexture = deviceCamera;
-deviceCamera.Play();
+IEnumerator Start()
+{
+    // Request camera permission
+    // ...
+    if (WebCamTexture.devices.Length > 0)
+    {
+        this.projectorScreen.material.mainTexture = this.deviceCamera;
+        this.deviceCamera.Play();
+    }
+}
 ```
 
 We will see that the projector screen is rotated to the left.
