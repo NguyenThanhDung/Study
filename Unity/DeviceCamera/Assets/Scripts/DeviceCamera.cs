@@ -8,6 +8,7 @@ public class DeviceCamera : MonoBehaviour
     [SerializeField] GameObject projectorScreen;
 
     private bool isInitialized = false;
+    private bool shouldRotateProjector = false;
     private WebCamTexture deviceCamera;
     private Quaternion projectorOriginalRotation;
 
@@ -21,6 +22,7 @@ public class DeviceCamera : MonoBehaviour
             this.projectorScreen.GetComponent<Renderer>().material.mainTexture = this.deviceCamera;
             this.deviceCamera.Play();
             this.isInitialized = true;
+            this.shouldRotateProjector = true;
             Debug.LogWarning("Camera is initialized");
         }
         else
@@ -32,6 +34,12 @@ public class DeviceCamera : MonoBehaviour
     void Update()
     {
         if (this.isInitialized)
-            this.projectorScreen.transform.rotation = this.projectorOriginalRotation * Quaternion.AngleAxis(this.deviceCamera.videoRotationAngle, Vector3.back);
+        {
+            if (this.shouldRotateProjector)
+            {
+                this.projectorScreen.transform.rotation = this.projectorOriginalRotation * Quaternion.AngleAxis(this.deviceCamera.videoRotationAngle, Vector3.back);
+                this.shouldRotateProjector = false;
+            }
+        }
     }
 }
