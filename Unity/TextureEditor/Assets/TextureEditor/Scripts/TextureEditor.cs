@@ -38,8 +38,15 @@ public class TextureEditor : MonoBehaviour
                     Vector2 textureCoord = hit.textureCoord;
                     Vector2 pixelPosition = new Vector2(textureCoord.x * texture.width, textureCoord.y * texture.height);
                     for (int i = ((int)pixelPosition.x - this.brushSize); i < ((int)pixelPosition.x + this.brushSize); i++)
+                    {
                         for (int j = ((int)pixelPosition.y - this.brushSize); j < ((int)pixelPosition.y + this.brushSize); j++)
-                            texture.SetPixel(i, j, currentImage.color);
+                        {
+                            Vector2 drawingPoint = new Vector2(i, j);
+                            float distance = Vector2.Distance(drawingPoint, pixelPosition);
+                            if (distance < (int)this.brushSize)
+                                texture.SetPixel(i, j, currentImage.color);
+                        }
+                    }
                     texture.Apply();
                 }
             }
