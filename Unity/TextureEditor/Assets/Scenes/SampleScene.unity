@@ -782,8 +782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da76c1f848aba49dfb13fb78e66dfcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushType: 1
-  brushSize: 50
+  paintType: 1
+  brushSize: 25
+  brushShape: 1
   currentImage: {fileID: 296539110}
 --- !u!1 &1501899966
 GameObject:

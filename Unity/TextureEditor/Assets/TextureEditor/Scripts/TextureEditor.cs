@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BrushType
+public enum PaintType
 {
     Fill,
-    Pen
+    Brush
+}
+
+public enum BrushShape
+{
+    Square,
+    Circle
 }
 
 public class TextureEditor : MonoBehaviour
 {
-    [SerializeField] BrushType brushType;
+    [SerializeField] PaintType paintType;
     [SerializeField] int brushSize;
+    [SerializeField] BrushShape brushShape;
     [SerializeField] Image currentImage;
 
     void Update()
@@ -28,7 +35,7 @@ public class TextureEditor : MonoBehaviour
             {
                 MeshRenderer renderer = hit.collider.GetComponent<MeshRenderer>();
                 Material material = renderer.material;
-                if (brushType == BrushType.Fill)
+                if (paintType == PaintType.Fill)
                 {
                     material.SetColor("_Color", currentImage.color);
                 }
@@ -41,10 +48,17 @@ public class TextureEditor : MonoBehaviour
                     {
                         for (int j = ((int)pixelPosition.y - this.brushSize); j < ((int)pixelPosition.y + this.brushSize); j++)
                         {
-                            Vector2 drawingPoint = new Vector2(i, j);
-                            float distance = Vector2.Distance(drawingPoint, pixelPosition);
-                            if (distance < (int)this.brushSize)
+                            if (this.brushShape == BrushShape.Square)
+                            {
                                 texture.SetPixel(i, j, currentImage.color);
+                            }
+                            else
+                            {
+                                Vector2 drawingPoint = new Vector2(i, j);
+                                float distance = Vector2.Distance(drawingPoint, pixelPosition);
+                                if (distance < (int)this.brushSize)
+                                    texture.SetPixel(i, j, currentImage.color);
+                            }
                         }
                     }
                     texture.Apply();
