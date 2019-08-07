@@ -783,6 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushType: 1
+  brushSize: 50
   currentImage: {fileID: 296539110}
 --- !u!1 &1501899966
 GameObject:
