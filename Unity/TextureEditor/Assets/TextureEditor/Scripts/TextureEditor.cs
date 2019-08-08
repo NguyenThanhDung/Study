@@ -20,6 +20,7 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] PaintType paintType;
     [SerializeField] int brushSize;
     [SerializeField] BrushShape brushShape;
+    [SerializeField] float brushHardness;
     [SerializeField] Image currentImage;
 
     void Update()
@@ -57,7 +58,15 @@ public class TextureEditor : MonoBehaviour
                                 Vector2 drawingPoint = new Vector2(i, j);
                                 float distance = Vector2.Distance(drawingPoint, pixelPosition);
                                 if (distance < (int)this.brushSize)
-                                    texture.SetPixel(i, j, currentImage.color);
+                                {
+                                    float distanceSacle = distance / this.brushSize;
+
+                                    Color currentColor = texture.GetPixel((int)drawingPoint.x, (int)drawingPoint.y);
+                                    Color drawingColor = currentImage.color;
+                                    Color blendedColor = currentColor * distanceSacle + drawingColor * (1f - distanceSacle);
+
+                                    texture.SetPixel((int)drawingPoint.x, (int)drawingPoint.y, blendedColor);
+                                }
                             }
                         }
                     }
