@@ -20,7 +20,7 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] PaintType paintType;
     [SerializeField] int brushSize;
     [SerializeField] BrushShape brushShape;
-    [SerializeField] float brushHardness;
+    [SerializeField] float brushSoftness;
     [SerializeField] Image currentImage;
 
     void Update()
@@ -59,13 +59,21 @@ public class TextureEditor : MonoBehaviour
                                 float distance = Vector2.Distance(drawingPoint, pixelPosition);
                                 if (distance < (int)this.brushSize)
                                 {
-                                    float distanceSacle = distance / this.brushSize;
+                                    float softDistance = distance - this.brushSize * (1f - this.brushSoftness);
+                                    float softScale = softDistance / (this.brushSize * this.brushSoftness);
 
-                                    Color currentColor = texture.GetPixel((int)drawingPoint.x, (int)drawingPoint.y);
-                                    Color drawingColor = currentImage.color;
-                                    Color blendedColor = currentColor * distanceSacle + drawingColor * (1f - distanceSacle);
+                                    if (softScale > 0f)
+                                    {
+                                        Color currentColor = texture.GetPixel((int)drawingPoint.x, (int)drawingPoint.y);
+                                        Color drawingColor = currentImage.color;
+                                        Color blendedColor = currentColor * softScale + drawingColor * (1f - softScale);
 
-                                    texture.SetPixel((int)drawingPoint.x, (int)drawingPoint.y, blendedColor);
+                                        texture.SetPixel((int)drawingPoint.x, (int)drawingPoint.y, blendedColor);
+                                    }
+                                    else
+                                    {
+                                        texture.SetPixel((int)drawingPoint.x, (int)drawingPoint.y, currentImage.color);
+                                    }
                                 }
                             }
                         }

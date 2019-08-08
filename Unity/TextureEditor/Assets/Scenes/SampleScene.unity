@@ -783,9 +783,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintType: 1
-  brushSize: 100
+  brushSize: 200
   brushShape: 1
-  brushHardness: 25
+  brushSoftness: 0.5
   currentImage: {fileID: 296539110}
 --- !u!1 &1501899966
 GameObject:
