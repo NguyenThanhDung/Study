@@ -25,7 +25,7 @@ public class TextureEditor : MonoBehaviour
 
     void Update()
     {
-        if (!Input.GetMouseButtonDown(0))
+        if (!Input.GetMouseButton(0))
             return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -34,53 +34,64 @@ public class TextureEditor : MonoBehaviour
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("ColorEditable"))
             {
-                MeshRenderer renderer = hit.collider.GetComponent<MeshRenderer>();
-                Material material = renderer.material;
                 if (paintType == PaintType.Fill)
+                    Fill(hit.collider.gameObject, this.currentImage.color);
+                else
+                    BrushPoint(hit.collider.gameObject, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
+            }
+        }
+    }
+
+    private void Fill(GameObject gameObject, Color color)
+    {
+        MeshRenderer renderer = gameObject.GetComponent<MeshRenderer>();
+        renderer.material.SetColor("_Color", color);
+    }
+
+    private void BrushPoint(GameObject gameObject, Vector2 textureCoord, BrushShape brushShape, int brushSize, float softness, Color brushColor)
+    {
+        MeshRenderer renderer = gameObject.GetComponent<MeshRenderer>();
+        Texture2D texture = (Texture2D)renderer.material.mainTexture;
+        Vector2 point = new Vector2(textureCoord.x * texture.width, textureCoord.y * texture.height);
+
+        int left = (int)point.x - brushSize;
+        int right = (int)point.x + brushSize;
+        int top = (int)point.y - brushSize;
+        int bottom = (int)point.y + brushSize;
+
+        for (int i = left; i < right; i++)
+        {
+            for (int j = top; j < bottom; j++)
+            {
+                if (this.brushShape == BrushShape.Square)
                 {
-                    material.SetColor("_Color", currentImage.color);
+                    texture.SetPixel(i, j, brushColor);
                 }
                 else
                 {
-                    Texture2D texture = (Texture2D)material.mainTexture;
-                    Vector2 textureCoord = hit.textureCoord;
-                    Vector2 pixelPosition = new Vector2(textureCoord.x * texture.width, textureCoord.y * texture.height);
-                    for (int i = ((int)pixelPosition.x - this.brushSize); i < ((int)pixelPosition.x + this.brushSize); i++)
+                    float distance = Vector2.Distance(new Vector2(i, j), point);
+                    if (distance < brushSize)
                     {
-                        for (int j = ((int)pixelPosition.y - this.brushSize); j < ((int)pixelPosition.y + this.brushSize); j++)
+                        float softDistance = distance - brushSize * (1f - softness);
+                        float softScale = softDistance / (brushSize * softness);
+
+                        if (softScale > 0f)
                         {
-                            if (this.brushShape == BrushShape.Square)
-                            {
-                                texture.SetPixel(i, j, currentImage.color);
-                            }
-                            else
-                            {
-                                Vector2 drawingPoint = new Vector2(i, j);
-                                float distance = Vector2.Distance(drawingPoint, pixelPosition);
-                                if (distance < (int)this.brushSize)
-                                {
-                                    float softDistance = distance - this.brushSize * (1f - this.brushSoftness);
-                                    float softScale = softDistance / (this.brushSize * this.brushSoftness);
+                            Color currentColor = texture.GetPixel(i, j);
+                            Color drawingColor = brushColor;
+                            Color blendedColor = currentColor * softScale + drawingColor * (1f - softScale);
 
-                                    if (softScale > 0f)
-                                    {
-                                        Color currentColor = texture.GetPixel((int)drawingPoint.x, (int)drawingPoint.y);
-                                        Color drawingColor = currentImage.color;
-                                        Color blendedColor = currentColor * softScale + drawingColor * (1f - softScale);
-
-                                        texture.SetPixel((int)drawingPoint.x, (int)drawingPoint.y, blendedColor);
-                                    }
-                                    else
-                                    {
-                                        texture.SetPixel((int)drawingPoint.x, (int)drawingPoint.y, currentImage.color);
-                                    }
-                                }
-                            }
+                            texture.SetPixel(i, j, blendedColor);
+                        }
+                        else
+                        {
+                            texture.SetPixel(i, j, brushColor);
                         }
                     }
-                    texture.Apply();
                 }
             }
         }
+
+        texture.Apply();
     }
 }
