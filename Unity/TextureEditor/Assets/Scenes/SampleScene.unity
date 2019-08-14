@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintType: 1
-  brushSize: 200
+  brushSize: 50
   brushShape: 1
   brushSoftness: 0.5
   currentImage: {fileID: 296539110}

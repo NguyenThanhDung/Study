@@ -23,6 +23,8 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] float brushSoftness;
     [SerializeField] Image currentImage;
 
+    private Vector2 lastTextureCoord;
+
     void Update()
     {
         if (!Input.GetMouseButton(0))
@@ -37,7 +39,17 @@ public class TextureEditor : MonoBehaviour
                 if (paintType == PaintType.Fill)
                     Fill(hit.collider.gameObject, this.currentImage.color);
                 else
-                    BrushPoint(hit.collider.gameObject, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        BrushPoint(hit.collider.gameObject, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
+                    }
+                    else if (Input.GetMouseButton(0))
+                    {
+                        BrushLine(hit.collider.gameObject, this.lastTextureCoord, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
+                    }
+                    this.lastTextureCoord = hit.textureCoord;
+                }
             }
         }
     }
@@ -93,5 +105,15 @@ public class TextureEditor : MonoBehaviour
         }
 
         texture.Apply();
+    }
+
+    private void BrushLine(GameObject gameObject, Vector2 beginTextureCoord, Vector2 endTextureCoord, BrushShape brushShape, int brushSize, float softness, Color brushColor)
+    {
+        float interval = 0.2f;
+        for (float lerp = 0f; lerp < 1f; lerp += interval)
+        {
+            Vector2 currentTextureCoord = Vector2.Lerp(beginTextureCoord, endTextureCoord, lerp);
+            BrushPoint(gameObject, currentTextureCoord, brushShape, brushSize, softness, brushColor);
+        }
     }
 }
