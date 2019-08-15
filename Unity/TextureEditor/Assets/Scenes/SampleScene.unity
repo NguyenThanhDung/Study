@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 1027768507}
   - component: {fileID: 1027768506}
   m_Layer: 9
-  m_Name: Cube
+  m_Name: DrawableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,6 +787,7 @@ MonoBehaviour:
   brushShape: 1
   brushSoftness: 0.5
   currentImage: {fileID: 296539110}
+  drawableLayer: Drawable
 --- !u!1 &1501899966
 GameObject:
   m_ObjectHideFlags: 0

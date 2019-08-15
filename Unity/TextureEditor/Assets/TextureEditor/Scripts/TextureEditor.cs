@@ -22,6 +22,7 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] BrushShape brushShape;
     [SerializeField] float brushSoftness;
     [SerializeField] Image currentImage;
+    [SerializeField] string drawableLayer;
 
     private Vector2 lastTextureCoord;
 
@@ -34,7 +35,7 @@ public class TextureEditor : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("ColorEditable"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer(this.drawableLayer))
             {
                 if (paintType == PaintType.Fill)
                     Fill(hit.collider.gameObject, this.currentImage.color);
