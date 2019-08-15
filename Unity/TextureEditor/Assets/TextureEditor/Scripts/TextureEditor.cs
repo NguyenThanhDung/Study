@@ -22,7 +22,7 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] BrushShape brushShape;
     [SerializeField] float brushSoftness;
     [SerializeField] Image currentImage;
-    [SerializeField] string drawableLayer;
+    [SerializeField] LayerMask drawableLayer;
 
     private Vector2 lastTextureCoord;
 
@@ -33,24 +33,21 @@ public class TextureEditor : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, this.drawableLayer))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer(this.drawableLayer))
+            if (paintType == PaintType.Fill)
+                Fill(hit.collider.gameObject, this.currentImage.color);
+            else
             {
-                if (paintType == PaintType.Fill)
-                    Fill(hit.collider.gameObject, this.currentImage.color);
-                else
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        BrushPoint(hit.collider.gameObject, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
-                    }
-                    else if (Input.GetMouseButton(0))
-                    {
-                        BrushLine(hit.collider.gameObject, this.lastTextureCoord, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
-                    }
-                    this.lastTextureCoord = hit.textureCoord;
+                    BrushPoint(hit.collider.gameObject, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
                 }
+                else if (Input.GetMouseButton(0))
+                {
+                    BrushLine(hit.collider.gameObject, this.lastTextureCoord, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
+                }
+                this.lastTextureCoord = hit.textureCoord;
             }
         }
     }

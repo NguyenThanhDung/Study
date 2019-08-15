@@ -787,7 +787,9 @@ MonoBehaviour:
   brushShape: 1
   brushSoftness: 0.5
   currentImage: {fileID: 296539110}
-  drawableLayer: Drawable
+  drawableLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1501899966
 GameObject:
   m_ObjectHideFlags: 0
