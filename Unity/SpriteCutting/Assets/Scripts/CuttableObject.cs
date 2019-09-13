@@ -8,18 +8,24 @@ public class CuttableObject : MonoBehaviour
 
     [SerializeField] LayerMask cuttableLayer;
 
-    private List<Vector2> shape;
+    private Texture2D texture;
+    private List<Vector2> texcoords;
+    private List<Vector2> polygon;
 
     void Start()
     {
-        this.shape = new List<Vector2>();
+        Transform display = this.gameObject.transform.GetChild(0);
+        MeshRenderer renderer = display.gameObject.GetComponent<MeshRenderer>();
+        this.texture = (Texture2D)renderer.material.mainTexture;
+        this.texcoords = new List<Vector2>();
+        this.polygon = new List<Vector2>();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            this.shape.Clear();
+            this.texcoords.Clear();
         }
         else if (Input.GetMouseButton(0))
         {
@@ -27,7 +33,7 @@ public class CuttableObject : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, this.cuttableLayer))
             {
-                this.shape.Add(hit.textureCoord);
+                this.texcoords.Add(hit.textureCoord);
             }
         }
         else if (Input.GetMouseButtonUp(0))
@@ -40,8 +46,8 @@ public class CuttableObject : MonoBehaviour
     // point q lies on line segment 'pr' 
     bool onSegment(Vector2 p, Vector2 q, Vector2 r)
     {
-        if (q.x <= Math.Max(p.x, r.x) && q.x >= Math.Min(p.x, r.x) &&
-            q.y <= Math.Max(p.y, r.y) && q.y >= Math.Min(p.y, r.y))
+        if (q.x <= Mathf.Max(p.x, r.x) && q.x >= Mathf.Min(p.x, r.x) &&
+            q.y <= Mathf.Max(p.y, r.y) && q.y >= Mathf.Min(p.y, r.y))
             return true;
 
         return false;
@@ -56,8 +62,7 @@ public class CuttableObject : MonoBehaviour
     {
         // See https://www.geeksforgeeks.org/orientation-3-ordered-points/ 
         // for details of below formula. 
-        int val = (q.y - p.y) * (r.x - q.x) -
-                (q.x - p.x) * (r.y - q.y);
+        int val = (int)((q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y));
 
         if (val == 0) return 0; // colinear 
 
@@ -108,7 +113,7 @@ public class CuttableObject : MonoBehaviour
         int count = 0, i = 0;
         do
         {
-            int next = (i + 1) % n;
+            int next = (i + 1) % polygon.Count;
 
             // Check if the line segment from 'p' to 'extreme' intersects 
             // with the line segment from 'polygon[i]' to 'polygon[next]' 
@@ -127,19 +132,27 @@ public class CuttableObject : MonoBehaviour
         while (i != 0);
 
         // Return true if count is odd, false otherwise 
-        return count & 1;  // Same as (count%2 == 1) 
+        return (count & 1) != 0;  // Same as (count%2 == 1) 
+    }
+
+    private List<Vector2> TexcoordToVertex(List<Vector2> texcoords, Texture2D texture)
+    {
+        List<Vector2> polygon = new List<Vector2>();
+        foreach (Vector2 uv in texcoords)
+        {
+            Vector2 vertex = new Vector2(uv.x * texture.width, uv.y * texture.height);
+            polygon.Add(vertex);
+        }
+        return polygon;
     }
 
     private void Validate()
     {
-        if (this.shape.Count < 3)
+        if (this.texcoords.Count < 3)
         {
             Debug.Log("Not enough vertexes");
             return;
         }
-        foreach (Vector2 vertex in this.shape)
-        {
-            Debug.Log(vertex);
-        }
+        this.polygon = TexcoordToVertex(this.texcoords, this.texture);        
     }
 }
