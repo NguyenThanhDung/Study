@@ -135,6 +135,19 @@ public class CuttableObject : MonoBehaviour
         return (count & 1) != 0;  // Same as (count%2 == 1) 
     }
 
+    private Texture2D Cut(Texture2D texture, List<Vector2> polygon)
+    {
+        for (int i = 0; i < texture.height; i++)
+        {
+            for (int j = 0; j < texture.width; j++)
+            {
+                if (isInside(polygon, new Vector2(i, j)))
+                    texture.SetPixel(i, j, Color.red);
+            }
+        }
+        return texture;
+    }
+
     private List<Vector2> TexcoordToVertex(List<Vector2> texcoords, Texture2D texture)
     {
         List<Vector2> polygon = new List<Vector2>();
@@ -153,6 +166,8 @@ public class CuttableObject : MonoBehaviour
             Debug.Log("Not enough vertexes");
             return;
         }
-        this.polygon = TexcoordToVertex(this.texcoords, this.texture);        
+        this.polygon = TexcoordToVertex(this.texcoords, this.texture);
+        this.texture = Cut(this.texture, this.polygon);
+        this.texture.Apply();
     }
 }
