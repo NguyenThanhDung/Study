@@ -9,11 +9,15 @@ public class DrawableTarget : MonoBehaviour
 
     void Start()
     {
-        // MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
-        // Texture2D texture = (Texture2D)meshRenderer.material.mainTexture;
         Texture2D texture = drawbleTexture.texture;
         byte[] bytes = texture.EncodeToPNG();
-        File.WriteAllBytes(Application.persistentDataPath + "/DrawableTarget.png", bytes);
-        Debug.Log("Texture saved.");
+
+        Texture2D newTexture = new Texture2D(2, 2);
+        newTexture.LoadImage(bytes);
+        MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
+        meshRenderer.material.mainTexture = newTexture;
+
+        // File.WriteAllBytes(Application.persistentDataPath + "/DrawableTarget.png", bytes);
+        // Debug.Log("Texture saved.");
     }
 }
