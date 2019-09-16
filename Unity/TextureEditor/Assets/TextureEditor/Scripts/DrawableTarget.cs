@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class DrawableTarget : MonoBehaviour
 {
-    [SerializeField] DrawableTexture drawbleTexture;
+    [SerializeField] Texture2D texture;
 
     void Start()
     {
-        Texture2D texture = drawbleTexture.texture;
         byte[] bytes = texture.EncodeToPNG();
 
         Texture2D newTexture = new Texture2D(2, 2);
