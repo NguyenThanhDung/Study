@@ -14,13 +14,15 @@ public class DrawableTarget : MonoBehaviour
 
         Texture2D newTexture = new Texture2D(2, 2);
         newTexture.LoadImage(bytes);
-        MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
+        Transform child = this.transform.GetChild(0);
+        MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
         meshRenderer.material.mainTexture = newTexture;
     }
 
     public void SaveTextureToFile()
     {
-        MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
+        Transform child = this.transform.GetChild(0);
+        MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
         Texture2D texture = (Texture2D)meshRenderer.material.mainTexture;
         byte[] bytes = texture.EncodeToPNG();
         File.WriteAllBytes(Application.persistentDataPath + "/DrawableTarget.png", bytes);
