@@ -1096,7 +1096,6 @@ GameObject:
   - component: {fileID: 5485761001014363459}
   - component: {fileID: 5485761001014363458}
   - component: {fileID: 5485761001014363457}
-  - component: {fileID: 5485761001014363460}
   m_Layer: 5
   m_Name: Blue
   m_TagString: Untagged
@@ -1200,12 +1199,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5485761001014363460}
-        m_MethodName: OnSetColor
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_MethodName: SetColor
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 5485761001014363458}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1213,19 +1212,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5485761001014363460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5485761001014363583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4499aade3c8644b7b97b22753d40008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage: {fileID: 0}
 --- !u!1 &5485761001293246846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1224,6 @@ GameObject:
   - component: {fileID: 5485761001293246722}
   - component: {fileID: 5485761001293246721}
   - component: {fileID: 5485761001293246720}
-  - component: {fileID: 5485761001293246723}
   m_Layer: 5
   m_Name: Green
   m_TagString: Untagged
@@ -1342,12 +1327,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5485761001293246723}
-        m_MethodName: OnSetColor
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_MethodName: SetColor
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 5485761001293246721}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1355,19 +1340,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5485761001293246723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5485761001293246846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4499aade3c8644b7b97b22753d40008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage: {fileID: 0}
 --- !u!1 &5485761001506947059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1352,6 @@ GameObject:
   - component: {fileID: 5485761001506947063}
   - component: {fileID: 5485761001506947062}
   - component: {fileID: 5485761001506947061}
-  - component: {fileID: 5485761001506947064}
   m_Layer: 5
   m_Name: Red
   m_TagString: Untagged
@@ -1484,12 +1455,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5485761001506947064}
-        m_MethodName: OnSetColor
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_MethodName: SetColor
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 5485761001506947062}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1497,19 +1468,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5485761001506947064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5485761001506947059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4499aade3c8644b7b97b22753d40008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage: {fileID: 0}
 --- !u!1 &5485761001592231432
 GameObject:
   m_ObjectHideFlags: 0

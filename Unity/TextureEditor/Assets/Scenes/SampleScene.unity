@@ -692,7 +692,6 @@ MonoBehaviour:
   paintType: 1
   brushShape: 1
   brushSoftness: 0.5
-  currentImage: {fileID: 296539110}
   drawableLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -949,6 +948,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5485761001014363457, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1249380513}
+    - target: {fileID: 5485761001293246720, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1249380513}
+    - target: {fileID: 5485761001506947061, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1249380513}
     - target: {fileID: 1922600018, guid: 80769f9165f3742c48f94b533d0ed9cf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

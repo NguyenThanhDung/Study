@@ -20,10 +20,10 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] PaintType paintType;
     [SerializeField] BrushShape brushShape;
     [SerializeField] float brushSoftness;
-    [SerializeField] Image currentImage;
     [SerializeField] LayerMask drawableLayer;
 
     private int brushSize;
+    private Color color;
 
     private Vector2 lastTextureCoord;
 
@@ -37,16 +37,16 @@ public class TextureEditor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, this.drawableLayer))
         {
             if (paintType == PaintType.Fill)
-                Fill(hit.collider.gameObject, this.currentImage.color);
+                Fill(hit.collider.gameObject, this.color);
             else
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    BrushPoint(hit.collider.gameObject, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
+                    BrushPoint(hit.collider.gameObject, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.color);
                 }
                 else if (Input.GetMouseButton(0))
                 {
-                    BrushLine(hit.collider.gameObject, this.lastTextureCoord, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.currentImage.color);
+                    BrushLine(hit.collider.gameObject, this.lastTextureCoord, hit.textureCoord, this.brushShape, this.brushSize, this.brushSoftness, this.color);
                 }
                 this.lastTextureCoord = hit.textureCoord;
             }
@@ -56,6 +56,11 @@ public class TextureEditor : MonoBehaviour
     public void SetBrushSize(int size)
     {
         this.brushSize = size;
+    }
+
+    public void SetColor(Image image)
+    {
+        this.color = image.color;
     }
 
     private void Fill(GameObject gameObject, Color color)
