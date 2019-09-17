@@ -909,6 +909,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5485761000886294164, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1027768510}
+    - target: {fileID: 5485761000886294164, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveTextureToFile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485761000648372791, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1951893473}
+    - target: {fileID: 5485761000648372791, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IntegrateTexture
+      objectReference: {fileID: 0}
     - target: {fileID: 5485761001014363457, guid: 80769f9165f3742c48f94b533d0ed9cf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
