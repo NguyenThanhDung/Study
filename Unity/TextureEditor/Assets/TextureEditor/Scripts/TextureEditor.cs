@@ -18,11 +18,12 @@ public enum BrushShape
 public class TextureEditor : MonoBehaviour
 {
     [SerializeField] PaintType paintType;
-    [SerializeField] int brushSize;
     [SerializeField] BrushShape brushShape;
     [SerializeField] float brushSoftness;
     [SerializeField] Image currentImage;
     [SerializeField] LayerMask drawableLayer;
+
+    private int brushSize;
 
     private Vector2 lastTextureCoord;
 
@@ -50,6 +51,11 @@ public class TextureEditor : MonoBehaviour
                 this.lastTextureCoord = hit.textureCoord;
             }
         }
+    }
+
+    public void SetBrushSize(int size)
+    {
+        this.brushSize = size;
     }
 
     private void Fill(GameObject gameObject, Color color)

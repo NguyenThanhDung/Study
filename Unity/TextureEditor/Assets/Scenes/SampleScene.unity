@@ -690,7 +690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintType: 1
-  brushSize: 50
   brushShape: 1
   brushSoftness: 0.5
   currentImage: {fileID: 296539110}
@@ -950,30 +949,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5485761001506947064, guid: 80769f9165f3742c48f94b533d0ed9cf,
-        type: 3}
-      propertyPath: targetImage
-      value: 
-      objectReference: {fileID: 296539110}
-    - target: {fileID: 5485761001293246723, guid: 80769f9165f3742c48f94b533d0ed9cf,
-        type: 3}
-      propertyPath: targetImage
-      value: 
-      objectReference: {fileID: 296539110}
-    - target: {fileID: 5485761001014363460, guid: 80769f9165f3742c48f94b533d0ed9cf,
-        type: 3}
-      propertyPath: targetImage
-      value: 
-      objectReference: {fileID: 296539110}
-    - target: {fileID: 5485761000886294164, guid: 80769f9165f3742c48f94b533d0ed9cf,
-        type: 3}
+    - target: {fileID: 1922600018, guid: 80769f9165f3742c48f94b533d0ed9cf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1027768510}
-    - target: {fileID: 5485761000648372791, guid: 80769f9165f3742c48f94b533d0ed9cf,
-        type: 3}
+      objectReference: {fileID: 1249380513}
+    - target: {fileID: 860736808, guid: 80769f9165f3742c48f94b533d0ed9cf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1951893473}
+      objectReference: {fileID: 1249380513}
+    - target: {fileID: 1046240721, guid: 80769f9165f3742c48f94b533d0ed9cf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1249380513}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80769f9165f3742c48f94b533d0ed9cf, type: 3}
