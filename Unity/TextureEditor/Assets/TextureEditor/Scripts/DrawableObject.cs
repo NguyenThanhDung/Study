@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class DrawableObject : MonoBehaviour
 {
-    [SerializeField] GameObject display;
-    [SerializeField] Texture2D texture;
-
     void Start()
     {
-        byte[] bytes = texture.EncodeToPNG();
+        byte[] bytes = TextureEditManager.Instance.targetTexture.EncodeToPNG();
         Texture2D newTexture = new Texture2D(2, 2);
         newTexture.LoadImage(bytes);
 
-        MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
+        Transform child = this.transform.GetChild(0);
+        MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
         meshRenderer.material.mainTexture = newTexture;
     }
 
     public void SaveTextureToFile()
     {
-        MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
+        Transform child = this.transform.GetChild(0);
+        MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
         Texture2D texture = (Texture2D)meshRenderer.material.mainTexture;
         byte[] bytes = texture.EncodeToPNG();
         File.WriteAllBytes(TextureEditManager.Instance.CustomizedTexturePath, bytes);

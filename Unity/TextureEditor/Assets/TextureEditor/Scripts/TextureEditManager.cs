@@ -19,6 +19,8 @@ public class TextureEditManager : MonoBehaviour
 {
     public static TextureEditManager Instance;
 
+    public Texture2D targetTexture;
+
     [SerializeField] PaintType paintType;
     [SerializeField] BrushShape brushShape;
     [SerializeField] float brushSoftness;
