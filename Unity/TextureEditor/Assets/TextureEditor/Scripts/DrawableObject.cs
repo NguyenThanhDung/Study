@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DrawableTarget : MonoBehaviour
+public class DrawableObject : MonoBehaviour
 {
     [SerializeField] GameObject display;
     [SerializeField] Texture2D texture;
