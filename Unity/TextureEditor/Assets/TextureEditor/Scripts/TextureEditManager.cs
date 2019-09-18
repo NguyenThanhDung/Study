@@ -15,8 +15,10 @@ public enum BrushShape
     Circle
 }
 
-public class TextureEditor : MonoBehaviour
+public class TextureEditManager : MonoBehaviour
 {
+    public static TextureEditManager Instance;
+
     [SerializeField] PaintType paintType;
     [SerializeField] BrushShape brushShape;
     [SerializeField] float brushSoftness;
@@ -26,6 +28,19 @@ public class TextureEditor : MonoBehaviour
     private Color color;
 
     private Vector2 lastTextureCoord;
+
+    public string CustomizedTexturePath
+    {
+        get
+        {
+            return Application.persistentDataPath + "/DrawableTarget.png";
+        }
+    }
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {

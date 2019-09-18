@@ -8,12 +8,8 @@ public class DrawableObject : MonoBehaviour
     [SerializeField] GameObject display;
     [SerializeField] Texture2D texture;
 
-    private string savePath;
-
     void Start()
     {
-        this.savePath = Application.persistentDataPath + "/DrawableTarget.png";
-
         byte[] bytes = texture.EncodeToPNG();
         Texture2D newTexture = new Texture2D(2, 2);
         newTexture.LoadImage(bytes);
@@ -27,7 +23,7 @@ public class DrawableObject : MonoBehaviour
         MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
         Texture2D texture = (Texture2D)meshRenderer.material.mainTexture;
         byte[] bytes = texture.EncodeToPNG();
-        File.WriteAllBytes(this.savePath, bytes);
-        Debug.Log("Texture saved to " + this.savePath);
+        File.WriteAllBytes(TextureEditManager.Instance.CustomizedTexturePath, bytes);
+        Debug.Log("Texture saved to " + TextureEditManager.Instance.CustomizedTexturePath);
     }
 }

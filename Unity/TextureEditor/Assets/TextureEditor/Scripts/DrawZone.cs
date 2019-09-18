@@ -16,5 +16,10 @@ public class DrawZone : MonoBehaviour
     public void SaveDrawableObject()
     {
         this.drawableObject.SaveTextureToFile();
+        Destroy(this.drawableObject.gameObject);
+        this.drawableObject = null;
+        
+        Transform child = this.transform.GetChild(0);
+        child.gameObject.SetActive(false);
     }
 }
