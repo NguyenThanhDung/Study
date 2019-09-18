@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class DrawZone : MonoBehaviour
 {
-    [SerializeField] GameObject drawableObjectPrefab;
+    [SerializeField] DrawableObject drawableObjectPrefab;
+
+    private DrawableObject drawableObject;
 
     public void LoadDrawableObject()
     {
-        GameObject drawableObject = Instantiate(drawableObjectPrefab, this.transform);
+        this.drawableObject = Instantiate<DrawableObject>(drawableObjectPrefab, this.transform);
+    }
+
+    public void SaveDrawableObject()
+    {
+        this.drawableObject.SaveTextureToFile();
     }
 }
