@@ -253,12 +253,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1024, y: 768}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -920,6 +920,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadDrawableObject
       objectReference: {fileID: 0}
+    - target: {fileID: 634297864097874136, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406321983879422693, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572539056845477339, guid: 80769f9165f3742c48f94b533d0ed9cf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80769f9165f3742c48f94b533d0ed9cf, type: 3}
 --- !u!1001 &7635805462097938780
@@ -934,6 +949,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextureEditManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7635805463001285117, guid: f8d810e5dd3a54a0f80b5c4bf7d61bde,
+        type: 3}
+      propertyPath: targetTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 33d1d0ab7ad1f4bafa19dee402ae4012, type: 3}
     - target: {fileID: 7635805463001285116, guid: f8d810e5dd3a54a0f80b5c4bf7d61bde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -989,11 +1009,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7635805463001285117, guid: f8d810e5dd3a54a0f80b5c4bf7d61bde,
-        type: 3}
-      propertyPath: targetTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: 33d1d0ab7ad1f4bafa19dee402ae4012, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d810e5dd3a54a0f80b5c4bf7d61bde, type: 3}
 --- !u!1001 &9135700788412294320
