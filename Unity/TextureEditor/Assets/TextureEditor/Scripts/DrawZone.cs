@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawZone : MonoBehaviour
+namespace TextureEditor
 {
-    [SerializeField] DrawableObject drawableObjectPrefab;
-
-    private DrawableObject drawableObject;
-
-    public void LoadDrawableObject()
+    public class DrawZone : MonoBehaviour
     {
-        this.drawableObject = Instantiate<DrawableObject>(drawableObjectPrefab, this.transform);
-    }
+        [SerializeField] DrawableObject drawableObjectPrefab;
 
-    public void SaveDrawableObject()
-    {
-        this.drawableObject.SaveTextureToFile();
-        Destroy(this.drawableObject.gameObject);
-        this.drawableObject = null;
-        
-        Transform child = this.transform.GetChild(0);
-        child.gameObject.SetActive(false);
+        private DrawableObject drawableObject;
+
+        public void LoadDrawableObject()
+        {
+            this.drawableObject = Instantiate<DrawableObject>(drawableObjectPrefab, this.transform);
+        }
+
+        public void SaveDrawableObject()
+        {
+            this.drawableObject.SaveTextureToFile();
+            Destroy(this.drawableObject.gameObject);
+            this.drawableObject = null;
+
+            Transform child = this.transform.GetChild(0);
+            child.gameObject.SetActive(false);
+        }
     }
 }
