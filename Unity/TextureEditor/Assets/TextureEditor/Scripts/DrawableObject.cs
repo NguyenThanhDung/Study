@@ -9,9 +9,13 @@ namespace TextureEditor
     {
         public void SetTexture(Texture2D texture)
         {
+            byte[] bytes = texture.EncodeToPNG();
+            Texture2D newTexture = new Texture2D(2, 2);
+            newTexture.LoadImage(bytes);
+
             Transform child = this.transform.GetChild(0);
             MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
-            meshRenderer.material.mainTexture = texture;
+            meshRenderer.material.mainTexture = newTexture;
         }
 
         public void SaveTextureToFile()
