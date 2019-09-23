@@ -15,13 +15,15 @@ namespace TextureEditor
 
         public void LoadDrawableObject()
         {
+            float selectZoneHeight = (this.drawableData.textures.Count - 1) * this.interval;
+
             this.drawableObjects = new List<DrawableObject>();
             for (int i = 0; i < this.drawableData.textures.Count; i++)
             {
                 DrawableObject drawableObject = Instantiate<DrawableObject>(drawableObjectPrefab, this.transform);
                 drawableObject.SetTexture(this.drawableData.textures[i]);
 
-                Vector3 newPos = new Vector3(-this.offset, i * this.interval * (-1f), 0f);
+                Vector3 newPos = new Vector3(-this.offset, selectZoneHeight / 2f - i * this.interval, 0f);
                 newPos = this.transform.position + newPos;
                 drawableObject.transform.position = newPos;
 
