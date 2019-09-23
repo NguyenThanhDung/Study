@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da76c1f848aba49dfb13fb78e66dfcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTexture: {fileID: 0}
   paintType: 1
   brushShape: 1
-  brushSoftness: 0.5
+  brushSoftness: 0.1
   drawableLayer:
     serializedVersion: 2
     m_Bits: 512

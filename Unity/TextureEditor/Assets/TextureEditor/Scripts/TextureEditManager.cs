@@ -44,6 +44,12 @@ public class TextureEditManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        this.brushSize = 50;
+        this.color = Color.green;
+    }
+
     void Update()
     {
         if (!Input.GetMouseButton(0))
