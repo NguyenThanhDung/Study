@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9135700787746952521}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.01}
-  m_LocalScale: {x: 1.5, y: 1.1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 9135700788341482528}
   m_RootOrder: 0
@@ -138,3 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawableObjectPrefab: {fileID: 7428354178482295535, guid: 0c8c196bf5b59462e9f7718e00a5f9b8,
     type: 3}
+  drawableData: {fileID: 0}
+  offset: 1
+  interval: 0.2

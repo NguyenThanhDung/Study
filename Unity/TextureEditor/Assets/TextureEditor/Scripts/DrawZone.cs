@@ -8,6 +8,8 @@ namespace TextureEditor
     {
         [SerializeField] DrawableObject drawableObjectPrefab;
         [SerializeField] DrawableData drawableData;
+        [SerializeField] float offset;
+        [SerializeField] float interval;
 
         private List<DrawableObject> drawableObjects;
 
@@ -18,6 +20,13 @@ namespace TextureEditor
             {
                 DrawableObject drawableObject = Instantiate<DrawableObject>(drawableObjectPrefab, this.transform);
                 drawableObject.SetTexture(this.drawableData.textures[i]);
+
+                Vector3 newPos = new Vector3(-this.offset, i * this.interval * (-1f), 0f);
+                newPos = this.transform.position + newPos;
+                drawableObject.transform.position = newPos;
+
+                drawableObject.transform.localScale *= 0.5f;
+
                 this.drawableObjects.Add(drawableObject);
             }
         }
