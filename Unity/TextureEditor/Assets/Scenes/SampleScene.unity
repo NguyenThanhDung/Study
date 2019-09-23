@@ -714,6 +714,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrawZone
       objectReference: {fileID: 0}
+    - target: {fileID: 9135700788341482529, guid: 3ad064a131f9f4e968e8088a0724e7be,
+        type: 3}
+      propertyPath: drawableData
+      value: 
+      objectReference: {fileID: 11400000, guid: 17c004007ea224ecca9717d1159a7a01,
+        type: 2}
     - target: {fileID: 9135700788341482528, guid: 3ad064a131f9f4e968e8088a0724e7be,
         type: 3}
       propertyPath: m_LocalPosition.x

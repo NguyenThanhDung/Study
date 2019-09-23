@@ -21,7 +21,7 @@ namespace TextureEditor
     {
         public static TextureEditManager Instance;
 
-        public Texture2D targetTexture;
+        public Texture2D targetTexture; // TODO: Remove
 
         [SerializeField] PaintType paintType;
         [SerializeField] BrushShape brushShape;

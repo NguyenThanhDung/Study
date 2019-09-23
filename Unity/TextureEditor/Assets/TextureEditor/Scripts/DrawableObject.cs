@@ -7,15 +7,11 @@ namespace TextureEditor
 {
     public class DrawableObject : MonoBehaviour
     {
-        void Start()
+        public void SetTexture(Texture2D texture)
         {
-            byte[] bytes = TextureEditManager.Instance.targetTexture.EncodeToPNG();
-            Texture2D newTexture = new Texture2D(2, 2);
-            newTexture.LoadImage(bytes);
-
             Transform child = this.transform.GetChild(0);
             MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
-            meshRenderer.material.mainTexture = newTexture;
+            meshRenderer.material.mainTexture = texture;
         }
 
         public void SaveTextureToFile()
