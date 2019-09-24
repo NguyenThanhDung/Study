@@ -27,8 +27,8 @@ namespace TextureEditor
         {
             if (this.currentState == State.Idle)
             {
-                DrawZone.Instance.StartDrawing(this);
-                this.currentState = State.Customizing;
+                bool drawable = DrawZone.Instance.StartDrawing(this);
+                this.currentState = drawable ? State.Customizing : State.Idle;
             }
             else
             {

@@ -49,14 +49,16 @@ namespace TextureEditor
             AlignObjectPosition();
         }
 
-        public void StartDrawing(DrawableObject drawableObject)
+        public bool StartDrawing(DrawableObject drawableObject)
         {
             if (this.CustomizingObject == null)
             {
                 this.CustomizingObject = drawableObject;
                 this.drawableObjects.Remove(drawableObject);
                 AlignObjectPosition();
+                return true;
             }
+            return false;
         }
 
         public void Validate()
