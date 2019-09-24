@@ -9,14 +9,14 @@ namespace TextureEditor
     {
         public void Show()
         {
-            byte[] bytes = File.ReadAllBytes(TextureEditManager.Instance.CustomizedTexturePath);
-            Texture2D texture = new Texture2D(2, 2);
-            texture.LoadImage(bytes);
+            // byte[] bytes = File.ReadAllBytes(TextureEditManager.Instance.CustomizedTexturePath);
+            // Texture2D texture = new Texture2D(2, 2);
+            // texture.LoadImage(bytes);
 
-            Transform child = this.transform.GetChild(0);
-            MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
-            meshRenderer.material.mainTexture = texture;
-            child.gameObject.SetActive(true);
+            // Transform child = this.transform.GetChild(0);
+            // MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
+            // meshRenderer.material.mainTexture = texture;
+            // child.gameObject.SetActive(true);
         }
     }
 }

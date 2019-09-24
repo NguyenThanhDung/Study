@@ -13,6 +13,7 @@ namespace TextureEditor
 
     public class DrawableObject : MonoBehaviour
     {
+        private int id;
         private GameObject display;
         private State currentState;
         private Vector2 lastTextureCoord;
@@ -49,6 +50,11 @@ namespace TextureEditor
             }
         }
 
+        public void SetId(int id)
+        {
+            this.id = id;
+        }
+
         public void SetTexture(Texture2D texture)
         {
             byte[] bytes = texture.EncodeToPNG();
@@ -62,8 +68,9 @@ namespace TextureEditor
             MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
             Texture2D texture = (Texture2D)meshRenderer.material.mainTexture;
             byte[] bytes = texture.EncodeToPNG();
-            File.WriteAllBytes(TextureEditManager.Instance.CustomizedTexturePath, bytes);
-            Debug.Log("Texture saved to " + TextureEditManager.Instance.CustomizedTexturePath);
+            string filePath = Application.persistentDataPath + "/DrawableObject" + this.id.ToString() + ".png";
+            File.WriteAllBytes(filePath, bytes);
+            Debug.Log("Texture saved to " + filePath);
         }
 
         public void Fill(Color color)

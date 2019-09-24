@@ -43,6 +43,7 @@ namespace TextureEditor
             for (int i = 0; i < this.drawableData.textures.Count; i++)
             {
                 DrawableObject drawableObject = Instantiate<DrawableObject>(drawableObjectPrefab, this.transform);
+                drawableObject.SetId(i);
                 drawableObject.SetTexture(this.drawableData.textures[i]);
                 this.drawableObjects.Add(drawableObject);
             }

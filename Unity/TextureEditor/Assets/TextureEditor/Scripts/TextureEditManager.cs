@@ -29,14 +29,6 @@ namespace TextureEditor
         private int brushSize;
         private Color color;
 
-        public string CustomizedTexturePath
-        {
-            get
-            {
-                return Application.persistentDataPath + "/DrawableTarget.png";
-            }
-        }
-
         public int CurrentBrushSize
         {
             get
