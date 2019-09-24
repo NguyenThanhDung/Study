@@ -27,7 +27,8 @@ namespace TextureEditor
         {
             if (this.currentState == State.Idle)
             {
-                MoveToDrawZone();
+                DrawZone.Instance.StartDrawing(this);
+                this.currentState = State.Customizing;
             }
             else
             {
@@ -134,17 +135,6 @@ namespace TextureEditor
                 yield return null;
             MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
             meshRenderer.material.mainTexture = texture;
-        }
-
-        private void MoveToDrawZone()
-        {
-            if (DrawZone.Instance.IsAvailable)
-            {
-                this.transform.position = DrawZone.Instance.transform.position;
-                this.transform.localScale = Vector3.one;
-                this.currentState = State.Customizing;
-                DrawZone.Instance.IsAvailable = false;
-            }
         }
     }
 }
