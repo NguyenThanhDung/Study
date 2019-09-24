@@ -14,10 +14,37 @@ namespace TextureEditor
     public class DrawableObject : MonoBehaviour
     {
         private GameObject display;
+        private State currentState;
+        private Vector2 lastTextureCoord;
 
         void Start()
         {
             this.display = this.transform.GetChild(0).gameObject;
+            this.currentState = State.Customizing;
+        }
+
+        public void OnMouseButton(Vector2 textureCoord)
+        {
+            if (this.currentState == State.Idle)
+            {
+            }
+            else
+            {
+                if (TextureEditManager.Instance.paintType == PaintType.Fill)
+                    Fill(TextureEditManager.Instance.CurrentColor);
+                else
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        BrushPoint(textureCoord, TextureEditManager.Instance.brushShape, TextureEditManager.Instance.CurrentBrushSize, TextureEditManager.Instance.brushSoftness, TextureEditManager.Instance.CurrentColor);
+                    }
+                    else if (Input.GetMouseButton(0))
+                    {
+                        BrushLine(this.lastTextureCoord, textureCoord, TextureEditManager.Instance.brushShape, TextureEditManager.Instance.CurrentBrushSize, TextureEditManager.Instance.brushSoftness, TextureEditManager.Instance.CurrentColor);
+                    }
+                    this.lastTextureCoord = textureCoord;
+                }
+            }
         }
 
         public void SetTexture(Texture2D texture)
@@ -100,9 +127,15 @@ namespace TextureEditor
             }
         }
 
+        public void Select()
+        {
+            this.transform.position = TextureEditManager.Instance.transform.position;
+            this.transform.localScale = Vector3.one;
+        }
+
         private IEnumerator InternalSetTexture(Texture2D texture)
         {
-            while(this.display == null)
+            while (this.display == null)
                 yield return null;
             MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
             meshRenderer.material.mainTexture = texture;
