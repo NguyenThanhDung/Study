@@ -20,13 +20,14 @@ namespace TextureEditor
         void Start()
         {
             this.display = this.transform.GetChild(0).gameObject;
-            this.currentState = State.Customizing;
+            this.currentState = State.Idle;
         }
 
         public void OnMouseButton(Vector2 textureCoord)
         {
             if (this.currentState == State.Idle)
             {
+                MoveToDrawZone();
             }
             else
             {
@@ -127,18 +128,23 @@ namespace TextureEditor
             }
         }
 
-        public void Select()
-        {
-            this.transform.position = TextureEditManager.Instance.transform.position;
-            this.transform.localScale = Vector3.one;
-        }
-
         private IEnumerator InternalSetTexture(Texture2D texture)
         {
             while (this.display == null)
                 yield return null;
             MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
             meshRenderer.material.mainTexture = texture;
+        }
+
+        private void MoveToDrawZone()
+        {
+            if (DrawZone.Instance.IsAvailable)
+            {
+                this.transform.position = DrawZone.Instance.transform.position;
+                this.transform.localScale = Vector3.one;
+                this.currentState = State.Customizing;
+                DrawZone.Instance.IsAvailable = false;
+            }
         }
     }
 }

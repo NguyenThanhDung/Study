@@ -6,12 +6,26 @@ namespace TextureEditor
 {
     public class DrawZone : MonoBehaviour
     {
+        public static DrawZone Instance;
+        
+        public bool IsAvailable;
+
         [SerializeField] DrawableObject drawableObjectPrefab;
         [SerializeField] DrawableData drawableData;
         [SerializeField] float offset;
         [SerializeField] float interval;
 
         private List<DrawableObject> drawableObjects;
+
+        void Awake()
+        {
+            Instance = this;
+        }
+
+        void Start()
+        {
+            this.IsAvailable = true;
+        }
 
         public void LoadDrawableObject()
         {
