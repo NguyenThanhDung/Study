@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7428354178482295532}
   - component: {fileID: 7428354178482295535}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DrawableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc79865395714713a8115451c95e7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  display: {fileID: 7428354179225214619}
-  texture: {fileID: 0}
 --- !u!1 &7428354179225214619
 GameObject:
   m_ObjectHideFlags: 0
