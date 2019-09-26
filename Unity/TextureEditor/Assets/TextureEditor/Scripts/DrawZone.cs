@@ -22,8 +22,9 @@ namespace TextureEditor
         private State currentState;
         private List<DrawableObject> drawableObjects;
         private List<DrawableObject> droppedObjects;
+        private DrawableObject customizingObject;
+        private List<DrawableObject> craftingObjects;
 
-        public DrawableObject CustomizingObject { get; set; }
 
         void Awake()
         {
@@ -34,6 +35,7 @@ namespace TextureEditor
         {
             this.currentState = State.Draw;
             this.droppedObjects = new List<DrawableObject>();
+            this.craftingObjects = new List<DrawableObject>();
             LoadDrawableObject();
         }
 
@@ -52,9 +54,9 @@ namespace TextureEditor
 
         public bool StartDrawing(DrawableObject drawableObject)
         {
-            if (this.CustomizingObject == null)
+            if (this.customizingObject == null)
             {
-                this.CustomizingObject = drawableObject;
+                this.customizingObject = drawableObject;
                 this.drawableObjects.Remove(drawableObject);
                 AlignObjectPosition();
                 return true;
@@ -62,28 +64,23 @@ namespace TextureEditor
             return false;
         }
 
-        public bool StartCrafting(DrawableObject drawableObject)
+        public void StartCrafting(DrawableObject drawableObject)
         {
-            if (this.CustomizingObject == null)
-            {
-                this.CustomizingObject = drawableObject;
-                this.droppedObjects.Remove(drawableObject);
-                AlignObjectPosition();
-                return true;
-            }
-            return false;
+            this.craftingObjects.Add(drawableObject);
+            this.droppedObjects.Remove(drawableObject);
+            AlignObjectPosition();
         }
 
         public void Validate()
         {
-            if (this.currentState == State.Draw && this.CustomizingObject != null)
+            if (this.currentState == State.Draw && this.customizingObject != null)
             {
-                this.CustomizingObject.Validate();
-                this.droppedObjects.Add(this.CustomizingObject);
-                this.CustomizingObject = null;
+                this.customizingObject.Validate();
+                this.droppedObjects.Add(this.customizingObject);
+                this.customizingObject = null;
                 this.currentState = (this.drawableObjects.Count == 0) ? State.Craft : State.Draw;
             }
-            if (this.currentState == State.Craft && this.CustomizingObject != null)
+            if (this.currentState == State.Craft && this.customizingObject != null)
             {
 
             }
@@ -92,10 +89,16 @@ namespace TextureEditor
 
         private void AlignObjectPosition()
         {
-            if (this.CustomizingObject != null)
+            if (this.customizingObject != null)
             {
-                this.CustomizingObject.transform.position = this.transform.position + Vector3.back * 0.1f;
-                this.CustomizingObject.transform.localScale = Vector3.one;
+                this.customizingObject.transform.position = this.transform.position + Vector3.back * 0.1f;
+                this.customizingObject.transform.localScale = Vector3.one;
+            }
+
+            for (int i = 0; i < this.craftingObjects.Count; i++)
+            {
+                this.craftingObjects[i].transform.position = this.transform.position;
+                this.craftingObjects[i].transform.localScale = Vector3.one;
             }
 
             float zoneHeight = (this.drawableObjects.Count - 1) * this.interval;

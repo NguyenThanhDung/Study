@@ -53,8 +53,12 @@ namespace TextureEditor
             }
             else if (this.currentState == State.WaitForCrafting)
             {
-                bool craftable = DrawZone.Instance.StartCrafting(this);
-                this.currentState = craftable ? State.Crafting : State.WaitForCrafting;
+                DrawZone.Instance.StartCrafting(this);
+                this.currentState = State.Crafting;
+            }
+            else if (this.currentState == State.Crafting)
+            {
+                
             }
         }
 
