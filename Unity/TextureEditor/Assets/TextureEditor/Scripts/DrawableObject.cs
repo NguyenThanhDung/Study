@@ -20,11 +20,15 @@ namespace TextureEditor
         private GameObject display;
         private State currentState;
         private Vector2 lastTextureCoord;
+        private Vector3 offsetBetweenMouseAndObject;
+        private bool isDragging;
 
         void Start()
         {
             this.display = this.transform.GetChild(0).gameObject;
             this.currentState = State.Idle;
+            this.offsetBetweenMouseAndObject = Vector3.zero;
+            this.isDragging = false;
         }
 
         public void OnMouseButton(Vector2 textureCoord)
@@ -55,10 +59,28 @@ namespace TextureEditor
             {
                 DrawZone.Instance.StartCrafting(this);
                 this.currentState = State.Crafting;
+                this.isDragging = false;
             }
             else if (this.currentState == State.Crafting)
             {
-                
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Vector3 objectScreenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
+                    this.offsetBetweenMouseAndObject = objectScreenPoint - Input.mousePosition;
+                    this.isDragging = true;
+                }
+                else if (Input.GetMouseButton(0))
+                {
+                    if (this.isDragging)
+                    {
+                        Vector3 newObjectScreenPoint = Input.mousePosition + this.offsetBetweenMouseAndObject;
+                        this.transform.position = Camera.main.ScreenToWorldPoint(newObjectScreenPoint);
+                    }
+                }
+                if (Input.GetMouseButtonUp(0) && this.isDragging)
+                {
+                    this.isDragging = false;
+                }
             }
         }
 

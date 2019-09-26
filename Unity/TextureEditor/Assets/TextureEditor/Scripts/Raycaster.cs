@@ -9,7 +9,7 @@ namespace TextureEditor
     {
         void Update()
         {
-            if (!Input.GetMouseButton(0))
+            if (!Input.GetMouseButton(0) && !Input.GetMouseButtonUp(0))
                 return;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
