@@ -62,13 +62,30 @@ namespace TextureEditor
             return false;
         }
 
+        public bool StartCrafting(DrawableObject drawableObject)
+        {
+            if (this.CustomizingObject == null)
+            {
+                this.CustomizingObject = drawableObject;
+                this.droppedObjects.Remove(drawableObject);
+                AlignObjectPosition();
+                return true;
+            }
+            return false;
+        }
+
         public void Validate()
         {
-            if (this.currentState == State.Draw)
+            if (this.currentState == State.Draw && this.CustomizingObject != null)
             {
-                this.CustomizingObject.SaveTextureToFile();
+                this.CustomizingObject.Validate();
                 this.droppedObjects.Add(this.CustomizingObject);
                 this.CustomizingObject = null;
+                this.currentState = (this.drawableObjects.Count == 0) ? State.Craft : State.Draw;
+            }
+            if (this.currentState == State.Craft && this.CustomizingObject != null)
+            {
+
             }
             AlignObjectPosition();
         }

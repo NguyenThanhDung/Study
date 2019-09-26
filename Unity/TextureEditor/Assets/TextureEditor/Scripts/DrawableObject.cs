@@ -5,14 +5,17 @@ using UnityEngine;
 
 namespace TextureEditor
 {
-    public enum State
-    {
-        Idle,
-        Customizing
-    }
 
     public class DrawableObject : MonoBehaviour
     {
+        public enum State
+        {
+            Idle,
+            Customizing,
+            WaitForCrafting,
+            Crafting
+        }
+
         private int id;
         private GameObject display;
         private State currentState;
@@ -31,7 +34,7 @@ namespace TextureEditor
                 bool drawable = DrawZone.Instance.StartDrawing(this);
                 this.currentState = drawable ? State.Customizing : State.Idle;
             }
-            else
+            else if (this.currentState == State.Customizing)
             {
                 if (TextureEditManager.Instance.paintType == PaintType.Fill)
                     Fill(TextureEditManager.Instance.CurrentColor);
@@ -48,6 +51,11 @@ namespace TextureEditor
                     this.lastTextureCoord = textureCoord;
                 }
             }
+            else if (this.currentState == State.WaitForCrafting)
+            {
+                bool craftable = DrawZone.Instance.StartCrafting(this);
+                this.currentState = craftable ? State.Crafting : State.WaitForCrafting;
+            }
         }
 
         public void SetId(int id)
@@ -63,7 +71,7 @@ namespace TextureEditor
             StartCoroutine(InternalSetTexture(newTexture));
         }
 
-        public void SaveTextureToFile()
+        public void Validate()
         {
             MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
             Texture2D texture = (Texture2D)meshRenderer.material.mainTexture;
@@ -71,6 +79,8 @@ namespace TextureEditor
             string filePath = Application.persistentDataPath + "/DrawableObject" + this.id.ToString() + ".png";
             File.WriteAllBytes(filePath, bytes);
             Debug.Log("Texture saved to " + filePath);
+
+            this.currentState = State.WaitForCrafting;
         }
 
         public void Fill(Color color)
