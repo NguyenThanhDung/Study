@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace TextureEditor
@@ -16,10 +17,12 @@ namespace TextureEditor
 
         public List<Part> parts;
 
+        private GameObject craftedElementPrefab;
         private string filePath;
 
         void Start()
         {
+            this.craftedElementPrefab = this.transform.GetChild(0).gameObject;
             this.filePath = Application.persistentDataPath + "/customizedObject.json";
             this.parts = new List<Part>();
         }
@@ -49,6 +52,7 @@ namespace TextureEditor
                 yield return null;
             string jsonText = System.IO.File.ReadAllText(this.filePath);
             JsonUtility.FromJsonOverwrite(jsonText, this);
+            SpawnChildElements();
             Debug.Log("Loaded customized object");
         }
 
@@ -59,6 +63,22 @@ namespace TextureEditor
             System.IO.File.WriteAllText(this.filePath, jsonText);
             Debug.Log("Customized object is saved to " + this.filePath);
             Destroy(this.gameObject);
+        }
+
+        private void SpawnChildElements()
+        {
+            foreach (Part part in this.parts)
+            {
+                GameObject element = Instantiate(this.craftedElementPrefab, this.transform);
+                element.transform.position = part.position;
+
+                byte[] bytes = File.ReadAllBytes(part.texturePath);
+                Texture2D texture = new Texture2D(2, 2);
+                texture.LoadImage(bytes);
+
+                MeshRenderer meshRenderer = element.GetComponent<MeshRenderer>();
+                meshRenderer.material.mainTexture = texture;
+            }
         }
     }
 }
