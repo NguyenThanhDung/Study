@@ -26,6 +26,8 @@ namespace TextureEditor
         public BrushShape brushShape;
         public float brushSoftness;
 
+        [SerializeField] CustomizedObject customizedObjectPrefab;
+
         private int brushSize;
         private Color color;
 
@@ -64,6 +66,12 @@ namespace TextureEditor
         public void SetColor(Image image)
         {
             this.color = image.color;
+        }
+
+        public void ShowCustomizedObject()
+        {
+            CustomizedObject customizedObject = Instantiate<CustomizedObject>(this.customizedObjectPrefab, this.transform);
+            customizedObject.LoadFromFile();
         }
     }
 }

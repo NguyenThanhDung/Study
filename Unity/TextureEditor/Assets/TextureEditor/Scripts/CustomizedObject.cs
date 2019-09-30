@@ -16,14 +16,22 @@ namespace TextureEditor
 
         public List<Part> parts;
 
+        private string filePath;
+
         void Start()
         {
+            this.filePath = Application.persistentDataPath + "/customizedObject.json";
             this.parts = new List<Part>();
+        }
+
+        public void LoadFromFile()
+        {
+            StartCoroutine(InternalLoadFile(this.filePath));
         }
 
         public void SaveToFile(List<DrawableObject> craftedObjects)
         {
-            foreach(DrawableObject craftedObject in craftedObjects)
+            foreach (DrawableObject craftedObject in craftedObjects)
             {
                 Part part = new Part();
                 part.position = craftedObject.transform.position;
@@ -32,8 +40,25 @@ namespace TextureEditor
             }
 
             string jsonText = JsonUtility.ToJson(this);
-            System.IO.File.WriteAllText(Application.persistentDataPath + "/customizedObject.json", jsonText);
-            Debug.Log("Customized object is saved.");
+            StartCoroutine(InternalSaveFile(this.filePath, jsonText));
+        }
+
+        private IEnumerator InternalLoadFile(string filePath)
+        {
+            while (this.filePath == null)
+                yield return null;
+            string jsonText = System.IO.File.ReadAllText(this.filePath);
+            JsonUtility.FromJsonOverwrite(jsonText, this);
+            Debug.Log("Loaded customized object");
+        }
+
+        private IEnumerator InternalSaveFile(string filePath, string jsonText)
+        {
+            while (this.filePath == null)
+                yield return null;
+            System.IO.File.WriteAllText(this.filePath, jsonText);
+            Debug.Log("Customized object is saved to " + this.filePath);
+            Destroy(this.gameObject);
         }
     }
 }
