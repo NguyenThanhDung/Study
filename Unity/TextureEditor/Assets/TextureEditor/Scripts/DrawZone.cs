@@ -85,6 +85,12 @@ namespace TextureEditor
             {
                 CustomizedObject customizedObject = Instantiate(this.customizedObjectPrefab);
                 customizedObject.SaveToFile(this.craftingObjects);
+
+                foreach(DrawableObject craftedObject in this.craftingObjects)
+                    craftedObject.gameObject.SetActive(false);
+
+                Transform background = this.transform.GetChild(0);
+                background.gameObject.SetActive(false);
             }
             AlignObjectPosition();
         }
