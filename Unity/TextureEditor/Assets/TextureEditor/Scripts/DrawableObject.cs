@@ -23,6 +23,8 @@ namespace TextureEditor
         private Vector3 offsetBetweenMouseAndObject;
         private bool isDragging;
 
+        public string TexturePath { get; private set; }
+
         void Start()
         {
             this.display = this.transform.GetChild(0).gameObject;
@@ -87,6 +89,7 @@ namespace TextureEditor
         public void SetId(int id)
         {
             this.id = id;
+            this.TexturePath = Application.persistentDataPath + "/DrawableObject" + this.id.ToString() + ".png";
         }
 
         public void SetTexture(Texture2D texture)
@@ -102,9 +105,8 @@ namespace TextureEditor
             MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
             Texture2D texture = (Texture2D)meshRenderer.material.mainTexture;
             byte[] bytes = texture.EncodeToPNG();
-            string filePath = Application.persistentDataPath + "/DrawableObject" + this.id.ToString() + ".png";
-            File.WriteAllBytes(filePath, bytes);
-            Debug.Log("Texture saved to " + filePath);
+            File.WriteAllBytes(this.TexturePath, bytes);
+            Debug.Log("Texture saved to " + this.TexturePath);
 
             this.currentState = State.WaitForCrafting;
         }

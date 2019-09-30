@@ -18,6 +18,7 @@ namespace TextureEditor
         [SerializeField] DrawableData drawableData;
         [SerializeField] float offset;
         [SerializeField] float interval;
+        [SerializeField] CustomizedObject customizedObjectPrefab;
 
         private State currentState;
         private List<DrawableObject> drawableObjects;
@@ -80,9 +81,10 @@ namespace TextureEditor
                 this.customizingObject = null;
                 this.currentState = (this.drawableObjects.Count == 0) ? State.Craft : State.Draw;
             }
-            if (this.currentState == State.Craft && this.customizingObject != null)
+            if (this.currentState == State.Craft && this.craftingObjects.Count > 0)
             {
-
+                CustomizedObject customizedObject = Instantiate(this.customizedObjectPrefab);
+                customizedObject.SaveToFile(this.craftingObjects);
             }
             AlignObjectPosition();
         }
