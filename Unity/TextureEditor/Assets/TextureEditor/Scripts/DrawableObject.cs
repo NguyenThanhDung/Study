@@ -57,17 +57,12 @@ namespace TextureEditor
             }
             else if (this.currentState == State.WaitForCrafting)
             {
-                DrawZone.Instance.StartCrafting(this);
-                this.currentState = State.Crafting;
-                this.isDragging = false;
-            }
-            else if (this.currentState == State.Crafting)
-            {
                 if (Input.GetMouseButtonDown(0))
                 {
                     Vector3 objectScreenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
                     this.offsetBetweenMouseAndObject = objectScreenPoint - Input.mousePosition;
                     this.isDragging = true;
+                    DrawZone.Instance.StartCrafting(this);
                 }
                 else if (Input.GetMouseButton(0))
                 {
@@ -80,7 +75,12 @@ namespace TextureEditor
                 if (Input.GetMouseButtonUp(0) && this.isDragging)
                 {
                     this.isDragging = false;
+                    this.currentState = State.Crafting;
                 }
+            }
+            else if (this.currentState == State.Crafting)
+            {
+
             }
         }
 

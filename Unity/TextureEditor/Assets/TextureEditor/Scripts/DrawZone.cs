@@ -97,7 +97,6 @@ namespace TextureEditor
 
             for (int i = 0; i < this.craftingObjects.Count; i++)
             {
-                this.craftingObjects[i].transform.position = this.transform.position;
                 this.craftingObjects[i].transform.localScale = Vector3.one;
             }
 
