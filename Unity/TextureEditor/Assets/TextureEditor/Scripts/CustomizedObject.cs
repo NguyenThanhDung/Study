@@ -78,6 +78,8 @@ namespace TextureEditor
 
                 MeshRenderer meshRenderer = element.GetComponent<MeshRenderer>();
                 meshRenderer.material.mainTexture = texture;
+
+                element.SetActive(true);
             }
         }
     }
