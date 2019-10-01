@@ -548,6 +548,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: SetBrushSize
       objectReference: {fileID: 0}
+    - target: {fileID: 2092837617738750877, guid: afc69d4acf62b4881af6d4382f3e0ce7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8181441066827848059, guid: afc69d4acf62b4881af6d4382f3e0ce7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -558,6 +563,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: SetBrushSize
       objectReference: {fileID: 0}
+    - target: {fileID: 8181441066827848059, guid: afc69d4acf62b4881af6d4382f3e0ce7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6598340744454117878, guid: afc69d4acf62b4881af6d4382f3e0ce7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -567,6 +577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: SetBrushSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598340744454117878, guid: afc69d4acf62b4881af6d4382f3e0ce7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afc69d4acf62b4881af6d4382f3e0ce7, type: 3}

@@ -54,7 +54,7 @@ namespace TextureEditor
 
         void Start()
         {
-            this.brushSize = 50;
+            this.brushSize = 25;
             this.color = Color.green;
         }
 
