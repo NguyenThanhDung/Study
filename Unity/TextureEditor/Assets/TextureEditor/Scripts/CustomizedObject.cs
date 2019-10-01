@@ -79,6 +79,10 @@ namespace TextureEditor
                 MeshRenderer meshRenderer = element.GetComponent<MeshRenderer>();
                 meshRenderer.material.mainTexture = texture;
 
+                float scaleX = texture.width / 512f;
+                float scaleY = texture.height / 512f;
+                element.transform.localScale = new Vector3(scaleX, scaleY, 1f);
+
                 element.SetActive(true);
             }
         }
