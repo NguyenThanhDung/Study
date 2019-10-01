@@ -22,6 +22,7 @@ namespace TextureEditor
         private Vector2 lastTextureCoord;
         private Vector3 offsetBetweenMouseAndObject;
         private bool isDragging;
+        private Vector3 originalScale;
 
         public string TexturePath { get; private set; }
 
@@ -174,12 +175,22 @@ namespace TextureEditor
             }
         }
 
+        public void SetScale(float scale)
+        {
+            this.transform.localScale = this.originalScale * scale;
+        }
+
         private IEnumerator InternalSetTexture(Texture2D texture)
         {
             while (this.display == null)
                 yield return null;
             MeshRenderer meshRenderer = this.display.GetComponent<MeshRenderer>();
             meshRenderer.material.mainTexture = texture;
+
+            float scaleX = texture.width / 512f;
+            float scaleY = texture.height / 512f;
+            this.originalScale = new Vector3(scaleX, scaleY, 1f);
+            this.transform.localScale = this.originalScale * 0.5f;
         }
     }
 }

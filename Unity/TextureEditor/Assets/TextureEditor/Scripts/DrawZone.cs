@@ -100,12 +100,12 @@ namespace TextureEditor
             if (this.customizingObject != null)
             {
                 this.customizingObject.transform.position = this.transform.position + Vector3.back * 0.1f;
-                this.customizingObject.transform.localScale = Vector3.one;
+                this.customizingObject.SetScale(1f);
             }
 
             for (int i = 0; i < this.craftingObjects.Count; i++)
             {
-                this.craftingObjects[i].transform.localScale = Vector3.one;
+                this.craftingObjects[i].SetScale(1f);
             }
 
             float zoneHeight = (this.drawableObjects.Count - 1) * this.interval;
@@ -114,7 +114,7 @@ namespace TextureEditor
                 Vector3 direction = new Vector3(-this.offset, zoneHeight / 2f - i * this.interval, 0f);
                 Vector3 position = this.transform.position + direction;
                 this.drawableObjects[i].transform.position = position;
-                this.drawableObjects[i].transform.localScale = Vector3.one * 0.5f;
+                this.drawableObjects[i].SetScale(0.5f);
             }
 
             zoneHeight = (this.droppedObjects.Count - 1) * this.interval;
@@ -123,7 +123,7 @@ namespace TextureEditor
                 Vector3 direction = new Vector3(this.offset, zoneHeight / 2f - i * this.interval, 0f);
                 Vector3 position = this.transform.position + direction;
                 this.droppedObjects[i].transform.position = position;
-                this.droppedObjects[i].transform.localScale = Vector3.one * 0.5f;
+                this.droppedObjects[i].SetScale(0.5f);
             }
         }
     }
