@@ -5,13 +5,16 @@ using TMPro;
 
 public class Card : MonoBehaviour
 {
+
+    [SerializeField] GameObject display;
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
     [SerializeField] AnimationCurve moveAnimCurve;
+    [SerializeField] ParticleSystem leftFireParticle;
+    [SerializeField] ParticleSystem rightFireParticle;
+    [SerializeField] ParticleSystem disappearParticle;
 
     private CardData initialData;
-    private int attackPoint;
-    private int healthPoint;
     private Vector3 startAnimationPosition;
     private Vector3 targetAnimationPosition;
     private Quaternion startAnimationRotation;
@@ -23,28 +26,14 @@ public class Card : MonoBehaviour
 
     public int AttackPoint
     {
-        get
-        {
-            return this.attackPoint;
-        }
-        private set
-        {
-            this.attackPoint = value;
-            this.attackText.text = value.ToString();
-        }
+        get;
+        private set;
     }
 
     public int HealthPoint
     {
-        get
-        {
-            return this.healthPoint;
-        }
-        private set
-        {
-            this.healthPoint = value;
-            this.healthText.text = value.ToString();
-        }
+        get;
+        private set;
     }
 
     public bool IsDie
@@ -58,15 +47,15 @@ public class Card : MonoBehaviour
     void Start()
     {
         this.OwnedPlayer = PlayerType.Computer;
-        GameEvents.OnStartGame += ResetPoint;
         GameEvents.OnPlayerPlayCard += Play;
+        GameEvents.OnCardBattleStart += StartBattle;
         GameEvents.OnCardDie += OnDie;
     }
 
     void Destroy()
     {
-        GameEvents.OnStartGame -= ResetPoint;
         GameEvents.OnPlayerPlayCard -= Play;
+        GameEvents.OnCardBattleStart -= StartBattle;
         GameEvents.OnCardDie -= OnDie;
     }
 
@@ -74,7 +63,7 @@ public class Card : MonoBehaviour
     {
         this.ID = CardManager.Instance.GenerateCardID();
         this.initialData = cardData;
-        ResetPoint();
+        OnStartGame();
     }
 
     public void MarkOwnedByHuman()
@@ -96,21 +85,68 @@ public class Card : MonoBehaviour
         else
         {
             this.targetAnimationPosition = new Vector3(x, 1f, 3f);
-            this.targetAnimationRotation = Quaternion.Euler(-90f, 0f, 0f);
+            this.targetAnimationRotation = Quaternion.Euler(-90f, 180f, 0f);
         }
         StartCoroutine(Moving());
     }
 
-    public void OnAttackedBy(Card attackCard)
-    {
-        this.HealthPoint -= attackCard.AttackPoint;
-    }
-
-    private void ResetPoint()
+    private void OnStartGame()
     {
         this.AttackPoint = this.initialData.AttackPoint;
         this.HealthPoint = this.initialData.HealthPoint;
+        this.attackText.text = this.AttackPoint.ToString();
+        this.healthText.text = this.HealthPoint.ToString();
         this.OwnedPlayer = PlayerType.Computer;
+    }
+
+    private void Play(PlayerType playerType, Card card)
+    {
+        if (card.ID == this.ID)
+            MoveToBattleZone();
+    }
+
+    private void MoveToBattleZone()
+    {
+        this.startAnimationPosition = this.transform.position;
+        this.startAnimationRotation = this.transform.rotation;
+        this.startAnimationTime = Time.time;
+
+        if (this.OwnedPlayer == PlayerType.Human)
+            this.targetAnimationPosition = new Vector3(1f, 1f, 0f);
+        else
+            this.targetAnimationPosition = new Vector3(-1f, 1f, 0f);
+        this.targetAnimationRotation = Quaternion.Euler(90f, 0f, 0f);
+
+        StartCoroutine(Moving());
+        StartCoroutine(FinishPlacingCard());
+    }
+
+    private void StartBattle(Card attacker, Card defender)
+    {
+        if (attacker.ID == this.ID)
+            EmitFireParticle();
+        if (defender.ID == this.ID)
+        {
+            this.HealthPoint -= attacker.AttackPoint;
+            StartCoroutine(UpdateHealthPointText());
+        }
+    }
+
+    private void OnDie(Card card)
+    {
+        if (card.ID == this.ID)
+        {
+            this.display.SetActive(false);
+            this.disappearParticle.Play();
+        }
+    }
+
+    private void EmitFireParticle()
+    {
+        if (this.OwnedPlayer == PlayerType.Human)
+            this.leftFireParticle.Play();
+        else
+            this.rightFireParticle.Play();
     }
 
     private IEnumerator Moving()
@@ -127,36 +163,15 @@ public class Card : MonoBehaviour
         }
     }
 
-    private void Play(PlayerType playerType, Card card)
+    private IEnumerator UpdateHealthPointText()
     {
-        if (card.ID == this.ID)
-            MoveToBattleZone();
+        yield return new WaitForSeconds(1f);
+        this.healthText.text = this.HealthPoint.ToString();
     }
 
-    private void MoveToBattleZone()
-    {
-        this.startAnimationPosition = this.transform.position;
-        this.startAnimationRotation = this.transform.rotation;
-        this.startAnimationTime = Time.time;
-        
-        if (this.OwnedPlayer == PlayerType.Human)
-            this.targetAnimationPosition = new Vector3(1f, 1f, 0f);
-        else
-            this.targetAnimationPosition = new Vector3(-1f, 1f, 0f);
-        this.targetAnimationRotation = Quaternion.Euler(90f, 0f, 0f);
-
-        StartCoroutine(Moving());
-    }
-
-    private void OnDie(Card card)
-    {
-        if (card.ID == this.ID)
-            StartCoroutine(Disable());
-    }
-
-    private IEnumerator Disable()
+    private IEnumerator FinishPlacingCard()
     {
         yield return new WaitForSeconds(0.5f);
-        this.gameObject.SetActive(false);
+        GameEvents.OnFinishedPlacingCard.Invoke();
     }
 }
