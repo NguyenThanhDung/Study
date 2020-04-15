@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ScreenCapturer : MonoBehaviour
 {
+    [SerializeField] int width;
+    [SerializeField] int height;
+
     private Camera camera;
     private bool shouldTakeScreenShot;
 
@@ -16,7 +19,7 @@ public class ScreenCapturer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            camera.targetTexture = RenderTexture.GetTemporary(Screen.width, Screen.height, 16);
+            camera.targetTexture = RenderTexture.GetTemporary(this.width, this.height, 16);
             this.shouldTakeScreenShot = true;
         }
     }
