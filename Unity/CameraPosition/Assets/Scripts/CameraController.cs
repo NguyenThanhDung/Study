@@ -10,7 +10,12 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         Vector3 topMarginDirection = GetDirectionFromCameraToTopMargin(this.margin);
-        Debug.Log("topMarginDirection: " + topMarginDirection);
+        
+        MeshRenderer renderer = this.target.GetComponent<MeshRenderer>();
+        Vector3 topPoint = this.target.position + new Vector3(0f, renderer.bounds.size.y, -renderer.bounds.size.z) * 0.5f;
+        Vector3 projectedTopPoint = topPoint + topMarginDirection;
+        Debug.Log("topPoint: " + topPoint);
+        Debug.Log("projectedTopPoint: " + projectedTopPoint);
     }
 
     private Vector3 GetDirectionFromCameraToTopMargin(float margin)
