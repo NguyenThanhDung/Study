@@ -19,8 +19,14 @@ public class CameraController : MonoBehaviour
         Vector3 sidePoint = this.target.position + Vector3.right;
 
         Vector3 intersection = Vector3.positiveInfinity;
-        LinePlaneIntersection(out intersection, topPoint, projectedTopPoint, this.target.position, backPoint, sidePoint);
-        Debug.Log("intersection: " + intersection);
+        if (LinePlaneIntersection(out intersection, topPoint, projectedTopPoint, this.target.position, backPoint, sidePoint))
+        {
+            this.transform.position = intersection;
+        }
+        else
+        {
+            Debug.Log("The line is parallel to the plane or inside it");
+        }
     }
 
     private Vector3 GetDirectionFromCameraToTopMargin(float margin)
