@@ -18,10 +18,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-    }
-
-    void Start()
-    {
         this.ReleaseDate = new DateTime(this.year, this.month, this.day, this.hour, this.minute, 0);
     }
 }
