@@ -1,13 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RemaingTime : MonoBehaviour
 {
+    private Text text;
+
     void Start()
     {
-        var text = GetComponent<Text>();
-        text.text = GameManager.Instance.ReleaseDate.ToShortDateString();
+        this.text = GetComponent<Text>();
+    }
+
+    void Update()
+    {
+        var timeSpan = GameManager.Instance.ReleaseDate - DateTime.Now;
+        this.text.text = timeSpan.ToString();
     }
 }
