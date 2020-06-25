@@ -16,6 +16,9 @@ public class RemaingTime : MonoBehaviour
     void Update()
     {
         var timeSpan = GameManager.Instance.ReleaseDate - DateTime.Now;
-        this.text.text = timeSpan.ToString(@"dd\.hh\:mm\:ss");
+        var toString = timeSpan.ToString("dd");
+        toString += " days ";
+        toString += timeSpan.ToString(@"hh\:mm\:ss");
+        this.text.text = toString;
     }
 }
