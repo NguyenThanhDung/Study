@@ -17,13 +17,24 @@ def get_size(start_path = '.'):
                 total_size += os.path.getsize(fp)
     return total_size
 
+def show_result(infos, maxNameLenght):
+    for item in infos:
+        print(item[0].ljust(maxNameLenght) + " " + str(item[1]))
+
 if __name__ == "__main__":
     
     currentDir = os.getcwd()
     print(currentDir)
 
+    infos = []
+    maxNameLenght = 0
+
     subDirsAndFiles = os.listdir()
     for dirOrFile in subDirsAndFiles:
         name = get_formatted_name(dirOrFile)
         size = get_size(dirOrFile)
-        print(name + " " + str(size))
+        infos.append((name, size))
+        if maxNameLenght < len(name):
+            maxNameLenght = len(name)
+    
+    show_result(infos, maxNameLenght)
