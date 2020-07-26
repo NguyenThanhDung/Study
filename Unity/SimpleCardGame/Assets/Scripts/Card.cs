@@ -5,7 +5,6 @@ using TMPro;
 
 public class Card : MonoBehaviour
 {
-
     [SerializeField] GameObject display;
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
@@ -13,6 +12,7 @@ public class Card : MonoBehaviour
     [SerializeField] ParticleSystem leftFireParticle;
     [SerializeField] ParticleSystem rightFireParticle;
     [SerializeField] ParticleSystem disappearParticle;
+    [SerializeField] TextMeshPro deductedHPText;
 
     private CardData initialData;
     private Vector3 startAnimationPosition;
@@ -20,6 +20,7 @@ public class Card : MonoBehaviour
     private Quaternion startAnimationRotation;
     private Quaternion targetAnimationRotation;
     private float startAnimationTime;
+    private Animator animator;
 
     public int ID { get; private set; }
     public PlayerType OwnedPlayer { get; private set; }
@@ -47,6 +48,7 @@ public class Card : MonoBehaviour
     void Start()
     {
         this.OwnedPlayer = PlayerType.Computer;
+        this.animator = GetComponent<Animator>();
         GameEvents.OnPlayerPlayCard += Play;
         GameEvents.OnCardBattleStart += StartBattle;
         GameEvents.OnCardDie += OnDie;
@@ -90,6 +92,11 @@ public class Card : MonoBehaviour
         StartCoroutine(Moving());
     }
 
+    public void OnFinishedShowingDeductedHP()
+    {
+        StartCoroutine(DisableAnimator());
+    }
+
     private void OnStartGame()
     {
         this.AttackPoint = this.initialData.AttackPoint;
@@ -128,7 +135,10 @@ public class Card : MonoBehaviour
         if (defender.ID == this.ID)
         {
             this.HealthPoint -= attacker.AttackPoint;
-            StartCoroutine(UpdateHealthPointText());
+            this.deductedHPText.text = "-" + attacker.AttackPoint.ToString();
+            this.animator.enabled = true;
+            this.animator.Play("ShowDeductedHP", -1, 0f);
+            this.healthText.text = (this.HealthPoint >= 0) ? this.HealthPoint.ToString() : "0";
         }
     }
 
@@ -163,15 +173,15 @@ public class Card : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateHealthPointText()
-    {
-        yield return new WaitForSeconds(1f);
-        this.healthText.text = this.HealthPoint.ToString();
-    }
-
     private IEnumerator FinishPlacingCard()
     {
         yield return new WaitForSeconds(0.5f);
         GameEvents.OnFinishedPlacingCard.Invoke();
+    }
+
+    private IEnumerator DisableAnimator()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.animator.enabled = false;
     }
 }
