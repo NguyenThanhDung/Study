@@ -25,6 +25,9 @@ def sizeof_fmt(num, suffix='B'):
         num /= 1024.0
     return "%.1f%s%s" % (num, 'Y', suffix)
 
+def sortCriteria(e):
+    return e[2]
+
 def show_result(infos, maxNameLenght, maxSizeLenght):
     for item in infos:
         print(item[0].ljust(maxNameLenght) + " " + str(item[1]).rjust(maxSizeLenght))
@@ -47,6 +50,8 @@ if __name__ == "__main__":
         formattedSize = sizeof_fmt(size)
         if maxSizeLenght < len(formattedSize):
             maxSizeLenght = len(formattedSize)
-        infos.append((name, formattedSize))
+        infos.append((name, formattedSize, size))
+    
+    infos.sort(reverse=True, key=sortCriteria)
     
     show_result(infos, maxNameLenght, maxSizeLenght)
