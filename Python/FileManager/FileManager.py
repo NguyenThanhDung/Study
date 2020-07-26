@@ -7,4 +7,5 @@ if __name__ == "__main__":
 
     subDirsAndFiles = os.listdir()
     for dirOrFile in subDirsAndFiles:
-        print(dirOrFile)
+        statInfo = os.stat(dirOrFile)
+        print(dirOrFile + " " + str(statInfo.st_size))
