@@ -19,15 +19,15 @@ def get_size(start_path = '.'):
 
 # https://stackoverflow.com/a/1094933
 def sizeof_fmt(num, suffix='B'):
-    for unit in ['','K','M','G','T','P','E','Z']:
+    for unit in [' ','K','M','G','T','P','E','Z']:
         if abs(num) < 1024.0:
             return "%3.1f%s%s" % (num, unit, suffix)
         num /= 1024.0
     return "%.1f%s%s" % (num, 'Y', suffix)
 
-def show_result(infos, maxNameLenght):
+def show_result(infos, maxNameLenght, maxSizeLenght):
     for item in infos:
-        print(item[0].ljust(maxNameLenght) + " " + str(item[1]))
+        print(item[0].ljust(maxNameLenght) + " " + str(item[1]).rjust(maxSizeLenght))
 
 if __name__ == "__main__":
     
@@ -36,14 +36,17 @@ if __name__ == "__main__":
 
     infos = []
     maxNameLenght = 0
+    maxSizeLenght = 0
 
     subDirsAndFiles = os.listdir()
     for dirOrFile in subDirsAndFiles:
         name = get_formatted_name(dirOrFile)
-        size = get_size(dirOrFile)
-        formattedSize = sizeof_fmt(size)
-        infos.append((name, formattedSize))
         if maxNameLenght < len(name):
             maxNameLenght = len(name)
+        size = get_size(dirOrFile)
+        formattedSize = sizeof_fmt(size)
+        if maxSizeLenght < len(formattedSize):
+            maxSizeLenght = len(formattedSize)
+        infos.append((name, formattedSize))
     
-    show_result(infos, maxNameLenght)
+    show_result(infos, maxNameLenght, maxSizeLenght)
