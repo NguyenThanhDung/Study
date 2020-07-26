@@ -1,5 +1,11 @@
 import os
 
+def get_formatted_name(name):
+    if os.path.isdir(dirOrFile):
+        return "[" + name + "]"
+    else:
+        return name
+
 # https://stackoverflow.com/a/1392549
 def get_size(start_path = '.'):
     total_size = 0
@@ -18,5 +24,6 @@ if __name__ == "__main__":
 
     subDirsAndFiles = os.listdir()
     for dirOrFile in subDirsAndFiles:
+        name = get_formatted_name(dirOrFile)
         size = get_size(dirOrFile)
-        print(dirOrFile + " " + str(size))
+        print(name + " " + str(size))
