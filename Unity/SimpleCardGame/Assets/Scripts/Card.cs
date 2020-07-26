@@ -8,11 +8,11 @@ public class Card : MonoBehaviour
     [SerializeField] GameObject display;
     [SerializeField] TextMeshPro attackText;
     [SerializeField] TextMeshPro healthText;
+    [SerializeField] MeshRenderer avatarRenderer;
     [SerializeField] AnimationCurve moveAnimCurve;
-    [SerializeField] ParticleSystem leftFireParticle;
-    [SerializeField] ParticleSystem rightFireParticle;
     [SerializeField] ParticleSystem disappearParticle;
     [SerializeField] TextMeshPro deductedHPText;
+    [SerializeField] AvatarMaterial avatarMaterials;
 
     private CardData initialData;
     private Vector3 startAnimationPosition;
@@ -103,6 +103,7 @@ public class Card : MonoBehaviour
         this.HealthPoint = this.initialData.HealthPoint;
         this.attackText.text = this.AttackPoint.ToString();
         this.healthText.text = this.HealthPoint.ToString();
+        this.avatarRenderer.material = this.avatarMaterials.materials[this.initialData.avatarID];
         this.OwnedPlayer = PlayerType.Computer;
     }
 
@@ -130,8 +131,6 @@ public class Card : MonoBehaviour
 
     private void StartBattle(Card attacker, Card defender)
     {
-        if (attacker.ID == this.ID)
-            EmitFireParticle();
         if (defender.ID == this.ID)
         {
             this.HealthPoint -= attacker.AttackPoint;
@@ -149,14 +148,6 @@ public class Card : MonoBehaviour
             this.display.SetActive(false);
             this.disappearParticle.Play();
         }
-    }
-
-    private void EmitFireParticle()
-    {
-        if (this.OwnedPlayer == PlayerType.Human)
-            this.leftFireParticle.Play();
-        else
-            this.rightFireParticle.Play();
     }
 
     private IEnumerator Moving()

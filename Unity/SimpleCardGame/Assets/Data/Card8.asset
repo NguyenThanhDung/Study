@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: 5
   HealthPoint: 7
-  avatarFileName: card8.png
+  avatarID: 8
   description: Vano aca miro moza las mala

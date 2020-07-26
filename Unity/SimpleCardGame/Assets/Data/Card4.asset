@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: 9
   HealthPoint: 8
-  avatarFileName: card4.png
+  avatarID: 4
   description: Yo resignado preterito ofenderle vendamont lo demostrar

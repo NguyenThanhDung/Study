@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: 1
   HealthPoint: 3
-  avatarFileName: card5.png
+  avatarID: 5
   description: Ser subio iba cosen usase digno tenia hay

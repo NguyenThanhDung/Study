@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea18dd1b9e7d48629d1a7c68df5c2f0, type: 3}
+  m_Name: AvatarMaterial
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: af0291ad4238e436cb4f5231e6adef2d, type: 2}
+  - {fileID: 2100000, guid: 6c605cd50643d457b85642cd403ef257, type: 2}
+  - {fileID: 2100000, guid: c466fa7d8825f4ba4b1579c5bcbad2fd, type: 2}
+  - {fileID: 2100000, guid: beb7819e74f96487dbf4147c07003334, type: 2}
+  - {fileID: 2100000, guid: ab183fb036f194405aa131a3d399ce8e, type: 2}
+  - {fileID: 2100000, guid: c9b03b03492e94e5482bb00b4d43f897, type: 2}
+  - {fileID: 2100000, guid: d2838f32557a148f9be08ef4373a529a, type: 2}
+  - {fileID: 2100000, guid: f13e272b6654f4db5a974cf7eaf3531f, type: 2}
+  - {fileID: 2100000, guid: 33d86dd89832e4d96a3bb2ba3b87697e, type: 2}
+  - {fileID: 2100000, guid: 160cc3f2c847b487ba4393345469e66a, type: 2}
