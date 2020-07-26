@@ -17,6 +17,14 @@ def get_size(start_path = '.'):
                 total_size += os.path.getsize(fp)
     return total_size
 
+# https://stackoverflow.com/a/1094933
+def sizeof_fmt(num, suffix='B'):
+    for unit in ['','K','M','G','T','P','E','Z']:
+        if abs(num) < 1024.0:
+            return "%3.1f%s%s" % (num, unit, suffix)
+        num /= 1024.0
+    return "%.1f%s%s" % (num, 'Y', suffix)
+
 def show_result(infos, maxNameLenght):
     for item in infos:
         print(item[0].ljust(maxNameLenght) + " " + str(item[1]))
@@ -33,7 +41,8 @@ if __name__ == "__main__":
     for dirOrFile in subDirsAndFiles:
         name = get_formatted_name(dirOrFile)
         size = get_size(dirOrFile)
-        infos.append((name, size))
+        formattedSize = sizeof_fmt(size)
+        infos.append((name, formattedSize))
         if maxNameLenght < len(name):
             maxNameLenght = len(name)
     
