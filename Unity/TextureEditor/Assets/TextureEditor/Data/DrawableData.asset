@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02db60c84f8ef4aa4a587b9ce6fb4ece, type: 3}
+  m_Name: DrawableData
+  m_EditorClassIdentifier: 
+  textures:
+  - {fileID: 2800000, guid: 01f8e12bcdb8246f980fd5a4d0a28458, type: 3}
+  - {fileID: 2800000, guid: cee0e28bcb51c49609b83db37e190ff5, type: 3}
