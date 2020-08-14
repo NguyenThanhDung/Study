@@ -41,7 +41,7 @@ if __name__ == "__main__":
     maxNameLenght = 0
     maxSizeLenght = 0
 
-    subDirsAndFiles = os.listdir()
+    subDirsAndFiles = os.listdir(currentDir)
     for dirOrFile in subDirsAndFiles:
         name = get_formatted_name(dirOrFile)
         if maxNameLenght < len(name):
