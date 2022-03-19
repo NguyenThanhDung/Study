@@ -171,6 +171,36 @@ namespace Array
             return 1;
         }
 
+        static int isInertial(int[] a)
+        {
+            int minOddValue = int.MaxValue;
+            int maxValue = int.MinValue;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] % 2 == 1)
+                {
+                    if (a[i] < minOddValue)
+                        minOddValue = a[i];
+                }
+                if (a[i] > maxValue)
+                    maxValue = a[i];
+            }
+            if (minOddValue == int.MaxValue)
+                return 0; // Could not find odd value
+            if (maxValue % 2 == 1)
+                return 0; // Max value which is odd
+
+            int maxEvenValue = int.MinValue;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] % 2 == 0 && a[i] > maxEvenValue && a[i] < maxValue)
+                    maxEvenValue = a[i];
+            }
+            if (minOddValue < maxEvenValue)
+                return 0;
+            return 1;
+        }
+
         static string TestBoolFunction(bool result, bool expect)
         {
             return (result == expect) ? "PASS" : "FAILED";
@@ -261,6 +291,16 @@ namespace Array
             Console.WriteLine("Case 9.5: " + TestIntFunction(isMadhavArray(new int[] { -6, -3, -3, 8, -5, -4 }), 0));
             Console.WriteLine("Case 9.6: " + TestIntFunction(isMadhavArray(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, -2, -1 }), 1));
             Console.WriteLine("Case 9.7: " + TestIntFunction(isMadhavArray(new int[] { 3, 1, 2, 3, 0 }), 0));
+
+            Console.WriteLine("Case 10.1: " + TestIntFunction(isInertial(new int[] { 1 }), 0));
+            Console.WriteLine("Case 10.2: " + TestIntFunction(isInertial(new int[] { 2 }), 0));
+            Console.WriteLine("Case 10.3: " + TestIntFunction(isInertial(new int[] { 1, 2, 3, 4 }), 0));
+            Console.WriteLine("Case 10.4: " + TestIntFunction(isInertial(new int[] { 1, 1, 1, 1, 1, 1, 2 }), 1));
+            Console.WriteLine("Case 10.5: " + TestIntFunction(isInertial(new int[] { 2, 12, 4, 6, 8, 11 }), 1));
+            Console.WriteLine("Case 10.6: " + TestIntFunction(isInertial(new int[] { 2, 12, 12, 4, 6, 8, 11 }), 1));
+            Console.WriteLine("Case 10.7: " + TestIntFunction(isInertial(new int[] { -2, -4, -6, -8, -11 }), 0));
+            Console.WriteLine("Case 10.8: " + TestIntFunction(isInertial(new int[] { 2, 3, 5, 7 }), 0));
+            Console.WriteLine("Case 10.9: " + TestIntFunction(isInertial(new int[] { 2, 4, 6, 8, 10 }), 0));
         }
     }
 }
