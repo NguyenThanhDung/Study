@@ -201,6 +201,33 @@ namespace Array
             return 1;
         }
 
+        static int isPerfectSquare(int n)
+        {
+            double sqrt = Math.Sqrt(n);
+            return (sqrt % 1) == 0 ? 1 : 0;
+        }
+
+        static int countSquarePairs(int[] a)
+        {
+            int count = 0;
+            for (int i = 0; i < a.Length - 1; i++)
+            {
+                if (a[i] > 0)
+                {
+                    for (int j = i + 1; j < a.Length; j++)
+                    {
+                        if (a[j] > 0)
+                        {
+                            int sum = a[i] + a[j];
+                            if (isPerfectSquare(sum) == 1)
+                                count++;
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+
         static string TestBoolFunction(bool result, bool expect)
         {
             return (result == expect) ? "PASS" : "FAILED";
@@ -301,6 +328,10 @@ namespace Array
             Console.WriteLine("Case 10.7: " + TestIntFunction(isInertial(new int[] { -2, -4, -6, -8, -11 }), 0));
             Console.WriteLine("Case 10.8: " + TestIntFunction(isInertial(new int[] { 2, 3, 5, 7 }), 0));
             Console.WriteLine("Case 10.9: " + TestIntFunction(isInertial(new int[] { 2, 4, 6, 8, 10 }), 0));
+
+            Console.WriteLine("Case 11.1: " + TestIntFunction(countSquarePairs(new int[] { 11, 5, 4, 20 }), 3));
+            Console.WriteLine("Case 11.2: " + TestIntFunction(countSquarePairs(new int[] { 9 }), 0));
+            Console.WriteLine("Case 11.3: " + TestIntFunction(countSquarePairs(new int[] { 9, 0, 2, -5, 7 }), 2));
         }
     }
 }
