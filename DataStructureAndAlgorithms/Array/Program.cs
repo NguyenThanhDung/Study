@@ -87,6 +87,42 @@ namespace Array
             return 1;
         }
 
+        static int is121Array(int[] a)
+        {
+            int firstOneCount = 0;
+            int i = 0;
+            while (i < a.Length && a[i] == 1)
+            {
+                firstOneCount++;
+                i++;
+            }
+            if (firstOneCount == 0)
+                return 0;
+
+            int twoCount = 0;
+            while (i < a.Length && a[i] == 2)
+            {
+                twoCount++;
+                i++;
+            }
+            if (twoCount == 0)
+                return 0;
+
+            int secondOneCount = 0;
+            while (i < a.Length && a[i] == 1)
+            {
+                secondOneCount++;
+                i++;
+            }
+            if (firstOneCount != secondOneCount)
+                return 0;
+
+            if (i != a.Length)
+                return 0;   // The trail of the array contain some numbers other than 1
+
+            return 1;
+        }
+
         static int isConsectiveFactored(int n)
         {
             if (n <= 0)
@@ -201,6 +237,92 @@ namespace Array
             return 1;
         }
 
+        static int isPerfectSquare(int n)
+        {
+            double sqrt = Math.Sqrt(n);
+            return (sqrt % 1) == 0 ? 1 : 0;
+        }
+
+        static int countSquarePairs(int[] a)
+        {
+            int count = 0;
+            for (int i = 0; i < a.Length - 1; i++)
+            {
+                if (a[i] > 0)
+                {
+                    for (int j = i + 1; j < a.Length; j++)
+                    {
+                        if (a[j] > 0)
+                        {
+                            int sum = a[i] + a[j];
+                            if (isPerfectSquare(sum) == 1)
+                                count++;
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+
+        static int isDigitIncreasing(int n)
+        {
+            for (int i = 1; i <= 9; i++)
+            {
+                int sum = 0;
+                int digitCount = 0;
+                while (sum < n)
+                {
+                    digitCount++;
+                    sum += getDuplicatedNumber(i, digitCount);
+                }
+                if (sum == n)
+                    return 1;
+            }
+            return 0;
+        }
+
+        static int getDuplicatedNumber(int digit, int digitCount)
+        {
+            int number = 0;
+            for (int i = 0; i < digitCount; i++)
+            {
+                number += digit * powerOfTen(i);
+            }
+            return number;
+        }
+
+        static int powerOfTen(int p)
+        {
+            int result = 1;
+            for (int i = 0; i < p; i++)
+            {
+                result *= 10;
+            }
+            return result;
+        }
+
+        static int isSelfReferential(int[] a)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                int countOfIndex = countNumber(i, a);
+                if (a[i] != countOfIndex)
+                    return 0;
+            }
+            return 1;
+        }
+
+        static int countNumber(int n, int[] a)
+        {
+            int count = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] == n)
+                    count++;
+            }
+            return count;
+        }
+
         static string TestBoolFunction(bool result, bool expect)
         {
             return (result == expect) ? "PASS" : "FAILED";
@@ -301,6 +423,37 @@ namespace Array
             Console.WriteLine("Case 10.7: " + TestIntFunction(isInertial(new int[] { -2, -4, -6, -8, -11 }), 0));
             Console.WriteLine("Case 10.8: " + TestIntFunction(isInertial(new int[] { 2, 3, 5, 7 }), 0));
             Console.WriteLine("Case 10.9: " + TestIntFunction(isInertial(new int[] { 2, 4, 6, 8, 10 }), 0));
+
+            Console.WriteLine("Case 11.1: " + TestIntFunction(countSquarePairs(new int[] { 11, 5, 4, 20 }), 3));
+            Console.WriteLine("Case 11.2: " + TestIntFunction(countSquarePairs(new int[] { 9 }), 0));
+            Console.WriteLine("Case 11.3: " + TestIntFunction(countSquarePairs(new int[] { 9, 0, 2, -5, 7 }), 2));
+
+            Console.WriteLine("Case 12.1: " + TestIntFunction(is121Array(new int[] { 1, 2, 1 }), 1));
+            Console.WriteLine("Case 12.2: " + TestIntFunction(is121Array(new int[] { 1, 1, 2, 2, 2, 1, 1 }), 1));
+            Console.WriteLine("Case 12.3: " + TestIntFunction(is121Array(new int[] { 1, 1, 2, 2, 2, 1, 1, 1 }), 0));
+            Console.WriteLine("Case 12.4: " + TestIntFunction(is121Array(new int[] { 1, 1, 2, 1, 2, 1, 1 }), 0));
+            Console.WriteLine("Case 12.5: " + TestIntFunction(is121Array(new int[] { 1, 1, 1, 2, 2, 2, 1, 1, 1, 3 }), 0));
+            Console.WriteLine("Case 12.6: " + TestIntFunction(is121Array(new int[] { 1, 1, 1, 1, 1, 1 }), 0));
+            Console.WriteLine("Case 12.7: " + TestIntFunction(is121Array(new int[] { 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1 }), 0));
+            Console.WriteLine("Case 12.8: " + TestIntFunction(is121Array(new int[] { 1, 1, 1, 2, 2, 2, 1, 1, 2, 2 }), 0));
+            Console.WriteLine("Case 12.9: " + TestIntFunction(is121Array(new int[] { 2, 2, 2 }), 0));
+
+            Console.WriteLine("Case 13: " + TestIntFunction(isDigitIncreasing(7), 1));
+            Console.WriteLine("Case 13: " + TestIntFunction(isDigitIncreasing(36), 1));
+            Console.WriteLine("Case 13: " + TestIntFunction(isDigitIncreasing(984), 1));
+            Console.WriteLine("Case 13: " + TestIntFunction(isDigitIncreasing(7404), 1));
+            Console.WriteLine("Case 13: " + TestIntFunction(isDigitIncreasing(37), 0));
+
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 1, 2, 1, 0 }), 1));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 2, 0, 0 }), 0));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 0 }), 0));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 1 }), 0));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 2, 0, 2, 0 }), 1));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 2, 1, 2, 0, 0 }), 1));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 3, 2, 1, 1, 0, 0, 0 }), 1));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 4, 2, 1, 0, 1, 0, 0, 0 }), 1));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 5, 2, 1, 0, 0, 1, 0, 0, 0 }), 1));
+            Console.WriteLine("Case 14: " + TestIntFunction(isSelfReferential(new int[] { 6, 2, 1, 0, 0, 0, 1, 0, 0, 0 }), 1));
         }
     }
 }
